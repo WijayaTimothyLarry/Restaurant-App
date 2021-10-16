@@ -1,4 +1,8 @@
-public class Staff extends Person {
+package entityclass;
+
+import java.io.Serializable;
+
+public class Staff extends Person implements Serializable {
 
 	private String employeeID;
 	private String jobTitle;

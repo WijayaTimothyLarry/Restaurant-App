@@ -1,4 +1,5 @@
 package entityclass;
 
-public class Drinks extends MenuItem {
-}
+import java.io.Serializable;
+
+public class Drinks extends MenuItem implements Serializable {

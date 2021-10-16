@@ -1,6 +1,9 @@
+package entityclass;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Reservation {
+public class Reservation implements Serializable {
 
 	private LocalDateTime reservationDate;
 	private String customerName;

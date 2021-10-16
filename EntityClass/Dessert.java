@@ -1,3 +1,6 @@
 package entityclass;
-public class Dessert extends MenuItem {
+
+import java.io.Serializable;
+
+public class Dessert extends MenuItem implements Serializable {
 }

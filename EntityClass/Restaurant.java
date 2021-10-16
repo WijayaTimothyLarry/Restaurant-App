@@ -1,4 +1,8 @@
-public class Restaurant {
+package entityclass;
+
+import java.io.Serializable;
+
+public class Restaurant implements Serializable {
 
 	private int numberOfTable;
 

@@ -1,4 +1,8 @@
-public class Table {
+package entityclass;
+
+import java.io.Serializable;
+
+public class Table implements Serializable {
 
 	private int tableNumber;
 	private int tableSize;

@@ -1,4 +1,8 @@
-public class MenuItem {
+package entityclass;
+
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
 
 	private String itemName;
 	private double price;

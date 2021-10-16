@@ -1,6 +1,9 @@
+package entityclass;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Menu {
+public class Menu implements Serializable {
 
 	private MainCourse[] mainCourseList;
 	private Dessert[] dessertList;

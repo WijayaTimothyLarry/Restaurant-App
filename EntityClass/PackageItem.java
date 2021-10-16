@@ -1,4 +1,8 @@
-public class PackageItem {
+package entityclass;
+
+import java.io.Serializable;
+
+public class PackageItem implements Serializable {
 
 	private double packagePrice;
 	private String description;

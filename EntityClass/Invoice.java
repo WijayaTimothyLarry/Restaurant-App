@@ -1,6 +1,9 @@
+package entityclass;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Invoice {
+public class Invoice implements Serializable {
 
 	private LocalDateTime invoiceDateTime;
 	private String invoiceID;

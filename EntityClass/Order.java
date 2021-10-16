@@ -1,12 +1,15 @@
+package entityclass;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Order {
+public class Order implements Serializable {
 
 	private String orderID;
 	private LocalDateTime orderDate;
 	private int tableNumber;
 	private String waiterName;
-	private OrderItem[] orderItems;
+	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 
 	public Order() {
@@ -63,7 +66,7 @@ public class Order {
 		this.waiterName = waiterName;
 	}
 
-	public OrderItem[] getOrderItems() {
+	public ArrayList<OrderItem> getOrderItems() {
 		return this.orderItems;
 	}
 
@@ -71,7 +74,7 @@ public class Order {
 	 * 
 	 * @param orderItems
 	 */
-	public void setOrderItems(OrderItem[] orderItems) {
+	public void setOrderItems(ArrayList<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
