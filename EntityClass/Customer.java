@@ -1,3 +1,5 @@
+package entityclass;
+
 public class Customer extends Person {
 
 	private boolean hasMembership;

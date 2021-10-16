@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Menu {
 
 	private MainCourse[] mainCourseList;
 	private Dessert[] dessertList;
 	private Drinks[] drinksList;
 	private PackageItem[] packageList;
+	private ArrayList<MenuItem[]> menuList;
 
 	public Menu() {
 		// TODO - implement Menu.Menu
@@ -58,9 +61,9 @@ public class Menu {
 		this.packageList = packageList;
 	}
 
-	public MenuList[] getMenuList() {
+	public ArrayList<MenuItem[]> getMenuList() {
 		// TODO - implement Menu.getMenuList
-		throw new UnsupportedOperationException();
+		return menuList;
 	}
 
 }

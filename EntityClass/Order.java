@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class Order {
 
 	private String orderID;
@@ -32,7 +34,7 @@ public class Order {
 	 * 
 	 * @param orderDate
 	 */
-	public void setOrderDate(LocalDateTIme orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		// TODO - implement Order.setOrderDate
 		throw new UnsupportedOperationException();
 	}
