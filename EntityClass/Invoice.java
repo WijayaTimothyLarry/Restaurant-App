@@ -1,4 +1,4 @@
-package entityclass;
+package EntityClass;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
