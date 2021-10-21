@@ -8,8 +8,11 @@ public class PackageItem extends MenuItem implements Serializable {
 	private String description;
 	private MenuItem[] packageList;
 
-	public PackageItem() {
+	public PackageItem(double price,String descript, MenuItem[] p) {
 		// TODO - implement PackageItem.PackageItem
+		this.packagePrice = price;
+		this.description = descript;
+		this.packageList = p;
 		throw new UnsupportedOperationException();
 	}
 

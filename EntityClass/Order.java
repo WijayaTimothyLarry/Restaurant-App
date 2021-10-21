@@ -2,6 +2,7 @@ package EntityClass;
 import java.util.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Order implements Serializable {
@@ -13,8 +14,13 @@ public class Order implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 
-	public Order() {
+	public Order(String ident, LocalDateTime date, int tableNo, String waitname, ArrayList<OrderItem> itemsordered) {
 		// TODO - implement Order.Order
+		this.orderID = ident;
+		this.orderDate = date;
+		this.tableNumber = tableNo;
+		this.waiterName = waitname;
+		this.orderItems = itemsordered;
 		throw new UnsupportedOperationException();
 	}
 

@@ -6,8 +6,10 @@ public class OrderItem implements Serializable {
 	private MenuItem item;
 	private int quantity;
 
-	public OrderItem() {
+	public OrderItem(MenuItem food, int quant) {
 		// TODO - implement OrderItem.OrderItem
+		this.item = food;
+		this.quantity = quant;
 		throw new UnsupportedOperationException();
 	}
 
