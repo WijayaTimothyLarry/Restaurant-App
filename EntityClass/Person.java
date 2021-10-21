@@ -7,7 +7,9 @@ public class Person implements Serializable {
 	private String name;
 	private String gender;
 
-	public Person() {
+	public Person(String nam, String sex) {
+		this.name = nam;
+		this.gender = sex;
 		// TODO - implement Person.Person
 		throw new UnsupportedOperationException();
 	}
