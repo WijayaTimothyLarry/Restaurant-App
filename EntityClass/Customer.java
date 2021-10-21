@@ -6,8 +6,10 @@ public class Customer extends Person implements Serializable {
 
 	private boolean hasMembership;
 
-	public Customer() {
+	public Customer(String name, String gender, boolean hasMembership) {
 		// TODO - implement Customer.Customer
+		super(name, gender);
+		this.hasMembership = hasMembership;
 		throw new UnsupportedOperationException();
 	}
 
