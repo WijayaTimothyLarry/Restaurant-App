@@ -7,8 +7,10 @@ public class Staff extends Person implements Serializable {
 	private String employeeID;
 	private String jobTitle;
 
-	public Staff() {
+	public Staff(String employeeID, String jobTitle) {
 		// TODO - implement Staff.Staff
+		this.employeeID = employeeID;
+		this.jobTitle = jobTitle;
 		throw new UnsupportedOperationException();
 	}
 
