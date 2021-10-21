@@ -8,10 +8,12 @@ public class Table implements Serializable {
 	private int tableSize;
 	private boolean reserved;
 	private boolean occupied;
+	Order o;
 
 	public Table() {
 		// TODO - implement Table.Table
 		throw new UnsupportedOperationException();
+		this.o = new Order();
 	}
 
 	public int getTableNumber() {

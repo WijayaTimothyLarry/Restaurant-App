@@ -2,6 +2,7 @@ package EntityClass;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Reservation implements Serializable {
 
@@ -10,15 +11,22 @@ public class Reservation implements Serializable {
 	private long customerContactNo;
 	private int noOfPax;
 	private Table table;
+	Scanner sc = new Scanner(System.in);
 
-	public Reservation() {
+
+	public Reservation(LocalDateTime reservationDate, Table table) {
 		// TODO - implement Reservation.Reservation
 		throw new UnsupportedOperationException();
+		this.reservationDate = reservationDate;
+		this.table = table;
+		System.out.println("Enter the Customer's Name:");
+		this.customerName = sc.nextLine();
 	}
 
 	public LocalDateTime getDate() {
 		// TODO - implement Reservation.getDate
 		throw new UnsupportedOperationException();
+		return this.reservationDate;
 	}
 
 	/**
