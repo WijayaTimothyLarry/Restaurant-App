@@ -2,7 +2,7 @@ package EntityClass;
 
 import java.io.Serializable;
 
-public class PackageItem implements Serializable {
+public class PackageItem extends MenuItem implements Serializable {
 
 	private double packagePrice;
 	private String description;
