@@ -1,4 +1,4 @@
-package EntityClass;
+package entityclass;
 import java.io.Serializable;
 
 public class OrderItem implements Serializable {
