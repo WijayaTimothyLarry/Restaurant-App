@@ -1,4 +1,4 @@
-package EntityClass;
+package entityclass;
 
 import java.io.Serializable;
 
@@ -7,8 +7,9 @@ public class Staff extends Person implements Serializable {
 	private String employeeID;
 	private String jobTitle;
 
-	public Staff(String employeeID, String jobTitle) {
+	public Staff(String name, String gender,String employeeID, String jobTitle) {
 		// TODO - implement Staff.Staff
+		super(name, gender);
 		this.employeeID = employeeID;
 		this.jobTitle = jobTitle;
 		throw new UnsupportedOperationException();

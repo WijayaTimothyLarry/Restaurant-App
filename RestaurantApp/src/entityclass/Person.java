@@ -1,4 +1,4 @@
-package EntityClass;
+package entityclass;
 
 import java.io.Serializable;
 
@@ -7,9 +7,9 @@ public class Person implements Serializable {
 	private String name;
 	private String gender;
 
-	public Person(String nam, String sex) {
-		this.name = nam;
-		this.gender = sex;
+	public Person(String name, String gender) {
+		this.name = name;
+		this.gender = gender;
 		// TODO - implement Person.Person
 		throw new UnsupportedOperationException();
 	}
