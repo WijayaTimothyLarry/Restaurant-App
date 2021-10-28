@@ -7,11 +7,11 @@ public class OrderItem implements Serializable {
 	private double price;
 	private int quantity;
 
-	public OrderItem(MenuItem food, int quant, double price) {
+	public OrderItem(MenuItem food, int quant) {
 		// TODO - implement OrderItem.OrderItem
 		this.item = food;
 		this.quantity = quant;
-		this.price = price;
+		this.price = food.getPrice();
 
 		throw new UnsupportedOperationException();
 	}
@@ -23,7 +23,7 @@ public class OrderItem implements Serializable {
 	public void setPrice(double price){
 		this.price = price;
 	}
-	
+
 	public MenuItem getItem() {
 		return this.item;
 	}
@@ -47,5 +47,6 @@ public class OrderItem implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public String toString(){ return this.getMenuItem().getMenuName(); }
 
 }
