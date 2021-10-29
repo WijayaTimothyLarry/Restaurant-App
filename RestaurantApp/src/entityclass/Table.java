@@ -8,12 +8,15 @@ public class Table implements Serializable {
 	private int tableSize;
 	private boolean reserved;
 	private boolean occupied;
-	Order o;
+	Order order;
 
-	public Table() {
+	public Table(int tableNumber, int tableSize) 
+	{
 		// TODO - implement Table.Table
 		throw new UnsupportedOperationException();
-		this.o = new Order();
+		this.order = new Order();
+		this.tableNumber = tableNumber;
+		this.tableSize = tableSize;
 	}
 
 	public int getTableNumber() {
@@ -63,5 +66,15 @@ public class Table implements Serializable {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
+
+	public int unassignTable(Table tableNumber)
+	{
+		this.setReserved(false);
+		this.setTableSize(0);
+		this.setOccupied(false);
+		return 1;
+	}
+
+	
 
 }
