@@ -70,11 +70,11 @@ public class Reservation implements Serializable
 	public void printReservationInfo(Table tableNumber)
 	{
 		System.out.println(this.table.reservationDate);
-		System.out.println(this.getCustomerName(tableNumber));
-		System.out.println(this.getCustomerContactNo(tableNumber));
-		System.out.println(this.getNoOfPax(tableNumber));
-		System.out.println(this.getreservationID(tableNumber));
-		System.out.println(this.getTable(table));
+		System.out.println(this.getCustomerName());
+		System.out.println(this.getCustomerContactNo());
+		System.out.println(this.getNoOfPax());
+		System.out.println(this.getreservationID());
+		System.out.println(this.getTable());
 	}
 
 	public LocalDateTime getDate() 
@@ -94,7 +94,7 @@ public class Reservation implements Serializable
 		throw new UnsupportedOperationException();
 	}
 
-	public String getCustomerName(Table tableNumber) 
+	public String getCustomerName() 
 	{
 		return this.customerName;
 	}
@@ -108,7 +108,7 @@ public class Reservation implements Serializable
 		this.customerName = customerName;
 	}
 
-	public long getCustomerContactNo(Table tableNumber) 
+	public long getCustomerContactNo() 
 	{
 		return this.customerContactNo;
 	}
@@ -122,7 +122,7 @@ public class Reservation implements Serializable
 		this.customerContactNo = customerContactNo;
 	}
 
-	public int getNoOfPax(Table tableNumber) 
+	public int getNoOfPax() 
 	{
 		return this.noOfPax;
 	}
@@ -136,7 +136,7 @@ public class Reservation implements Serializable
 		this.noOfPax = noOfPax;
 	}
 
-	public Table getTable(Table tableNumber) 
+	public Table getTable() 
 	{
 		return this.table;
 	}
@@ -150,7 +150,7 @@ public class Reservation implements Serializable
 		this.table = table;
 	}
 
-	public int getReservationID(Table tableNumber)
+	public int getReservationID()
 	{
 		return this.reservationID;
 	}
