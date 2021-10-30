@@ -9,8 +9,13 @@ public class MenuItem implements Serializable {
 	private String description;
 	private String itemID;
 
-	public MenuItem() {
+	public MenuItem(String foodName, double foodprice, String foodDescription, String foodID) {
 		// TODO - implement MenuItem.MenuItem
+		this.itemName = foodName;
+		this.price = foodprice;
+		this.description = foodDescription;
+		this.itemID = foodID;
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -61,5 +66,7 @@ public class MenuItem implements Serializable {
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
+
+	
 
 }
