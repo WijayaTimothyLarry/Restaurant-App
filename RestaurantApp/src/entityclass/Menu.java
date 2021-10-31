@@ -6,115 +6,122 @@ import java.util.ArrayList;
 public class Menu implements Serializable {
 
 	private ArrayList<MainCourse> mainCourseList;
-	private Dessert[] dessertList;
-	private Drinks[] drinksList;
-	private Appetizer[] appeList;
-	private PackageItem[] packageList;
-	private ArrayList<MenuItem[]> menuList;
+	private ArrayList<Dessert> dessertList;
+	private ArrayList<Drinks> drinksList;
+	private ArrayList<Appetizer> appeList;
+	private ArrayList<PackageItem> packageList;
+	private ArrayList<MenuItem> menuList;
 
-	public Menu() {
+	public Menu(ArrayList<Appetizer> apList, ArrayList<MainCourse> mcList,ArrayList<Dessert> deList,ArrayList<Drinks> drList,ArrayList<PackageItem> paList) {
 		// TODO - implement Menu.Menu
+		this.appeList = apList;
+		this.mainCourseList = mcList;
+		this.dessertList = deList;
+		this.drinksList = drList;
+		this.packageList = paList;
 		throw new UnsupportedOperationException();
 	}
 
-	public MainCourse[] getMainCourseList() {
-		return this.mainCourseList;
-	}
-
-	public void printMainCourse() {
+	public void printMainCourse(){
 		System.out.println("          MAIN COURSE          ");
 		System.out.println("******************************");
-		if (mainCourseList.length == 0) {
+		if(mainCourseList.size()==0){
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < mainCourseList.length; i++) {
-			System.out.println("Name: " + mainCourseList[i].getItemName());
-			System.out.println("Price: " + mainCourseList[i].getPrice());
-			System.out.println("Description: " + mainCourseList[i].getDescription());
-			System.out.println("ID: " + mainCourseList[i].getItemID());
+		for(int i = 0;i<mainCourseList.size();i++){
+			MainCourse item = mainCourseList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
 	}
-
-	public void printDrinks() {
+	public void printDrinks(){
 		System.out.println("          DRINKS         ");
 		System.out.println("******************************");
-		if (drinksList.length == 0) {
+		if(drinksList.size()==0){
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < drinksList.length; i++) {
-			System.out.println("Name: " + drinksList[i].getItemName());
-			System.out.println("Price: " + drinksList[i].getPrice());
-			System.out.println("Description: " + drinksList[i].getDescription());
-			System.out.println("ID: " + drinksList[i].getItemID());
+		for(int i = 0;i<drinksList.size();i++){
+			Drinks item = drinksList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
 	}
-
-	public void printDessert() {
+	public void printDessert(){
 		System.out.println("          DESSERT          ");
 		System.out.println("******************************");
-		if (dessertList.length == 0) {
+		if(dessertList.size()==0){
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < dessertList.length; i++) {
-			System.out.println("Name: " + dessertList[i].getItemName());
-			System.out.println("Price: " + dessertList[i].getPrice());
-			System.out.println("Description: " + dessertList[i].getDescription());
-			System.out.println("ID: " + dessertList[i].getItemID());
+		for(int i = 0;i<dessertList.size();i++){
+			Dessert item = dessertList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
 	}
-
-	public void printAppeList() {
+	public void printAppeList(){
 		System.out.println("          APPETIZER          ");
 		System.out.println("******************************");
-		if (appeList.length == 0) {
+		if(appeList.size()==0){
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < appeList.length; i++) {
-			System.out.println("Name: " + appeList[i].getItemName());
-			System.out.println("Price: " + appeList[i].getPrice());
-			System.out.println("Description: " + appeList[i].getDescription());
-			System.out.println("ID: " + appeList[i].getItemID());
+		for(int i = 0;i<appeList.size();i++){
+			Appetizer item = appeList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
 	}
-
-	public void printPackage() {
+	public void printPackage(){
 		System.out.println("          SPECIAL PACKAGES         ");
 		System.out.println("******************************");
-		if (packageList.length == 0) {
+		if(packageList.size()==0){
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < packageList.length; i++) {
-			System.out.println("Name: " + packageList[i].getPackageName());
-			System.out.println("Price: " + packageList[i].getPackagePrice());
-			System.out.println("Description: " + packageList[i].getDescription());
-			System.out.println("ID: " + packageList[i].getPackageID());
+		for(int i = 0;i<packageList.size();i++){
+			Appetizer item = appeList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
 	}
 
+	public ArrayList<MainCourse> getMainCourseList() {
+		return this.mainCourseList;
+	}	
+	
+	
 	/**
 	 * 
 	 * @param mainCourseList
 	 */
-	public void setMainCourseList(MainCourse[] mainCourseList) {
+	public void setMainCourseList(ArrayList<MainCourse> mainCourseList) {
 		this.mainCourseList = mainCourseList;
 	}
 
-	public Dessert[] getDessertList() {
+	public ArrayList<Dessert> getDessertList() {
 		return this.dessertList;
 	}
 
@@ -122,11 +129,11 @@ public class Menu implements Serializable {
 	 * 
 	 * @param dessertList
 	 */
-	public void setDessertList(Dessert[] dessertList) {
+	public void setDessertList(ArrayList<Dessert> dessertList) {
 		this.dessertList = dessertList;
 	}
 
-	public Drinks[] getDrinksList() {
+	public ArrayList<Drinks> getDrinksList() {
 		return this.drinksList;
 	}
 
@@ -134,11 +141,11 @@ public class Menu implements Serializable {
 	 * 
 	 * @param drinksList
 	 */
-	public void setDrinksList(Drinks[] drinksList) {
+	public void setDrinksList(ArrayList<Drinks> drinksList) {
 		this.drinksList = drinksList;
 	}
 
-	public PackageItem[] getPackageList() {
+	public ArrayList<PackageItem> getPackageList() {
 		return this.packageList;
 	}
 
@@ -146,11 +153,22 @@ public class Menu implements Serializable {
 	 * 
 	 * @param packageList
 	 */
-	public void setPackageList(PackageItem[] packageList) {
+	public void setPackageList(ArrayList<PackageItem>  packageList) {
 		this.packageList = packageList;
 	}
+	public ArrayList<Appetizer> getAppeList() {
+		return this.appeList;
+	}
 
-	public ArrayList<MenuItem[]> getMenuList() {
+	/**
+	 * 
+	 * @param packageList
+	 */
+	public void setAppeList(ArrayList<Appetizer>  appeList) {
+		this.appeList = appeList;
+	}
+
+	public ArrayList<MenuItem> getMenuList() {
 		// TODO - implement Menu.getMenuList
 		return menuList;
 	}
