@@ -10,20 +10,21 @@ public class PackageItem extends MenuItem implements Serializable {
 	private MenuItem[] packageList;
 	private String packageID;
 
-	public PackageItem(String name,double price,String descript, MenuItem[] p,String id) {
+	public PackageItem(String name, double price, String descript, MenuItem[] p, String id) {
 		// TODO - implement PackageItem.PackageItem
 		this.packageName = name;
 		this.packagePrice = price;
 		this.description = descript;
 		this.packageList = p;
-		this.packageID - id;
+		this.packageID = id;
 		throw new UnsupportedOperationException();
 	}
-	public String getPackageName(){
+
+	public String getPackageName() {
 		return this.packageName;
 	}
-	
-	public String setPackageName(String name){
+
+	public String setPackageName(String name) {
 		this.packageName = name;
 	}
 
@@ -51,13 +52,13 @@ public class PackageItem extends MenuItem implements Serializable {
 	public void setDescription(String desciption) {
 		this.description = desciption;
 	}
-	public String getPackageID(){
+
+	public String getPackageID() {
 		return this.packageID;
 	}
-	
-	public String setPackageName(String ID){
+
+	public String setPackageName(String ID) {
 		this.packageID = ID;
 	}
-
 
 }

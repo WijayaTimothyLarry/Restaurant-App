@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Menu implements Serializable {
 
-	private MainCourse[] mainCourseList;
+	private ArrayList<MainCourse> mainCourseList;
 	private Dessert[] dessertList;
 	private Drinks[] drinksList;
 	private Appetizer[] appeList;
@@ -19,16 +19,15 @@ public class Menu implements Serializable {
 
 	public MainCourse[] getMainCourseList() {
 		return this.mainCourseList;
-	}	
-	
-	
-	public void printMainCourse(){
+	}
+
+	public void printMainCourse() {
 		System.out.println("          MAIN COURSE          ");
 		System.out.println("******************************");
-		if(mainCourseList.length==0){
+		if (mainCourseList.length == 0) {
 			System.out.println("This list is empty");
 		}
-		for(int i = 0;i<mainCourseList.length;i++){
+		for (int i = 0; i < mainCourseList.length; i++) {
 			System.out.println("Name: " + mainCourseList[i].getItemName());
 			System.out.println("Price: " + mainCourseList[i].getPrice());
 			System.out.println("Description: " + mainCourseList[i].getDescription());
@@ -38,13 +37,14 @@ public class Menu implements Serializable {
 		}
 
 	}
-	public void printDrinks(){
+
+	public void printDrinks() {
 		System.out.println("          DRINKS         ");
 		System.out.println("******************************");
-		if(drinksList.length==0){
+		if (drinksList.length == 0) {
 			System.out.println("This list is empty");
 		}
-		for(int i = 0;i<drinksList.length;i++){
+		for (int i = 0; i < drinksList.length; i++) {
 			System.out.println("Name: " + drinksList[i].getItemName());
 			System.out.println("Price: " + drinksList[i].getPrice());
 			System.out.println("Description: " + drinksList[i].getDescription());
@@ -54,13 +54,14 @@ public class Menu implements Serializable {
 		}
 
 	}
-	public void printDessert(){
+
+	public void printDessert() {
 		System.out.println("          DESSERT          ");
 		System.out.println("******************************");
-		if(dessertList.length==0){
+		if (dessertList.length == 0) {
 			System.out.println("This list is empty");
 		}
-		for(int i = 0;i<dessertList.length;i++){
+		for (int i = 0; i < dessertList.length; i++) {
 			System.out.println("Name: " + dessertList[i].getItemName());
 			System.out.println("Price: " + dessertList[i].getPrice());
 			System.out.println("Description: " + dessertList[i].getDescription());
@@ -70,13 +71,14 @@ public class Menu implements Serializable {
 		}
 
 	}
-	public void printAppeList(){
+
+	public void printAppeList() {
 		System.out.println("          APPETIZER          ");
 		System.out.println("******************************");
-		if(appeList.length==0){
+		if (appeList.length == 0) {
 			System.out.println("This list is empty");
 		}
-		for(int i = 0;i<appeList.length;i++){
+		for (int i = 0; i < appeList.length; i++) {
 			System.out.println("Name: " + appeList[i].getItemName());
 			System.out.println("Price: " + appeList[i].getPrice());
 			System.out.println("Description: " + appeList[i].getDescription());
@@ -86,13 +88,14 @@ public class Menu implements Serializable {
 		}
 
 	}
-	public void printPackage(){
+
+	public void printPackage() {
 		System.out.println("          SPECIAL PACKAGES         ");
 		System.out.println("******************************");
-		if(packageList.length==0){
+		if (packageList.length == 0) {
 			System.out.println("This list is empty");
 		}
-		for(int i = 0;i<packageList.length;i++){
+		for (int i = 0; i < packageList.length; i++) {
 			System.out.println("Name: " + packageList[i].getPackageName());
 			System.out.println("Price: " + packageList[i].getPackagePrice());
 			System.out.println("Description: " + packageList[i].getDescription());
@@ -102,6 +105,7 @@ public class Menu implements Serializable {
 		}
 
 	}
+
 	/**
 	 * 
 	 * @param mainCourseList
