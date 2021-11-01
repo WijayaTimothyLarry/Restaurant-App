@@ -1,24 +1,19 @@
-package entityclass;
+package EntityClass;
 
 import java.io.Serializable;
 
 public class Table implements Serializable {
-	
+
 	private int tableNumber;
 	private int tableSize;
 	private boolean reserved;
 	private boolean occupied;
 	Order order;
 
-	public Table(int tableNumber, int tableSize) 
-	{
+	public Table() {
 		// TODO - implement Table.Table
 		throw new UnsupportedOperationException();
 		this.order = new Order();
-		this.tableNumber = tableNumber;
-		this.tableSize = tableSize;
-		this.occupied = false;
-		this.reserved = false;
 	}
 
 	public int getTableNumber() {
@@ -68,15 +63,5 @@ public class Table implements Serializable {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
-
-	public int unassignTable(Table tableNumber)
-	{
-		this.setReserved(false);
-		this.setTableSize(0);
-		this.setOccupied(false);
-		return 1;
-	}
-
-	
 
 }
