@@ -1,7 +1,7 @@
 package entityclass;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Menu implements Serializable {
 
@@ -108,62 +108,128 @@ public class Menu implements Serializable {
 
 	}
 
+	/**
+	 * 
+	 * @param mainCourseList
+	 */
+
 	public ArrayList<MainCourse> getMainCourseList() {
 		return this.mainCourseList;
 	}	
 	
 	
-	/**
-	 * 
-	 * @param mainCourseList
-	 */
+
 	public void setMainCourseList(ArrayList<MainCourse> mainCourseList) {
 		this.mainCourseList = mainCourseList;
 	}
 
-	public ArrayList<Dessert> getDessertList() {
-		return this.dessertList;
+	public int removeforMainCourseList(String id){
+		Iterator<MainCourse> itr = mainCourseList.iterator();
+		while(itr.hasNext()){
+			MainCourse food = itr.next();
+			if(food.getItemID()==id){
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
 	}
 
 	/**
 	 * 
 	 * @param dessertList
 	 */
+
+	public ArrayList<Dessert> getDessertList() {
+		return this.dessertList;
+	}
+
+
 	public void setDessertList(ArrayList<Dessert> dessertList) {
 		this.dessertList = dessertList;
 	}
 
-	public ArrayList<Drinks> getDrinksList() {
-		return this.drinksList;
+	public int removeforDessertList(String id){
+		Iterator<Dessert> itr = dessertList.iterator();
+		while(itr.hasNext()){
+			Dessert food = itr.next();
+			if(food.getItemID()==id){
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
+
 	}
+
 
 	/**
 	 * 
 	 * @param drinksList
 	 */
+
+	public ArrayList<Drinks> getDrinksList() {
+		return this.drinksList;
+	}
+
+
 	public void setDrinksList(ArrayList<Drinks> drinksList) {
 		this.drinksList = drinksList;
 	}
+
+	public int removeforDrinksList(String id){
+		Iterator<Drinks> itr = drinksList.iterator();
+		while(itr.hasNext()){
+			Drinks food = itr.next();
+			if(food.getItemID()==id){
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
+
+	}
+	/**
+	 * 
+	 * @param packageList
+	 */
 
 	public ArrayList<PackageItem> getPackageList() {
 		return this.packageList;
 	}
 
-	/**
-	 * 
-	 * @param packageList
-	 */
 	public void setPackageList(ArrayList<PackageItem>  packageList) {
 		this.packageList = packageList;
 	}
-	public ArrayList<Appetizer> getAppeList() {
-		return this.appeList;
+	public int removeforPackageList(String id){
+		Iterator<PackageItem> itr = packageList.iterator();
+		while(itr.hasNext()){
+			PackageItem food = itr.next();
+			if(food.getItemID()==id){
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
+
 	}
 
 	/**
 	 * 
-	 * @param packageList
+	 * @param appeList
 	 */
+	public ArrayList<Appetizer> getAppeList() {
+		return this.appeList;
+	}
+
 	public void setAppeList(ArrayList<Appetizer>  appeList) {
 		this.appeList = appeList;
 	}
