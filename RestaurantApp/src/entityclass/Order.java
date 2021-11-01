@@ -12,14 +12,14 @@ public class Order implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 	private Invoice invoice;
-	private Reservation reservation;
+	// private Reservation reservation;
 
-	public Order(int ident, Date date, int tableNo, String waitname, ArrayList<OrderItem> itemsordered) {
-		this.orderID = ident;
+	public Order(int orderID, Date date, int tableNo, String waitname, ArrayList<OrderItem> itemsOrdered) {
+		this.orderID = orderID; // change to hashcode, remove from Order constructor
 		this.orderDate = date;
 		this.tableNumber = tableNo;
 		this.waiterName = waitname;
-		this.orderItems = itemsordered;
+		this.orderItems = itemsOrdered;
 		this.invoice = null;
 	}
 
@@ -44,8 +44,7 @@ public class Order implements Serializable {
 	 * @param orderDate
 	 */
 	public void setOrderDate(Date orderDate) {
-		// TODO - implement Order.setOrderDate
-		throw new UnsupportedOperationException();
+		this.orderDate = orderDate;
 	}
 
 	public int getTableNumber() {
@@ -109,17 +108,6 @@ public class Order implements Serializable {
 		return bill;
 	}
 
-	// 
-	//   Calculate the current total order price
-	//   @return Order current total price
-	 
-	// public double calTotalBill(){
-	// 	double retPrice = 0;
-	// 	for(OrderItem o : this.orderItems)
-	// 		retPrice += o.getMenuItem().getPrice();
-	// 	return retPrice;
-	// }
-
 	public void addOrderItem(){
 		
 		if(this.invoice != null) return;	//lock order for editing when invoice already generated
@@ -127,16 +115,16 @@ public class Order implements Serializable {
 		int choice;
 		int index = 0;
 		OrderItem orderItem;
-		ArrayList<MenuItem> foodMenu = Restaurant.Menu;
-		
+		ArrayList<MenuItem> foodMenu = Menu.getMenuList(); // how to resolve this? static and non-static
+		Scanner sc = new Scanner(System.in);
 		System.out.println("\nSelect the food item to add to the order:");
 		for(MenuItem menuItem : foodMenu)
-			System.out.println("(" + index++ + ") " + menuItem.getMenuName());
-    	choice = ScannerExt.nextInt("    Enter the number of your choice: ");
-		
+			System.out.println("(" + index++ + ") " + menuItem.getItemName());
+    	System.out.println("Enter the number of your choice: ");
+		choice = sc.nextInt();
 		try {
-			String orderItemAdded = foodMenu.get(choice).getMenuName();
-			orderItem = new OrderItem(foodMenu.get(choice));
+			String orderItemAdded = foodMenu.get(choice).getItemName();
+			orderItem = new OrderItem(foodMenu.get(choice)); // error because of unable to resolve static/non-static issueabove
 			this.orderItems.add(orderItem);
 			System.out.println(orderItemAdded + " added to order."); 
 		}catch(IndexOutOfBoundsException e){
@@ -150,30 +138,30 @@ public class Order implements Serializable {
 		if(this.invoice != null) return;	//lock order for editing when invoice already generated
 		
 		int choice, index;
-		
+		Scanner sc2 = new Scanner(System.in);
 		System.out.println("\nWhat item would you like to remove from the order?");
 		
 		index = 0;
 		for (OrderItem orderItem : orderItems)
-			System.out.println(index++ + ": " + orderItem.getMenuItem().getMenuName());
-    	choice = ScannerExt.nextInt("    Enter the number of your choice: ");
-		
+			System.out.println(index++ + ": " + orderItem.getItem().getItemName());
+    	System.out.println("Enter the number of your choice: ");
+		choice = sc2.nextInt();
 		try {
 			String orderItemRemoved = orderItems.get(choice).toString();
 			this.orderItems.remove(choice);
 			System.out.println(orderItemRemoved + " removed from order."); 
 		}catch(IndexOutOfBoundsException e){
-			System.out.println("Order item removal failed! (Invalid index provided");
+			System.out.println("Order item removal failed! (Invalid index provided)");
 		}
 	}
 
-	public void generateInvoice(){
+	// public void generateInvoice(){
 		
-		if(this.invoice != null) return;	//lock order for editing when invoice already generated
-		this.invoice = new Invoice(this);
-		this.reservation.getReserveTable().setStatus(TableStatus.VACATED);
+	// 	if(this.invoice != null) return;	//lock order for editing when invoice already generated
+	// 	this.invoice = new Invoice(this);
+	// 	this.reservation.getReserveTable().setStatus(TableStatus.VACATED);
 
-	}
+	// }
 	
 	
 	/**
@@ -181,8 +169,8 @@ public class Order implements Serializable {
 	 */
 	public String toString(){
 		String printOrderString = "";
-		for(OrderLineItem o : orderLineItems){
-			printOrderString += o.getMenuItem().getMenuName() + "    " + o.getChargedPrice() + "\n";
+		for(OrderItem o : orderItems){
+			printOrderString += o.getItem().getItemName() + "    " + o.getPrice() + "\n";
 		}
 		return printOrderString;
 	}

@@ -2,6 +2,7 @@ package entityclass;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 public class Invoice implements Serializable {
 
@@ -9,18 +10,18 @@ public class Invoice implements Serializable {
 	private int invoiceID;
 	private int tableNumber;
 	private double totalBill;
-	private OrderItem[] orderItems;
+	private ArrayList<OrderItem> orderItems;
 	private String waiterName;
 	private double gst;
 	private double price;
 	private Calendar dateTime;
 
-	public static final double GST = 0.07;
+	public static final double GST = 0.07; // According to Singapore Goods and Services Tax
 	public Invoice(Order order){
 		this.order = order;
-		this.invoiceID = Calendar.getInstance().hashCode();
-		this.gst = this.price * GST;
+		this.invoiceID = Calendar.getInstance().hashCode(); // Assigning a unique value to an object by hashing
 		this.price = order.calTotalBill();
+		this.gst = this.price * GST;
 		this.totalBill = this.price + this.gst;
 		this.dateTime = Calendar.getInstance();
 	}
@@ -73,7 +74,7 @@ public class Invoice implements Serializable {
 		this.totalBill = totalBill;
 	}
 
-	public OrderItem[] getOrderItems() {
+	public ArrayList<OrderItem> getOrderItems() {
 		return this.orderItems;
 	}
 
@@ -81,7 +82,7 @@ public class Invoice implements Serializable {
 	 * 
 	 * @param orderItems
 	 */
-	public void setOrderItems(OrderItem[] orderItems) {
+	public void setOrderItems(ArrayList<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
@@ -100,9 +101,9 @@ public class Invoice implements Serializable {
 	public void printInvoice(){
 		System.out.println("          RESTAURANT          ");
 		System.out.println("******************************");
-		System.out.println("Server: " + this.waiterName);
+		System.out.println("Service staff: " + this.waiterName);
 		System.out.println("InvoiceID: " + this.invoiceID);
-		System.out.println("Ordered items: " + this.order);
+		System.out.println("Ordered items: " + this.order); // cannot print class: make a print function in orderitem and loop through orderitem that also outputs quantity
 		System.out.println("Subtotal: " + this.price);
 		System.out.println("GST: " + this.gst);
 		System.out.println("TOTAL: " + this.totalBill);
