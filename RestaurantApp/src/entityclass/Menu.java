@@ -234,6 +234,21 @@ public class Menu implements Serializable {
 		this.appeList = appeList;
 	}
 
+	public int removeforAppeList(String id){
+		Iterator<Appetizer> itr = appeList.iterator();
+		while(itr.hasNext()){
+			Appetizer food = itr.next();
+			if(food.getItemID()==id){
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
+
+	}
+
 	public ArrayList<MenuItem> getMenuList() {
 		// TODO - implement Menu.getMenuList
 		return menuList;
