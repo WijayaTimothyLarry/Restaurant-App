@@ -12,13 +12,13 @@ public class Menu implements Serializable {
 	private ArrayList<PackageItem> packageList;
 	private ArrayList<MenuItem> menuList;
 
-	public Menu(ArrayList<Appetizer> apList, ArrayList<MainCourse> mcList,ArrayList<Dessert> deList,ArrayList<Drinks> drList,ArrayList<PackageItem> paList) {
+	public Menu(ArrayList<Appetizer> appeList, ArrayList<MainCourse> mainCourseList,ArrayList<Dessert> dessertList,ArrayList<Drinks> drinksList,ArrayList<PackageItem> packageList) {
 		// TODO - implement Menu.Menu
-		this.appeList = apList;
-		this.mainCourseList = mcList;
-		this.dessertList = deList;
-		this.drinksList = drList;
-		this.packageList = paList;
+		this.appeList = appeList;
+		this.mainCourseList = mainCourseList;
+		this.dessertList = dessertList;
+		this.drinksList = drinksList;
+		this.packageList = packageList;
 		throw new UnsupportedOperationException();
 	}
 
@@ -137,6 +137,10 @@ public class Menu implements Serializable {
 		return -1;
 	}
 
+	public void addintoMainCourseList(MainCourse maincourse){
+		mainCourseList.add(maincourse);
+	}
+
 	/**
 	 * 
 	 * @param dessertList
@@ -164,6 +168,9 @@ public class Menu implements Serializable {
 		}
 		return -1;
 
+	}
+	public void addintoDessertList(Dessert dessert){
+		dessertList.add(dessert);
 	}
 
 
@@ -195,6 +202,10 @@ public class Menu implements Serializable {
 		return -1;
 
 	}
+	public void addintoDrinksList(Drinks drink){
+		drinksList.add(drink);
+	}
+
 	/**
 	 * 
 	 * @param packageList
@@ -221,6 +232,11 @@ public class Menu implements Serializable {
 		return -1;
 
 	}
+
+	public void addintoPackageList(PackageItem package1){
+		packageList.add(package1);
+	}
+
 
 	/**
 	 * 
