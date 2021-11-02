@@ -5,28 +5,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import entityclass.*;
 
 public class Restaurant {
 
-	private Menu restaurantMenu;
-	private ArrayList<Table> tableList;
-	private ArrayList<Reservation> reservationList;
-	private ArrayList<Staff> staffList;
-	private ArrayList<Invoice> invoiceList;
+	public static Menu restaurantMenu;
+	public static ArrayList<Table> tableList;
+	public static ArrayList<Reservation> reservationList;
+	public static ArrayList<Staff> staffList;
+	public static ArrayList<Invoice> invoiceList;
+	public static ArrayList<Order> orderList;
 
-	public void createRestaurant() {
+	public static void createRestaurant() {
 		createMenu();
 		createTableList();
 		createReservationList();
 		createStaffList();
 		createInvoiceList();
+		createOrderList();
 	}
 
-	public void createMenu() {
+	public static void createMenu() {
 
 		ArrayList<Appetizer> appeList = new ArrayList<Appetizer>();
 		ArrayList<MainCourse> mainCourseList = new ArrayList<MainCourse>();
@@ -101,11 +102,11 @@ public class Restaurant {
 				packageList2, "P2");
 
 		// initialize menu
-		this.restaurantMenu = new Menu(appeList, mainCourseList, dessertList, drinkList, packageList);
+		Restaurant.restaurantMenu = new Menu(appeList, mainCourseList, dessertList, drinkList, packageList);
 
 	}
 
-	public void createTableList() {
+	public static void createTableList() {
 		ArrayList<Table> tableList = new ArrayList<Table>();
 
 		// initialize 5 tables for 2
@@ -137,11 +138,11 @@ public class Restaurant {
 		Table newTable = new Table(17, 8);
 		tableList.add(newTable);
 
-		this.tableList = tableList;
+		Restaurant.tableList = tableList;
 
 	}
 
-	public void createStaffList() {
+	public static void createStaffList() {
 		ArrayList<Staff> staffList = new ArrayList<Staff>();
 
 		// intialize waiters
@@ -174,25 +175,31 @@ public class Restaurant {
 		// add manager to staffList
 		staffList.add(manager);
 
-		this.staffList = staffList;
+		Restaurant.staffList = staffList;
 	}
 
-	public void createReservationList() {
+	public static void createReservationList() {
+		Restaurant.reservationList = new ArrayList<Reservation>();
 
 	}
 
-	public void createInvoiceList() {
-		invoiceList = new ArrayList<Invoice>();
+	public static void createInvoiceList() {
+		Restaurant.invoiceList = new ArrayList<Invoice>();
 	}
 
-	public void saveRestaurant() {
+	public static void createOrderList() {
+		Restaurant.orderList = new ArrayList<Order>();
+	}
+
+	public static void saveRestaurant() {
 
 		ArrayList<Object> data = new ArrayList<Object>();
-		data.add(restaurantMenu);
-		data.add(tableList);
-		data.add(reservationList);
-		data.add(staffList);
-		data.add(invoiceList);
+		data.add(Restaurant.restaurantMenu);
+		data.add(Restaurant.tableList);
+		data.add(Restaurant.reservationList);
+		data.add(Restaurant.staffList);
+		data.add(Restaurant.invoiceList);
+		data.add(Restaurant.orderList);
 
 		try {
 			FileOutputStream fos = new FileOutputStream("restaurant.ser");
@@ -207,7 +214,7 @@ public class Restaurant {
 		}
 	}
 
-	public void loadRestaurant() {
+	public static void loadRestaurant() {
 		ArrayList<Object> deserialized = new ArrayList<Object>();
 		try {
 			FileInputStream fis = new FileInputStream("restaurant.ser");
@@ -225,10 +232,11 @@ public class Restaurant {
 			return;
 		}
 
-		this.restaurantMenu = (Menu) deserialized.get(0);
-		this.tableList = (ArrayList<Table>) deserialized.get(1);
-		this.reservationList = (ArrayList<Reservation>) deserialized.get(2);
-		this.staffList = (ArrayList<Staff>) deserialized.get(3);
-		this.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
+		Restaurant.restaurantMenu = (Menu) deserialized.get(0);
+		Restaurant.tableList = (ArrayList<Table>) deserialized.get(1);
+		Restaurant.reservationList = (ArrayList<Reservation>) deserialized.get(2);
+		Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
+		Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
+		Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
 	}
 }
