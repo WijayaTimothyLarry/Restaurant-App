@@ -265,6 +265,11 @@ public class Menu implements Serializable {
 
 	}
 
+	public void addintoAppeList(Appetizer appe){
+		appeList.add(appe);
+	}
+
+
 	public ArrayList<MenuItem> getMenuList() {
 		// TODO - implement Menu.getMenuList
 		return menuList;
