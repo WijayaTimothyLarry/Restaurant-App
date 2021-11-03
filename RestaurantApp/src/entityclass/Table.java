@@ -10,11 +10,11 @@ public class Table implements Serializable {
 	private boolean occupied;
 	Order order;
 
-	public Table(int tableNumber, int tableSize) 
+	public Table(int tableNumber, int tableSize, int ident, Date date, int tableNo, String waitname, ArrayList<OrderItem> itemsordered) 
 	{
 		// TODO - implement Table.Table
 		throw new UnsupportedOperationException();
-		this.order = new Order();
+		this.order = new Order(ident, date, tableNo, waitname, itemsordered);
 		this.tableNumber = tableNumber;
 		this.tableSize = tableSize;
 	}
@@ -66,15 +66,6 @@ public class Table implements Serializable {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
-
-	public int unassignTable(Table tableNumber)
-	{
-		this.setReserved(false);
-		this.setTableSize(0);
-		this.setOccupied(false);
-		return 1;
-	}
-
 	
 
 }
