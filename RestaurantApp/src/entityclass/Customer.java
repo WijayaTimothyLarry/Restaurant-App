@@ -1,8 +1,6 @@
 package entityclass;
 
-import java.io.Serializable;
-
-public class Customer extends Person implements Serializable {
+public class Customer extends Person  {
 
 	private boolean hasMembership;
 
