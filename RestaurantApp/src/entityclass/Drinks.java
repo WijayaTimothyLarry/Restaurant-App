@@ -1,9 +1,12 @@
 package entityclass;
 
-import java.io.Serializable;
+public class Drinks extends MenuItem {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1265862093162813058L;
 
-public class Drinks extends MenuItem implements Serializable {
-    public Drinks(String drinkName, double drinkPrice, String drinkDescription, String drinkID) {
-        super(drinkName,drinkPrice,drinkDescription,drinkID);
+	public Drinks(String drinkName, double drinkPrice, String drinkDescription, String drinkID) {
+        super(drinkName, drinkPrice, drinkDescription, drinkID);
     }
 }

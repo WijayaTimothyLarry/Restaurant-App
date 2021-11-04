@@ -1,4 +1,5 @@
 package entityclass;
+
 import java.util.*;
 
 import java.io.Serializable;
@@ -97,79 +98,82 @@ public class Order implements Serializable {
 
 	public void printReciept() {
 		// TODO - implement Order.printReciept
-		throw new UnsupportedOperationException();
+
 	}
 
-	public double calTotalBill(){
+	public double calTotalBill() {
 		double bill = 0;
-		for(int i = 0; i < this.orderItems.size(); i++){
+		for (int i = 0; i < this.orderItems.size(); i++) {
 			bill += this.orderItems.get(i).getPrice();
 		}
 		return bill;
 	}
 
-	public void addOrderItem(){
-		
-		if(this.invoice != null) return;	//lock order for editing when invoice already generated
-		
+	public void addOrderItem() {
+
+		if (this.invoice != null)
+			return; // lock order for editing when invoice already generated
+
 		int choice;
 		int index = 0;
 		OrderItem orderItem;
 		ArrayList<MenuItem> foodMenu = Menu.getMenuList(); // how to resolve this? static and non-static
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nSelect the food item to add to the order:");
-		for(MenuItem menuItem : foodMenu)
+		for (MenuItem menuItem : foodMenu)
 			System.out.println("(" + index++ + ") " + menuItem.getItemName());
-    	System.out.println("Enter the number of your choice: ");
+		System.out.println("Enter the number of your choice: ");
 		choice = sc.nextInt();
 		try {
 			String orderItemAdded = foodMenu.get(choice).getItemName();
-			orderItem = new OrderItem(foodMenu.get(choice)); // error because of unable to resolve static/non-static issueabove
+			orderItem = new OrderItem(foodMenu.get(choice)); // error because of unable to resolve static/non-static
+																// issueabove
 			this.orderItems.add(orderItem);
-			System.out.println(orderItemAdded + " added to order."); 
-		}catch(IndexOutOfBoundsException e){
+			System.out.println(orderItemAdded + " added to order.");
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Add order item failed! (Invalid index provided)");
 		}
 
 	}
 
-	public void removeOrderItem(){
-		
-		if(this.invoice != null) return;	//lock order for editing when invoice already generated
-		
+	public void removeOrderItem() {
+
+		if (this.invoice != null)
+			return; // lock order for editing when invoice already generated
+
 		int choice, index;
 		Scanner sc2 = new Scanner(System.in);
 		System.out.println("\nWhat item would you like to remove from the order?");
-		
+
 		index = 0;
 		for (OrderItem orderItem : orderItems)
 			System.out.println(index++ + ": " + orderItem.getItem().getItemName());
-    	System.out.println("Enter the number of your choice: ");
+		System.out.println("Enter the number of your choice: ");
 		choice = sc2.nextInt();
 		try {
 			String orderItemRemoved = orderItems.get(choice).toString();
 			this.orderItems.remove(choice);
-			System.out.println(orderItemRemoved + " removed from order."); 
-		}catch(IndexOutOfBoundsException e){
+			System.out.println(orderItemRemoved + " removed from order.");
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Order item removal failed! (Invalid index provided)");
 		}
 	}
 
 	// public void generateInvoice(){
-		
-	// 	if(this.invoice != null) return;	//lock order for editing when invoice already generated
-	// 	this.invoice = new Invoice(this);
-	// 	this.reservation.getReserveTable().setStatus(TableStatus.VACATED);
+
+	// if(this.invoice != null) return; //lock order for editing when invoice
+	// already generated
+	// this.invoice = new Invoice(this);
+	// this.reservation.getReserveTable().setStatus(TableStatus.VACATED);
 
 	// }
-	
-	
+
 	/**
 	 * prints order items in the order's orderlineitems
 	 */
-	public String toString(){
+	public String toString() {
 		String printOrderString = "";
-		for(OrderItem o : orderItems){
+		for (OrderItem o : orderItems) {
 			printOrderString += o.getItem().getItemName() + "    " + o.getPrice() + "\n";
 		}
 		return printOrderString;

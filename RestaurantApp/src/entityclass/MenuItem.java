@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class MenuItem implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -699417389557533574L;
 	private String itemName;
 	private double price;
 	private String description;
@@ -15,8 +19,6 @@ public class MenuItem implements Serializable {
 		this.price = foodprice;
 		this.description = foodDescription;
 		this.itemID = foodID;
-
-		throw new UnsupportedOperationException();
 	}
 
 	public String getItemName() {
@@ -66,7 +68,5 @@ public class MenuItem implements Serializable {
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
-
-	
 
 }

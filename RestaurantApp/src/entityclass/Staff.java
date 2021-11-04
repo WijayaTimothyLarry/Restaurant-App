@@ -1,17 +1,16 @@
 package entityclass;
 
-
 public class Staff extends Person {
 
 	private String employeeID;
 	private String jobTitle;
 
-	public Staff(String name, String gender,String employeeID, String jobTitle) {
-		// TODO - implement Staff.Staff
+	public Staff(String name, String gender, String employeeID, String jobTitle) {
+
 		super(name, gender);
 		this.employeeID = employeeID;
 		this.jobTitle = jobTitle;
-		throw new UnsupportedOperationException();
+		// UnsupportedOperationException();
 	}
 
 	public String getEmployeeID() {
