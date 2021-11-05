@@ -1,4 +1,5 @@
 package entityclass;
+
 import java.io.Serializable;
 
 public class OrderItem implements Serializable {
@@ -15,14 +16,13 @@ public class OrderItem implements Serializable {
 		this.price = food.getPrice();
 		this.name = getItemName();
 
-		throw new UnsupportedOperationException();
 	}
 
-	public double getPrice(){
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(double price){
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -42,11 +42,11 @@ public class OrderItem implements Serializable {
 		return this.quantity;
 	}
 
-
-	public void setitemName(String itemName){
-		this.name =itemName;
+	public void setitemName(String itemName) {
+		this.name = itemName;
 	}
-	public String getItemName(){
+
+	public String getItemName() {
 		return this.name;
 	}
 
@@ -57,7 +57,10 @@ public class OrderItem implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String toString(){ return this.getItem().getItemName(); }
+
+	public String toString() {
+		return this.getItem().getItemName();
+	}
 
 
 }

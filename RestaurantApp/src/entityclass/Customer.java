@@ -1,16 +1,16 @@
 package entityclass;
 
-import java.io.Serializable;
-
-public class Customer extends Person implements Serializable {
+public class Customer extends Person {
 
 	private boolean hasMembership;
+	private String phoneNumber;
 
-	public Customer(String name, String gender, boolean hasMembership) {
+	public Customer(String name, String gender, String phoneNumber, boolean hasMembership) {
 		// TODO - implement Customer.Customer
 		super(name, gender);
 		this.hasMembership = hasMembership;
-		throw new UnsupportedOperationException();
+		this.phoneNumber = phoneNumber;
+
 	}
 
 	public boolean getHasMembership() {
@@ -23,6 +23,18 @@ public class Customer extends Person implements Serializable {
 	 */
 	public void setHasMembership(boolean hasMembership) {
 		this.hasMembership = hasMembership;
+	}
+
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+
+	/**
+	 * 
+	 * @param phoneNumber
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 }

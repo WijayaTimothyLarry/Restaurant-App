@@ -276,6 +276,7 @@ public class Menu implements Serializable {
 		appeList.add(appe);
 	}
 
+
 	public void setMenuList(ArrayList<MenuItem> menuList){
 		this.menuList = menuList;
 		this.menuList2 = menuList;

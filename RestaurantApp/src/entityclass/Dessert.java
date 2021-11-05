@@ -1,10 +1,13 @@
 package entityclass;
 
-import java.io.Serializable;
+public class Dessert extends MenuItem {
 
-public class Dessert extends MenuItem implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7425569410105530548L;
 
-    public Dessert(String dessertName, double dessertPrice, String dessertDescription, String dessertID) {
-        super(dessertName,dessertPrice,dessertDescription,dessertID);
+	public Dessert(String dessertName, double dessertPrice, String dessertDescription, String dessertID) {
+        super(dessertName, dessertPrice, dessertDescription, dessertID);
     }
 }

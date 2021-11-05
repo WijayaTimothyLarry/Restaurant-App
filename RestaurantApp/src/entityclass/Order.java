@@ -128,7 +128,9 @@ public class Order implements Serializable {
 		int number = sc.nextInt();
 		try {
 			String orderItemAdded = foodMenu.get(choice).getItemName();
+
 			OrderItem orderItem = new OrderItem(foodMenu.get(choice), number); 
+
 			this.orderItems.add(orderItem);
 			System.out.println(orderItemAdded + " added to order.");
 		} catch (IndexOutOfBoundsException e) {
@@ -173,6 +175,7 @@ public class Order implements Serializable {
 	 * prints order items in the order's orderlineitems
 	 */
 
+
 	public void printOrder(){
 		for(OrderItem o : this.orderItems){
 				System.out.println(o.getQuantity() + " x " + o.getItemName() + "   " + o.getPrice());
@@ -184,7 +187,7 @@ public class Order implements Serializable {
 		String printOrderString = "";
 		for (OrderItem oi : orderItems) {
 			printOrderString += oi.getItem().getItemName() + "    " + oi.getPrice() + "\n";
-		}
+
 		return printOrderString;
 	}
 
