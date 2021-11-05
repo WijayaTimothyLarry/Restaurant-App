@@ -7,7 +7,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import entityclass.*;
+import entityclass.Menu;
+import entityclass.Table;
+import entityclass.Reservation;
+import entityclass.Staff;
+import entityclass.Invoice;
+import entityclass.Order;
+import entityclass.Customer;
+import entityclass.MenuItem;
+import entityclass.Appetizer;
+import entityclass.MainCourse;
+import entityclass.Dessert;
+import entityclass.Drinks;
+import entityclass.PackageItem;
 
 public class Restaurant {
 
