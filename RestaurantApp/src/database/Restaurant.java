@@ -17,6 +17,7 @@ public class Restaurant {
 	public static ArrayList<Staff> staffList;
 	public static ArrayList<Invoice> invoiceList;
 	public static ArrayList<Order> orderList;
+	public static ArrayList<Customer> memberList;
 
 	public static void createRestaurant() {
 		createMenu();
@@ -100,6 +101,10 @@ public class Restaurant {
 		PackageItem package2 = new PackageItem("Spicy Heavy Meal", 22,
 				"Hearty meal of Goulash Soup and Grilled Porterhouse Steak coupled wiht Bloody Marry to spice up the night",
 				packageList2, "P2");
+
+		// add packages to packageList
+		packageList.add(package1);
+		packageList.add(package2);
 
 		// initialize menu
 		Restaurant.restaurantMenu = new Menu(appeList, mainCourseList, dessertList, drinkList, packageList);
@@ -191,6 +196,22 @@ public class Restaurant {
 		Restaurant.orderList = new ArrayList<Order>();
 	}
 
+	public static void createMemberList() {
+		ArrayList<Customer> memberList = new ArrayList<Customer>();
+
+		// initialize member
+		Customer member1 = new Customer("Sherwin", "Male", "12345678", true);
+		Customer member2 = new Customer("Larry", "Male", "23456789", true);
+		Customer member3 = new Customer("Junhui", "Male", "34567891", true);
+		Customer member4 = new Customer("Pheng Kai", "Male", "45678912", true);
+
+		// add member to memberList
+		memberList.add(member1);
+		memberList.add(member2);
+		memberList.add(member3);
+		memberList.add(member4);
+	}
+
 	public static void saveRestaurant() {
 
 		ArrayList<Object> data = new ArrayList<Object>();
@@ -210,10 +231,11 @@ public class Restaurant {
 			System.out.println("Restaurant data is saved");
 		} catch (IOException i) {
 			i.printStackTrace();
-			// TODO: handle exception
+
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void loadRestaurant() {
 		ArrayList<Object> deserialized = new ArrayList<Object>();
 		try {
@@ -226,7 +248,7 @@ public class Restaurant {
 		} catch (IOException i) {
 			i.printStackTrace();
 			return;
-			// TODO: handle exception
+
 		} catch (ClassNotFoundException c) {
 			c.printStackTrace();
 			return;
@@ -238,5 +260,9 @@ public class Restaurant {
 		Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
 		Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
 		Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
+	}
+
+	public static void testing() {
+		System.out.println("testing");
 	}
 }

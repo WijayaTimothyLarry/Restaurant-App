@@ -11,7 +11,7 @@ public class Person implements Serializable {
 		this.name = name;
 		this.gender = gender;
 		// TODO - implement Person.Person
-		throw new UnsupportedOperationException();
+
 	}
 
 	public String getName() {
