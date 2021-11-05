@@ -103,7 +103,8 @@ public class Invoice implements Serializable {
 		System.out.println("******************************");
 		System.out.println("Service staff: " + this.waiterName);
 		System.out.println("InvoiceID: " + this.invoiceID);
-		System.out.println("Ordered items: " + this.order); // cannot print class: make a print function in orderitem and loop through orderitem that also outputs quantity
+		System.out.println("Ordered items: ");
+		this.order.printOrder();
 		System.out.println("Subtotal: " + this.price);
 		System.out.println("GST: " + this.gst);
 		System.out.println("TOTAL: " + this.totalBill);
