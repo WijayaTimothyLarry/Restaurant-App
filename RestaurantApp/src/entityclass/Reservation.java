@@ -19,11 +19,10 @@ public class Reservation implements Serializable {
 	private long customerContactNo;
 	private int noOfPax;
 	private int reservationID = 0;
-	private Table table;
 	Scanner sc = new Scanner(System.in);
 
 	public Reservation(LocalDateTime reservationDate, String customerName, long customerContactNo, int noOfPax,
-			int reservationID, Table table) {
+			int reservationID) {
 		// TODO - implement Reservation.Reservation
 
 		this.reservationDate = reservationDate;
@@ -32,7 +31,6 @@ public class Reservation implements Serializable {
 		this.customerContactNo = customerContactNo;
 		this.noOfPax = noOfPax;
 		this.reservationID = reservationID;
-		this.table = table;
 		this.status = TableStatus.EMPTY;
 		throw new UnsupportedOperationException();
 	}
@@ -63,7 +61,7 @@ public class Reservation implements Serializable {
 	}
 
 	public void printReservationInfo(Table tableNumber) {
-		System.out.println(this.table.reservationDate);
+		System.out.println(this.reservationDate);
 		System.out.println(this.getCustomerName());
 		System.out.println(this.getCustomerContactNo());
 		System.out.println(this.getNoOfPax());
