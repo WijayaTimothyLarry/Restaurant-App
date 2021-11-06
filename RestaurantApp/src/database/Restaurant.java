@@ -103,13 +103,13 @@ public class Restaurant {
 		packageList1.add(mainCourse1);
 		packageList1.add(drink1);
 		PackageItem package1 = new PackageItem("Mushroom Chicken in the Hood", 22,
-				"Start the night with mushroom soup, fill up with Chicken Cordon Bleu and fresh up wiht The Red Hood ",
+				"Start the night with mushroom soup, fill up with Chicken Cordon Bleu and fresh up with The Red Hood ",
 				packageList1, "P1");
 
 		ArrayList<MenuItem> packageList2 = new ArrayList<MenuItem>();
-		packageList1.add(appetizer3);
-		packageList1.add(mainCourse2);
-		packageList1.add(drink2);
+		packageList2.add(appetizer3);
+		packageList2.add(mainCourse2);
+		packageList2.add(drink2);
 		PackageItem package2 = new PackageItem("Spicy Heavy Meal", 22,
 				"Hearty meal of Goulash Soup and Grilled Porterhouse Steak coupled wiht Bloody Marry to spice up the night",
 				packageList2, "P2");

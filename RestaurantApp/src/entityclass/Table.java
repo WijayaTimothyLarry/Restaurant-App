@@ -7,9 +7,10 @@ public class Table implements Serializable {
 
 	private int tableNumber;
 	private int tableSize;
+	private Order tableOrder;
 
 	public enum TableStatus {
-		EMPTY, OCCUPIED, RESERVED
+		EMPTY, OCCUPIED
 	}; // Table status' flag varialble
 
 	TableStatus status;
@@ -20,6 +21,7 @@ public class Table implements Serializable {
 		this.tableNumber = tableNumber;
 		this.tableSize = tableSize;
 		this.status = TableStatus.EMPTY;
+		this.tableOrder = null;
 		this.tableReservation = new ArrayList<Reservation>();
 	}
 
@@ -61,9 +63,17 @@ public class Table implements Serializable {
 		this.status = TableStatus.OCCUPIED;
 	}
 
-	public void setToReserved() // To set the Table's status as Reserved
-	{
-		this.status = TableStatus.RESERVED;
+	public void setOrder(Order order) {
+		this.tableOrder = order;
+	}
+
+	public Order getOrder() {
+		return this.tableOrder;
+	}
+
+	public void settleTable() {
+		this.status = TableStatus.EMPTY;
+
 	}
 
 	public void addReservation(Reservation newReservation) {

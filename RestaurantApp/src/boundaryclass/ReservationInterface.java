@@ -7,9 +7,9 @@ import entityclass.Reservation;
 
 public class ReservationInterface {
     private static Scanner scanner = new Scanner(System.in);
-    int choice;
+    static int choice;
 
-    public void showOption() {
+    public static void showOption() {
 
         System.out.println("(1) Check Customer Reservation");
         System.out.println("(2) Create New Reservation");
