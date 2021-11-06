@@ -34,7 +34,7 @@ public class ReservationMgr {
         String strDate = sc.nextLine();
         Calendar newReservDateTime = strToCalendarLong(strDate);
 
-        LocalTime newArrivalTime = checkReservTime();
+        //LocalTime newArrivalTime = checkReservTime();
         // newReservDateTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE,
         // Calendar.HOUR_OF_DAY, Calendar.MINUTE);
 
@@ -43,7 +43,7 @@ public class ReservationMgr {
         System.out.println("Enter the total number of people under Reservation");
         newNoOfPax = sc.nextInt();
         while (newNoOfPax == (int) newNoOfPax) {
-            ArrayList<Integer> tableNumbers = tableCtrl.getAvailTableNoByPax(newNoOfPax);
+            ArrayList<Integer> tableNumbers = tablesCtrl.getAvailTableNoByPax(newNoOfPax);
 
             if (tableNumbers.isEmpty()) {
                 System.out.println("All tables are Reserved");

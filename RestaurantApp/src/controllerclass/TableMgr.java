@@ -6,6 +6,7 @@ import java.util.Calendar;
 import database.Restaurant;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
+import utils.ReservationUtils;
 
 public class TableMgr {
     private static ArrayList<Table> tableList = Restaurant.tableList;
@@ -14,26 +15,38 @@ public class TableMgr {
         return null;
     }
 
-    public void getAvailableTables(int NoOfPax, Calendar time) {
+    public void getAvailableTables(int NoOfPax, Calendar time) 
+    {
+        int newTableSize;
         ArrayList<Table> availableTableList = new ArrayList<Table>();
-        for (Table table : tableList) {
-            if (table.getTableSize() <= NoOfPax) {
+        for (Table table : tableList) 
+        {
+            if (table.getTableSize() >= NoOfPax && (table.getTableStatus() == TableStatus.EMPTY) ) 
+            {
+                availableTableList.add(table);
             }
         }
         if (availableTableList.isEmpty()) {
             System.out.println("There are no empty tables of this size " + newTableSize);
-        } else {
-            System.out.printf("\n Size: %d, Status: %s", newTableSize, TableStatus.EMPTY.name());
-            printTablesFormatted(availableTableList);
-
+            return;
+        }
+        else{
+            Calendar timeBEF = ReservationUtils.reservationWindowBEF(time);
+            Calendar timeAFT = ReservationUtils.reservationWindowAFT(time);
+            if( (ReservationUtils.diffOfTimings(timeBEF, time)) && (ReservationUtils.diffOfTimings(time, timeAFT) ))
+            {
+                
+            }
+            
         }
     }
 
     private void printTablesFormatted(ArrayList<Table> availableTableList) {
     }
 
-    private int checkSizeofTable() {
-        return 0;
+    private int checkSizeofTable() 
+    {
+        return tables
     }
 
     public void printAllTables() {
