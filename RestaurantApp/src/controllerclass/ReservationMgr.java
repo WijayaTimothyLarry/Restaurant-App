@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+
+import java.util.Iterator;
 import java.util.Scanner;
 
 import database.Restaurant;
@@ -37,25 +38,18 @@ public class ReservationMgr
         int newCustomerContactNo;
         
         System.out.println("Enter Customer's contact Number to make Reservation");
-        newCustomerContactNo = sc.nextInt();
-        while(newCustomerContactNo == (int)newCustomerContactNo)
+        newCustomerContactNo = sc.next();
+        while (newCustomerContactNo.length() == 8 && ( newCustomerContactNo.charAt(0) == 9 || newCustomerContactNo.charAt(0) == 8)) 
         {
-            for(Reservation newReserv : reservationList)  
-            {
-                if(newReserv.getCustomerContactNo() == newCustomerContactNo)
-                {
-                    System.out.println("Reservation already exists for this Customer");
-                }
-            }
-            break;          
+            if(checkCustomerReservation(newCustomerContactNo) != null)    break;
         }
 
         System.out.println("Enter the date and time of reservation in: yyyy-MM-dd HH:mm ");
         String strDate = sc.nextLine();
         Calendar newReservDateTime = strToCalendarLong(strDate);
 
-        // ? newReservDateTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, Calendar.HOUR_OF_DAY, Calendar.MINUTE);
-
+        LocalTime newArrivalTime = checkReservTime();
+        //newReservDateTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, Calendar.HOUR_OF_DAY, Calendar.MINUTE);
 
         int newNoOfPax;
 
@@ -74,8 +68,9 @@ public class ReservationMgr
             {
                 System.out.println("Enter Customer Name:");
                 String newCustomerName = sc.next();
-                Reservation newReserv = new Reservation(newReservDateTime, newCustomerName, newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
-                
+
+                Reservation newReserv = new Reservation(newDateTime, newCustomerName,newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
+
                 reservationList.add(newReserv);
                 startReservationTimer(newReserv);
                 System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber() );                
@@ -105,24 +100,14 @@ public class ReservationMgr
     }
 
 
-    private LocalDateTime checkReservTime() 
-    {
+    public static Reservation checkCustomerReservation(String phoneNumber) {
+        for (Reservation reservation : reservationList) {
+            if (reservation.getCustomerContactNo().equals(phoneNumber)) {
+                return reservation;
+            }
+        }
+
         return null;
-    }
-
-    private LocalDateTime checkReservDate() 
-    {
-        return null;
-    }
-
-    private void readFileData(File reservationFile) 
-    {
-
-    }
-
-
-    
-
-
+    } 
 
 }
