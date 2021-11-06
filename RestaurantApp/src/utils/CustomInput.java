@@ -2,6 +2,7 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class CustomInput {
@@ -128,7 +129,7 @@ public class CustomInput {
         t2hbefore.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
         t2hbefore.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY - 2)); // set 2h before time to 2h before booking time
         t2hbefore.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
-        t2hbefore.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+        t2hbefore.set(Calendar.SECOND, 0);
 
         System.out.println("Time that is 2h before timing in booking request: " + t2hbefore.getTime());
         return t2hbefore;
@@ -144,9 +145,16 @@ public class CustomInput {
         t2hafter.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
         t2hafter.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY + 2)); // set 2h before time to 2h before booking time
         t2hafter.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
-        t2hafter.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+        t2hafter.set(Calendar.SECOND, 0);
 
         System.out.println("Time that is 2h before timing in booking request: " + t2hafter.getTime());
         return t2hafter;
+    }
+
+    // method to get difference between 2 Calendar timings
+    public static boolean diffTimings (Calendar booking1, Calendar booking2){
+        long hoursBetween = ChronoUnit.HOURS.between(booking1.toInstant(), booking2.toInstant());
+        if (hoursBetween < 2) return false;
+        else return true;
     }
 }
