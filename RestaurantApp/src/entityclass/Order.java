@@ -113,7 +113,6 @@ public class Order implements Serializable {
 
 		if (this.invoice != null)
 			return; // lock order for editing when invoice already generated
-
 		this.orderItems.add(newItem);
 
 	}
@@ -154,19 +153,18 @@ public class Order implements Serializable {
 	 * prints order items in the order's orderlineitems
 	 */
 
-	public void printOrder() {
-		for (OrderItem o : this.orderItems) {
-			System.out.println(o.getQuantity() + " x " + o.getItemName() + "   " + o.getPrice());
-		}
-		System.out.println();
-	}
+	/**
+	 * public void printOrder() { for (OrderItem o : this.orderItems) {
+	 * System.out.println(o.getQuantity() + " x " + o.getItemName() + " " +
+	 * o.getPrice()); } System.out.println(); }
+	 */
 
 	public String toString() {
-		String printOrderString = "";
-		for (OrderItem oi : orderItems) {
-			printOrderString += oi.getItem().getItemName() + "    " + oi.getPrice() + "\n";
+		String orderString = "";
+		for (OrderItem orderItem : orderItems) {
+			orderString += orderItem.getItem().getItemName() + "    " + orderItem.getPrice() + "\n";
 		}
-		return printOrderString;
+		return orderString;
 	}
 
 }
