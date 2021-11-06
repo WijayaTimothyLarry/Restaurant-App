@@ -327,4 +327,22 @@ public class Menu implements Serializable {
 		return menuList2;
 	}
 
+	public int removeforMenuList(String id) {
+		Iterator<MenuItem> itr = menuList.iterator();
+		while (itr.hasNext()) {
+			MenuItem food = itr.next();
+			if (food.getItemID() == id) {
+				System.out.println("Item found");
+				itr.remove();
+				System.out.println("Item deleted");
+				return 1;
+			}
+		}
+		return -1;
+	}
+
+	public void addintoMenuList(MenuItem food){
+		menuList.add(food);
+	}
+
 }
