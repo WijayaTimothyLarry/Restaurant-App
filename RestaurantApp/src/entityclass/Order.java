@@ -117,7 +117,7 @@ public class Order implements Serializable {
 		int choice;
 		int index = 0;
 		ArrayList<MenuItem> foodMenu = new ArrayList<MenuItem>();
-		foodMenu = Menu.getMenu(); 
+		foodMenu = Menu.getMenu();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nSelect the food item to add to the order:");
 		for (MenuItem menuItem : foodMenu)
@@ -129,7 +129,7 @@ public class Order implements Serializable {
 		try {
 			String orderItemAdded = foodMenu.get(choice).getItemName();
 
-			OrderItem orderItem = new OrderItem(foodMenu.get(choice), number); 
+			OrderItem orderItem = new OrderItem(foodMenu.get(choice), number);
 
 			this.orderItems.add(orderItem);
 			System.out.println(orderItemAdded + " added to order.");
@@ -175,10 +175,9 @@ public class Order implements Serializable {
 	 * prints order items in the order's orderlineitems
 	 */
 
-
-	public void printOrder(){
-		for(OrderItem o : this.orderItems){
-				System.out.println(o.getQuantity() + " x " + o.getItemName() + "   " + o.getPrice());
+	public void printOrder() {
+		for (OrderItem o : this.orderItems) {
+			System.out.println(o.getQuantity() + " x " + o.getItemName() + "   " + o.getPrice());
 		}
 		System.out.println();
 	}
@@ -187,7 +186,7 @@ public class Order implements Serializable {
 		String printOrderString = "";
 		for (OrderItem oi : orderItems) {
 			printOrderString += oi.getItem().getItemName() + "    " + oi.getPrice() + "\n";
-
+		}
 		return printOrderString;
 	}
 
