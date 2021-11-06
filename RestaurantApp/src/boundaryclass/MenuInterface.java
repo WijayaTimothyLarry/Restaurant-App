@@ -176,7 +176,7 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be updated:");
             itemID = scanner.nextLine();
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int appeChoice = scanner.nextInt();
+            int appeChoice = CustomInput.choice(1,3);
             switch(appeChoice){
                 case 1:
                     System.out.println("Enter the new name of the item: ");
@@ -185,7 +185,7 @@ public class MenuInterface {
                     break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
-                    double newprice = scanner.nextDouble();
+                    double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changeAppePrice(itemID, newprice);
                     break;
                 case 3:
@@ -200,7 +200,7 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int mainCourseChoice = scanner.nextInt();
+            int mainCourseChoice = CustomInput.choice(1,3);
             switch(mainCourseChoice){
                 case 1:
                     System.out.println("Enter the new name of the item: ");
@@ -209,7 +209,7 @@ public class MenuInterface {
                     break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
-                    double newprice = scanner.nextDouble();
+                    double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changeMainCoursePrice(itemID, newprice);
                     break;
                 case 3:
@@ -224,7 +224,7 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int DessertChoice = scanner.nextInt();
+            int DessertChoice = CustomInput.choice(1,3);
             switch(DessertChoice){
                 case 1:
                     System.out.println("Enter the new name of the item: ");
@@ -233,7 +233,7 @@ public class MenuInterface {
                     break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
-                    double newprice = scanner.nextDouble();
+                    double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changeDessertPrice(itemID, newprice);
                     break;
                 case 3:
@@ -248,7 +248,7 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int drinksChoice = scanner.nextInt();
+            int drinksChoice = CustomInput.choice(1, 3);
             switch(drinksChoice){
                 case 1:
                     System.out.println("Enter the new name of the item: ");
@@ -257,7 +257,7 @@ public class MenuInterface {
                     break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
-                    double newprice = scanner.nextDouble();
+                    double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changeDrinksPrice(itemID, newprice);
                     break;
                 case 3:
@@ -272,7 +272,7 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int packagesChoice = scanner.nextInt();
+            int packagesChoice = CustomInput.choice(1, 3);
             switch(packagesChoice){
                 case 1:
                     System.out.println("Enter the new name of the item: ");
@@ -281,7 +281,7 @@ public class MenuInterface {
                     break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
-                    double newprice = scanner.nextDouble();
+                    double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changePackagesPrice(itemID, newprice);
                     break;
                 case 3:
