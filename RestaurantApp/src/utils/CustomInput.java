@@ -2,6 +2,7 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class CustomInput {
     private static Scanner scanner = new Scanner(System.in);
@@ -60,5 +61,95 @@ public class CustomInput {
             }
         }
         return input;
+    }
+
+    public static Calendar dateInput() {
+
+        Calendar currentDateTime = (Calendar) Calendar.getInstance();
+        Calendar futureDateTime = (Calendar) Calendar.getInstance();
+
+        System.out.println(" Date  (now):" + currentDateTime.getTime());
+
+        System.out.printf("Enter year(%d to %d): ", currentDateTime.get(Calendar.YEAR),
+                currentDateTime.get(Calendar.YEAR + 1));
+        int year = choice(currentDateTime.get(Calendar.YEAR), currentDateTime.get(Calendar.YEAR + 1));
+        futureDateTime.set(Calendar.YEAR, year);
+
+        System.out.println("Enter month(1-12): ");
+        int month = choice(1, 12);
+        futureDateTime.set(Calendar.MONTH, month);
+
+        System.out.println("Enter day: ");
+        int numDays = 0;
+        switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            numDays = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            numDays = 30;
+            break;
+        case 2:
+            if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
+                numDays = 29;
+            else
+                numDays = 28;
+            break;
+        }
+        int day = choice(1, numDays);
+        futureDateTime.set(Calendar.DAY_OF_MONTH, day);
+
+        System.out.println("Enter hour(16-23): ");
+        int hour = choice(16, 23);
+        futureDateTime.set(Calendar.HOUR_OF_DAY, hour);
+
+        System.out.println("Enter minutes(0-59): ");
+        int min = choice(0, 59);
+        futureDateTime.set(Calendar.MINUTE, min);
+
+        futureDateTime.set(Calendar.SECOND, 0);
+
+        System.out.println("Date (future) :" + futureDateTime.getTime());
+        return futureDateTime;
+    }
+
+    //use when checking if table is available for booking by checking if there are any reservations or diners 2h before timing in booking request
+    //use with before(Object when) Calendar function
+    public static Calendar reservationWindowBEF(Calendar bookingTime){
+        
+        Calendar t2hbefore = (Calendar) Calendar.getInstance();
+        t2hbefore.set(Calendar.YEAR, bookingTime.get(Calendar.YEAR));
+        t2hbefore.set(Calendar.MONTH, bookingTime.get(Calendar.MONTH));
+        t2hbefore.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
+        t2hbefore.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY - 2)); // set 2h before time to 2h before booking time
+        t2hbefore.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
+        t2hbefore.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+
+        System.out.println("Time that is 2h before timing in booking request: " + t2hbefore.getTime());
+        return t2hbefore;
+    }
+
+    //use when checking if table is available for booking by checking if there are any reservations or diners 2h after timing in booking request
+    // use with after(Object when) Calendar function
+    public static Calendar reservationWindowAFT(Calendar bookingTime){
+        
+        Calendar t2hafter = (Calendar) Calendar.getInstance();
+        t2hafter.set(Calendar.YEAR, bookingTime.get(Calendar.YEAR));
+        t2hafter.set(Calendar.MONTH, bookingTime.get(Calendar.MONTH));
+        t2hafter.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
+        t2hafter.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY + 2)); // set 2h before time to 2h before booking time
+        t2hafter.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
+        t2hafter.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+
+        System.out.println("Time that is 2h before timing in booking request: " + t2hafter.getTime());
+        return t2hafter;
     }
 }

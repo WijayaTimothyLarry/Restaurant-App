@@ -7,9 +7,9 @@ import entityclass.Reservation;
 
 public class ReservationInterface {
     private static Scanner scanner = new Scanner(System.in);
-    int choice;
+    static int choice;
 
-    public void showOption() {
+    public static void showOption() {
 
         System.out.println("(1) Check Customer Reservation");
         System.out.println("(2) Create New Reservation");
@@ -33,7 +33,7 @@ public class ReservationInterface {
     private static void checkCustomerReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {
@@ -46,7 +46,7 @@ public class ReservationInterface {
     private static void createNewReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation != null) {
             System.out.println("Customer already have the following reservation:");
             reservation.printReservationInfo();
@@ -58,7 +58,7 @@ public class ReservationInterface {
     private static void removeCustomerReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {
