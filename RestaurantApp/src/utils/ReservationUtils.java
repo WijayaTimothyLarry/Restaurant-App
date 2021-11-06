@@ -5,9 +5,8 @@ import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ReservationUtils 
-{
-    
+public class ReservationUtils {
+
     public static int choice(int lower, int upper) {
         int input = 0;
         boolean invalidInput = true;
@@ -29,8 +28,9 @@ public class ReservationUtils
         }
         return input;
     }
-    
+
     private static Scanner scanner = new Scanner(System.in);
+
     public static double nextDouble() {
         double input = 0;
         boolean invalidInput = true;
@@ -151,12 +151,15 @@ public class ReservationUtils
     }
 
     // method to get difference between 2 Calendar timings
-    public static boolean diffOfTimings(Calendar booking1, Calendar booking2) {
-        long hoursBetween = ChronoUnit.HOURS.between(booking1.toInstant(), booking2.toInstant());
+    public static boolean diffOfTimings(Calendar timing1, Calendar timing2) {
+        long hoursBetween = ChronoUnit.HOURS.between(timing1.toInstant(), timing2.toInstant());
+        if (hoursBetween < 0) {
+            hoursBetween = ChronoUnit.HOURS.between(timing2.toInstant(), timing1.toInstant());
+        }
         if (hoursBetween < 2)
             return false;
         else
             return true;
     }
-    
+
 }
