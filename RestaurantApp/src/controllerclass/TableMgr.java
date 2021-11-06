@@ -2,8 +2,10 @@ package controllerclass;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import database.Restaurant;
+import entityclass.Reservation;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
 import utils.ReservationUtils;
@@ -15,46 +17,34 @@ public class TableMgr {
         return null;
     }
 
-    public void getAvailableTables(int NoOfPax, Calendar time) 
-    {
-        int newTableSize;
+    public ArrayList<Table> getAvailableTables(int NoOfPax, Calendar time) {
         ArrayList<Table> availableTableList = new ArrayList<Table>();
-        for (Table table : tableList) 
-        {
-            if (table.getTableSize() >= NoOfPax && (table.getTableStatus() == TableStatus.EMPTY) ) 
-            {
+        for (Table table : tableList) {
+            if (table.getTableSize() >= NoOfPax && table.getTableStatus() == TableStatus.EMPTY) {
                 availableTableList.add(table);
             }
         }
         if (availableTableList.isEmpty()) {
-            System.out.println("There are no empty tables of this size " + newTableSize);
-            return;
+            System.out.println("There are no empty tables for " + NoOfPax);
+            return availableTableList;
         }
-        else{
-            Calendar timeBEF = ReservationUtils.reservationWindowBEF(time);
-            Calendar timeAFT = ReservationUtils.reservationWindowAFT(time);
-            if( (ReservationUtils.diffOfTimings(timeBEF, time)) && (ReservationUtils.diffOfTimings(time, timeAFT) ))
-            {
-                
+        Iterator<Table> itr = availableTableList.iterator();
+        while (itr.hasNext()) {
+            Table table = itr.next();
+            ArrayList<Reservation> reservationList = table.getReservationList();
+            for (Reservation reservation : reservationList) {
+                Calendar reservationTime = reservation.getReservationDateTime();
+                if (!ReservationUtils.diffOfTimings(reservationTime, time)) {
+                    itr.remove();
+                    break;
+                }
             }
-            
         }
-    }
-
-    private void printTablesFormatted(ArrayList<Table> availableTableList) {
-    }
-
-    private int checkSizeofTable() 
-    {
-        return tables
-    }
-
-    public void printAllTables() {
-        if (tables.size() == 0) {
-            System.out.println("There are no Tables");
-            return;
+        if (availableTableList.isEmpty()) {
+            System.out.println("There are no empty tables for " + NoOfPax);
         }
-        printTablesFormatted(tables);
+        return availableTableList;
+
     }
 
     public static void registerCustomerToTable(String waiter, int tableNumber) {
