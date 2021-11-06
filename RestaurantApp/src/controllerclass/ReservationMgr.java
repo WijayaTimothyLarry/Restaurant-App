@@ -20,7 +20,7 @@ public class ReservationMgr {
     private Scanner sc = new Scanner(System.in);
 
     public void newReservation() {
-        int newCustomerContactNo;
+        String newCustomerContactNo;
 
         System.out.println("Enter Customer's contact Number to make Reservation");
         newCustomerContactNo = sc.next();

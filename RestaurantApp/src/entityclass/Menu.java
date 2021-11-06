@@ -197,6 +197,10 @@ public class Menu implements Serializable {
 		return -1;
 	}
 
+	public void setforMainCourseList(int index, MainCourse newMainCourse){
+		mainCourseList.set(index,newMainCourse);
+	}
+
 	/**
 	 * 
 	 * @param dessertList
@@ -239,6 +243,10 @@ public class Menu implements Serializable {
 			i++;
 		}
 		return -1;
+	}
+
+	public void setforDessertList(int index, Dessert newDessert){
+		dessertList.set(index,newDessert);
 	}
 	/**
 	 * 
@@ -284,6 +292,10 @@ public class Menu implements Serializable {
 		}
 		return -1;
 	}
+
+	public void setforDrinksList(int index, Drinks newDrinks){
+		drinksList.set(index,newDrinks);
+	}
 	/**
 	 * 
 	 * @param packageList
@@ -314,6 +326,22 @@ public class Menu implements Serializable {
 
 	public void addintoPackageList(PackageItem package1) {
 		packagesList.add(package1);
+	}
+
+	public int findforPackageList(String id){
+		int i = 0;
+		for (PackageItem p : packagesList){
+			String packageID = p.getItemID();
+			if(packageID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
+	public void setforPackagesList(int index, PackageItem newPackageItem){
+		packagesList.set(index,newPackageItem);
 	}
 
 	/**
@@ -359,6 +387,9 @@ public class Menu implements Serializable {
 		return -1;
 	}
 
+	public void setforAppeList(int index, Appetizer newAppetizer){
+		appeList.set(index,newAppetizer);
+	}
 
 	public void setMenuList(ArrayList<MenuItem> menuList){
 		this.menuList = menuList;
@@ -390,6 +421,24 @@ public class Menu implements Serializable {
 
 	public void addintoMenuList(MenuItem food){
 		menuList.add(food);
+	}
+
+	public int findforMenuList(String id){
+		int i = 0;
+		for (MenuItem menuitem : menuList){
+			String menuID = menuitem.getItemID();
+			if(menuID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
+
+	public void setforMenuList(int index, MenuItem newMenuItem){
+		menuList2.set(index,newMenuItem);
+		menuList.set(index,newMenuItem);
 	}
 
 }
