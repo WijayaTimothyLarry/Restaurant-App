@@ -138,6 +138,7 @@ public class Order implements Serializable {
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Order item removal failed! (Invalid index provided)");
 		}
+		sc2.close();
 	}
 
 	// public void generateInvoice(){
@@ -151,12 +152,6 @@ public class Order implements Serializable {
 
 	/**
 	 * prints order items in the order's orderlineitems
-	 */
-
-	/**
-	 * public void printOrder() { for (OrderItem o : this.orderItems) {
-	 * System.out.println(o.getQuantity() + " x " + o.getItemName() + " " +
-	 * o.getPrice()); } System.out.println(); }
 	 */
 
 	public String toString() {
