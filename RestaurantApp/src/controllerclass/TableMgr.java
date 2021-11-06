@@ -53,9 +53,7 @@ public class TableMgr {
             }
     }
 
-    }
-
-    public static boolean checkTableOcuupied(int tableNumber) {
+    public static boolean checkTableOccupied(int tableNumber) {
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 if (table.getTableStatus() == TableStatus.OCCUPIED)
@@ -64,6 +62,7 @@ public class TableMgr {
                     return false;
             }
         }
+        return false;
     }
 
 }
