@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -30,21 +31,17 @@ public class ReservationMgr {
 
         System.out.println("Enter Customer's contact Number to make Reservation");
         newCustomerContactNo = sc.next();
-        while (newCustomerContactNo == newCustomerContactNo) {
-            for (Reservation newReserv : reservationList) {
-                if (newReserv.getCustomerContactNo() == newCustomerContactNo) {
-                    System.out.println("Reservation already exists for this Customer");
-                }
-            }
-            break;
+        while (newCustomerContactNo.length() == 8 && ( newCustomerContactNo.charAt(0) == 9 || newCustomerContactNo.charAt(0) == 8)) 
+        {
+            if(checkCustomerReservation(newCustomerContactNo) != null)    break;
         }
 
         LocalDate newReservDate = checkReservDate();
 
         LocalTime newArrivalTime = checkReservTime();
+        //newReservDateTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE, Calendar.HOUR_OF_DAY, Calendar.MINUTE);
 
-        LocalDateTime newDateTime = LocalDateTime.of(newReservDate, newArrivalTime);
-
+        
         int newNoOfPax;
 
         System.out.println("Enter the total number of people under Reservation");
@@ -59,8 +56,7 @@ public class ReservationMgr {
             else {
                 System.out.println("Enter Customer Name:");
                 String newCustomerName = sc.next();
-                Reservation newReserv = new Reservation(newReservDate, newArrivalTime, newCustomerName,
-                        newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
+                Reservation newReserv = new Reservation(newDateTime, newCustomerName,newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
 
                 reservationList.add(newReserv);
                 startReservationTimer(newReserv);
@@ -82,11 +78,8 @@ public class ReservationMgr {
         return null;
     }
 
-    private void readFileData(File reservationFile) {
 
-    }
-
-    public static Reservation checkCustomeReservation(String phoneNumber) {
+    public static Reservation checkCustomerReservation(String phoneNumber) {
         for (Reservation reservation : reservationList) {
             if (reservation.getCustomerContactNo().equals(phoneNumber)) {
                 return reservation;
