@@ -17,7 +17,8 @@ public class Invoice implements Serializable {
 	private Calendar dateTime;
 
 	public static final double GST = 0.07; // According to Singapore Goods and Services Tax
-	public Invoice(Order order){
+
+	public Invoice(Order order) {
 		this.order = order;
 		this.invoiceID = Calendar.getInstance().hashCode(); // Assigning a unique value to an object by hashing
 		this.price = order.calTotalBill();
@@ -98,13 +99,13 @@ public class Invoice implements Serializable {
 		this.waiterName = waiterName;
 	}
 
-	public void printInvoice(){
+	public void printInvoice() {
 		System.out.println("          RESTAURANT          ");
 		System.out.println("******************************");
 		System.out.println("Service staff: " + this.waiterName);
 		System.out.println("InvoiceID: " + this.invoiceID);
 		System.out.println("Ordered items: ");
-		this.order.printOrder();
+		System.out.println(order.toString());
 		System.out.println("Subtotal: " + this.price);
 		System.out.println("GST: " + this.gst);
 		System.out.println("TOTAL: " + this.totalBill);
