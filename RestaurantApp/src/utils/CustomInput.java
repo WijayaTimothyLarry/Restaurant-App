@@ -2,6 +2,7 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class CustomInput {
@@ -65,15 +66,19 @@ public class CustomInput {
 
     public static Calendar dateInput() {
 
-        Calendar currentDateTime = (Calendar) Calendar.getInstance();
-        Calendar futureDateTime = (Calendar) Calendar.getInstance();
-
-        System.out.println(" Date  (now):" + currentDateTime.getTime());
-
-        System.out.printf("Enter year(%d to %d): ", currentDateTime.get(Calendar.YEAR),
-                currentDateTime.get(Calendar.YEAR + 1));
-        int year = choice(currentDateTime.get(Calendar.YEAR), currentDateTime.get(Calendar.YEAR + 1));
-        futureDateTime.set(Calendar.YEAR, year);
+        
+        Calendar currentDateTime = (Calendar) Calendar.getInstance();  
+        Calendar futureDateTime = (Calendar) Calendar.getInstance();  
+        
+        System.out.println(" Date  (now):" + currentDateTime.getTime() );  
+        
+        System.out.println("Enter year(up to next year): ");
+        int lowYear = currentDateTime.get(Calendar.YEAR);
+        currentDateTime.add(Calendar.YEAR, 1);
+        int uppYear = currentDateTime.get(Calendar.YEAR);
+        
+        int year = choice(lowYear, uppYear);
+        futureDateTime.set(Calendar.YEAR, year);  
 
         System.out.println("Enter month(1-12): ");
         int month = choice(1, 12);
@@ -129,9 +134,10 @@ public class CustomInput {
         t2hbefore.set(Calendar.YEAR, bookingTime.get(Calendar.YEAR));
         t2hbefore.set(Calendar.MONTH, bookingTime.get(Calendar.MONTH));
         t2hbefore.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
-        t2hbefore.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY - 2)); // set 2h before time to 2h before booking time
+        t2hbefore.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY)); // set 2h before time to 2h before booking time
+        t2hbefore.add(Calendar.HOUR_OF_DAY, - 2);
         t2hbefore.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
-        t2hbefore.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+        t2hbefore.set(Calendar.SECOND, 0);
 
         System.out.println("Time that is 2h before timing in booking request: " + t2hbefore.getTime());
         return t2hbefore;
@@ -145,11 +151,19 @@ public class CustomInput {
         t2hafter.set(Calendar.YEAR, bookingTime.get(Calendar.YEAR));
         t2hafter.set(Calendar.MONTH, bookingTime.get(Calendar.MONTH));
         t2hafter.set(Calendar.DAY_OF_MONTH, bookingTime.get(Calendar.DAY_OF_MONTH));
-        t2hafter.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY + 2)); // set 2h before time to 2h before booking time
+        t2hafter.set(Calendar.HOUR_OF_DAY, bookingTime.get(Calendar.HOUR_OF_DAY)); // set 2h before time to 2h before booking time
+        t2hafter.add(Calendar.HOUR_OF_DAY, 2);
         t2hafter.set(Calendar.MINUTE, bookingTime.get(Calendar.MINUTE));
-        t2hafter.set(Calendar.SECOND, bookingTime.get(Calendar.MINUTE));
+        t2hafter.set(Calendar.SECOND, 0);
 
         System.out.println("Time that is 2h before timing in booking request: " + t2hafter.getTime());
         return t2hafter;
+    }
+
+    // method to get difference between 2 Calendar timings
+    public static boolean diffOfTimings (Calendar booking1, Calendar booking2){
+        long hoursBetween = ChronoUnit.HOURS.between(booking1.toInstant(), booking2.toInstant());
+        if (hoursBetween < 2) return false;
+        else return true;
     }
 }
