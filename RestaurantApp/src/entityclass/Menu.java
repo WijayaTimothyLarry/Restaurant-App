@@ -185,6 +185,18 @@ public class Menu implements Serializable {
 		mainCourseList.add(maincourse);
 	}
 
+	public int findforMainCourseList(String id){
+		int i = 0;
+		for (MainCourse maincourse : mainCourseList){
+			String maincourseID = maincourse.getItemID();
+			if(maincourseID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
 	/**
 	 * 
 	 * @param dessertList
@@ -217,6 +229,17 @@ public class Menu implements Serializable {
 		dessertList.add(dessert);
 	}
 
+	public int findforDessertList(String id){
+		int i = 0;
+		for (Dessert dessert : dessertList){
+			String dessertID = dessert.getItemID();
+			if(dessertID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
 	/**
 	 * 
 	 * @param drinksList
@@ -249,6 +272,18 @@ public class Menu implements Serializable {
 		drinksList.add(drink);
 	}
 
+
+	public int findforDrinksList(String id){
+		int i = 0;
+		for (Drinks drinks : drinksList){
+			String drinksID = drinks.getItemID();
+			if(drinksID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
 	/**
 	 * 
 	 * @param packageList
@@ -310,6 +345,18 @@ public class Menu implements Serializable {
 
 	public void addintoAppeList(Appetizer appe) {
 		appeList.add(appe);
+	}
+
+	public int findforAppeList(String id){
+		int i = 0;
+		for (Appetizer appetizer : appeList){
+			String appeID = appetizer.getItemID();
+			if(appeID.contains(id)){
+				return i;
+			}
+			i++;
+		}
+		return -1;
 	}
 
 

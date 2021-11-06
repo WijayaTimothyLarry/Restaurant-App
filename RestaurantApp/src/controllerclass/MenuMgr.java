@@ -108,4 +108,29 @@ public class MenuMgr {
         }
     }
 
+    //Find items
+    //1 - Appetizer
+    public static Appetizer findAppetizerbyID(String id){
+        int i = restaurantMenu.findforAppeList(id);
+        return restaurantMenu.getAppeList().get(i);
+    }
+
+    //2 - Main Course
+    public static MainCourse findMainCoursebyID(String id){
+        int i = restaurantMenu.findforMainCourseList(id);
+        return restaurantMenu.getMainCourseList().get(i);
+    }
+
+    //3 - Drinks
+    public static Drinks findDrinksbyID(String id){
+        int i = restaurantMenu.findforDrinksList(id);
+        return restaurantMenu.getDrinksList().get(i);
+    }
+
+    //4 - Dessert
+    public static Dessert findDessertbyID(String id){
+        int i = restaurantMenu.findforDessertList(id);
+        return restaurantMenu.getDessertList().get(i);
+    }
+
 }
