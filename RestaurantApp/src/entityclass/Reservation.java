@@ -1,69 +1,39 @@
 package entityclass;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Timer;
 
 public class Reservation implements Serializable {
-	private Calendar dateTime;
-	private LocalTime arrivalTime; // Customer's arrival Time
-	private LocalDate date; // Customer's arrival Date
-	private Timer timer; // Customer's Arrival date
-
+	private Calendar reservationDateTime;
 	private String customerName; // Customer's name
 	private String customerContactNo; // Customer's contact number
 	private int noOfPax; // Number of customers under reservation
 	private int reservationID = 0; // Unique ID for each reservation
 	private int tableNumber; // Unique ID for each table
-	SimpleDateFormat sdf = new SimpleDateFormat(" yyy MM dd HH:mm");
-	Calendar calendar = new GregorianCalendar(2021, 10, 06);
 
-	public Reservation(Calendar dateTime, String customerName, String customerContactNo, int noOfPax, int tableNumber) {
+	public Reservation(Calendar reservationDateTime, String customerName, String customerContactNo, int noOfPax,
+			int tableNumber) {
 		// TODO - implement Reservation.Reservation
 		// this.reservationDateTime = Calendar.getInstance();
 		this.customerName = customerName;
 		this.customerContactNo = customerContactNo;
 		this.noOfPax = noOfPax;
-		this.reservationID = Calendar.getInstance().hashCode(); // assigning a unique Reservation ID based on the hashed
-																// value
-
-		this.dateTime = Calendar.getInstance();
-
+		this.reservationID = Calendar.getInstance().hashCode();
+		this.reservationDateTime = reservationDateTime;
 		this.tableNumber = tableNumber;
-		this.timer = new Timer();
-		// throw new UnsupportedOperationException();
+
 	}
 
-	/*
-	 * public Calendar getDate() { // TODO - implement Reservation.getDate return
-	 * reservationDateTime; //throw new UnsupportedOperationException(); }
-	 * 
-	 * public LocalTime getArrivalTime() { return this.arrivalTime; }
-	 */
-
-	public Timer getTimer() // Current value of timer for given Reservation Object
-	{
-		return this.timer;
-	}
-
-	public void stopTimer() // To stop the running timer for given Reservation Object
-	{
-		this.timer.cancel();
+	public Calendar getReservationDateTime() {
+		return reservationDateTime;
 	}
 
 	/**
 	 * 
-	 * @param reservationDate
+	 * @param reservationDateTime
 	 */
-	public void setDate(LocalDateTime reservationDate) // To set the date of given Reservation Object
-	{
-
-		// throw new UnsupportedOperationException();
+	public void setReservationDateTime(Calendar reservationDateTime) {
+		this.reservationDateTime = reservationDateTime;
 	}
 
 	public String getCustomerName() // Return the Customer's name for given Reservation Object
@@ -128,31 +98,31 @@ public class Reservation implements Serializable {
 		return this.reservationID;
 	}
 
-	public boolean checkReservationAvail(LocalDateTime time) // Checks if the next reservation can be made for a given
-																// time
-	{ // by comparing to see if the new arrival time overlaps with an existing
-		boolean available = false; // Reservation timing
-		if (time.toLocalDate().compareTo(date) == 0) {
-			if (time.toLocalTime().compareTo(LocalTime.parse("14:00")) < 0) {
-				if (arrivalTime.compareTo(LocalTime.parse("14:00")) < 0) {
-					available = true;
-				}
-			} else {
-				if (arrivalTime.compareTo(LocalTime.parse("19:00")) < 0) {
-					available = true;
-				}
-			}
-		}
-		return available;
-	}
+	// public boolean checkReservationAvail(LocalDateTime time) // Checks if the
+	// next reservation can be made for a given
+	// // time
+	// { // by comparing to see if the new arrival time overlaps with an existing
+	// boolean available = false; // Reservation timing
+	// if (time.toLocalDate().compareTo(date) == 0) {
+	// if (time.toLocalTime().compareTo(LocalTime.parse("14:00")) < 0) {
+	// if (arrivalTime.compareTo(LocalTime.parse("14:00")) < 0) {
+	// available = true;
+	// }
+	// } else {
+	// if (arrivalTime.compareTo(LocalTime.parse("19:00")) < 0) {
+	// available = true;
+	// }
+	// }
+	// }
+	// return available;
+	// }
 
 	public void printReservationInfo() // Print the details of a given reservation
 	{
 		System.out.println(" \n Reservation ID: " + reservationID);
 		System.out.println(" \n Customer's Contact Number: " + customerContactNo);
 		System.out.println(" \n Customer's Name: " + customerName);
-		System.out.println(" \n Date: " + date);
-		System.out.println(" \n Customer's Arrival Time: " + arrivalTime);
+		System.out.println(" \n Date Time: " + reservationDateTime);
 		System.out.println(" \n Table ID: " + tableNumber);
 	}
 
