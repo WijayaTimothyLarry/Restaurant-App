@@ -133,4 +133,153 @@ public class MenuMgr {
         return restaurantMenu.getDessertList().get(i);
     }
 
+    //5 - Packages
+    public static PackageItem findPackagebyID(String id){
+        int i = restaurantMenu.findforPackageList(id);
+        return restaurantMenu.getPackagesList().get(i);
+    }
+
+    //Update Items
+    //1)Change Name
+    //(i) main course
+    public static void changeMainCourseName(String id, String newname){
+        int i = restaurantMenu.findforMainCourseList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        MainCourse newfood = restaurantMenu.getMainCourseList().get(i);
+        newfood.setItemName(newname);
+        restaurantMenu.setforMainCourseList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(ii) appetizer
+    public static void changeAppetizerName(String id, String newname){
+        int i = restaurantMenu.findforAppeList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Appetizer newfood = restaurantMenu.getAppeList().get(i);
+        newfood.setItemName(newname);
+        restaurantMenu.setforAppeList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iii)drinks
+    public static void changeDrinksName(String id, String newname){
+        int i = restaurantMenu.findforDrinksList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Drinks newfood = restaurantMenu.getDrinksList().get(i);
+        newfood.setItemName(newname);
+        restaurantMenu.setforDrinksList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iv)dessert
+    public static void changeDessertName(String id, String newname){
+        int i = restaurantMenu.findforDessertList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Dessert newfood = restaurantMenu.getDessertList().get(i);
+        newfood.setItemName(newname);
+        restaurantMenu.setforDessertList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(v)packages
+    public static void changePackagesName(String id, String newname){
+        int i = restaurantMenu.findforPackageList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        PackageItem newfood = restaurantMenu.getPackagesList().get(i);
+        newfood.setItemName(newname);
+        restaurantMenu.setforPackagesList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+
+    //2 - Change Price
+    //(i)Main Course
+    public static void changeMainCoursePrice(String id, double newprice){
+        int i = restaurantMenu.findforMainCourseList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        MainCourse newfood = restaurantMenu.getMainCourseList().get(i);
+        newfood.setPrice(newprice);
+        restaurantMenu.setforMainCourseList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(ii)appetizer
+    public static void changeAppePrice(String id, double newprice){
+        int i = restaurantMenu.findforAppeList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Appetizer newfood = restaurantMenu.getAppeList().get(i);
+        newfood.setPrice(newprice);
+        restaurantMenu.setforAppeList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iii)drinks
+    public static void changeDrinksPrice(String id, double newprice){
+        int i = restaurantMenu.findforDrinksList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Drinks newfood = restaurantMenu.getDrinksList().get(i);
+        newfood.setPrice(newprice);
+        restaurantMenu.setforDrinksList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iv)dessert
+    public static void changeDessertPrice(String id, double newprice){
+        int i = restaurantMenu.findforDessertList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Dessert newfood = restaurantMenu.getDessertList().get(i);
+        newfood.setPrice(newprice);
+        restaurantMenu.setforDessertList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(v)packages
+    public static void changePackagesPrice(String id, double newprice){
+        int i = restaurantMenu.findforPackageList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        PackageItem newfood = restaurantMenu.getPackagesList().get(i);
+        newfood.setPrice(newprice);
+        restaurantMenu.setforPackagesList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+
+    //3)Change description
+    //(i)Main Course
+    public static void changeMainCourseDescription(String id, String description){
+        int i = restaurantMenu.findforMainCourseList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        MainCourse newfood = restaurantMenu.getMainCourseList().get(i);
+        newfood.setDescription(description);
+        restaurantMenu.setforMainCourseList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(ii)Appetizer
+    public static void changeAppetizerDescription(String id, String description){
+        int i = restaurantMenu.findforAppeList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Appetizer newfood = restaurantMenu.getAppeList().get(i);
+        newfood.setDescription(description);
+        restaurantMenu.setforAppeList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iii)Drinks
+    public static void changeDrinksDescription(String id, String description){
+        int i = restaurantMenu.findforDrinksList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Drinks newfood = restaurantMenu.getDrinksList().get(i);
+        newfood.setDescription(description);
+        restaurantMenu.setforDrinksList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(iv)Dessert
+    public static void changeDessertDescription(String id, String description){
+        int i = restaurantMenu.findforDessertList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        Dessert newfood = restaurantMenu.getDessertList().get(i);
+        newfood.setDescription(description);
+        restaurantMenu.setforDessertList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+    //(v)Packages
+    public static void changePackagesDescription(String id, String description){
+        int i = restaurantMenu.findforPackageList(id);
+        int j = restaurantMenu.findforMenuList(id);
+        PackageItem newfood = restaurantMenu.getPackagesList().get(i);
+        newfood.setDescription(description);
+        restaurantMenu.setforPackagesList(i,newfood);
+        restaurantMenu.setforMenuList(j, newfood);
+    }
+
+
 }

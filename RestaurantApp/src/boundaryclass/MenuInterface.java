@@ -150,6 +150,74 @@ public class MenuInterface {
         }
     }
 
+    private void updateMenuOption() {
+        String itemID = "";
+        System.out.println("(1) Update an Appetizer");
+        System.out.println("(2) Update a Main Course");
+        System.out.println("(3) Update a Dessert");
+        System.out.println("(4) Update a Drinks");
+        System.out.println("(5) Update a Promo Packages");
+        choice = CustomInput.choice(1, 5);
+
+        switch (choice) {
+        case 1:
+            MenuMgr.showAppetizer();
+            System.out.println("Enter the ID of item to be updated:");
+            itemID = scanner.nextLine();
+            System.out.println("Update (1)Name/(2)Price/(3)Description?");
+            int appeChoice = scanner.nextInt();
+            switch(appeChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeAppetizerName(itemID, newname);
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = scanner.nextDouble();
+                    MenuMgr.changeAppePrice(itemID, newprice);
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeAppetizerDescription(itemID, description);
+            }
+        case 2:
+            MenuMgr.showMainCourse();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            System.out.println("Update (1)Name/(2)Price/(3)Description?");
+            int mainCourseChoice = scanner.nextInt();
+            switch(mainCourseChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeMainCourseName(itemID, newname);
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = scanner.nextDouble();
+                    MenuMgr.changeAppePrice(itemID, newprice);
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeAppetizerDescription(itemID, description);
+            }
+        case 3:
+            MenuMgr.showDessert();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeDessert(itemID);
+        case 4:
+            MenuMgr.showDrinks();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeDrinks(itemID);
+        case 5:
+            MenuMgr.showPackage();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removePackage(itemID);
+        }
+    }
+
     private PackageItem createPackage(String name,double price,String description, String id){
         Drinks packageDrinks = null;
         MainCourse packageMainCourse = null;
