@@ -7,7 +7,8 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Timer;
 
-public class Reservation implements Serializable {
+public class Reservation implements Serializable 
+{
 	// private Calendar reservationDateTime;
 	private LocalTime arrivalTime;										// Customer's arrival Time
 	private LocalDate date;												// Customer's arrival Date
@@ -19,7 +20,7 @@ public class Reservation implements Serializable {
 	private int reservationID = 0;										// Unique ID for each reservation
 	private int tableNumber;											// Unique ID for each table
 
-	public Reservation(LocalDate reservationDate, LocalTime arrivalTime, String customerName, long customerContactNo, int noOfPax, int tableNumber) 
+	public Reservation(LocalDateTime dateTime, String customerName, long customerContactNo, int noOfPax, int tableNumber) 
 	{
 		// TODO - implement Reservation.Reservation
 		// this.reservationDateTime = Calendar.getInstance();

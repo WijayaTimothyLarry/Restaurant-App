@@ -44,6 +44,11 @@ public class Table implements Serializable {
 		this.tableSize = tableSize;
 	}
 
+	public TableStatus getTableStatus()
+	{
+		return this.status;
+	}
+
 	public void setToEmpty() // To set the Table's status as Empty
 	{
 		this.status = TableStatus.EMPTY;

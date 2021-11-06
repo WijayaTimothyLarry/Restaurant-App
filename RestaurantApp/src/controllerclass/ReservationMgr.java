@@ -47,9 +47,9 @@ public class ReservationMgr
             break;          
         }
 
-        LocalDate newReservDate = checkReservDate();
+        LocalDateTime newReservDate = checkReservDate();
 
-        LocalTime newArrivalTime = checkReservTime();
+        LocalDateTime newArrivalTime = checkReservTime();
 
         LocalDateTime newDateTime = LocalDateTime.of(newReservDate, newArrivalTime);
 
@@ -70,7 +70,7 @@ public class ReservationMgr
             {
                 System.out.println("Enter Customer Name:");
                 String newCustomerName = sc.next();
-                Reservation newReserv = new Reservation(newReservDate, newArrivalTime, newCustomerName, newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
+                Reservation newReserv = new Reservation(newDateTime, newCustomerName, newCustomerContactNo, newNoOfPax, tableNumbers.get(0));
                 
                 reservationList.add(newReserv);
                 startReservationTimer(newReserv);
@@ -87,12 +87,12 @@ public class ReservationMgr
     }
 
 
-    private LocalTime checkReservTime() 
+    private LocalDateTime checkReservTime() 
     {
         return null;
     }
 
-    private LocalDate checkReservDate() 
+    private LocalDateTime checkReservDate() 
     {
         return null;
     }
