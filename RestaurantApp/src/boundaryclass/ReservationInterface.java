@@ -33,7 +33,7 @@ public class ReservationInterface {
     private static void checkCustomerReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {
@@ -46,7 +46,7 @@ public class ReservationInterface {
     private static void createNewReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation != null) {
             System.out.println("Customer already have the following reservation:");
             reservation.printReservationInfo();
@@ -58,7 +58,7 @@ public class ReservationInterface {
     private static void removeCustomerReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
-        Reservation reservation = ReservationMgr.checkCustomeReservation(phoneNumber);
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {

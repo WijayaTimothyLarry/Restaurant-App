@@ -1,5 +1,6 @@
 package boundaryclass;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import controllerclass.MenuMgr;
@@ -7,6 +8,8 @@ import entityclass.Appetizer;
 import entityclass.Dessert;
 import entityclass.Drinks;
 import entityclass.MainCourse;
+import entityclass.MenuItem;
+import entityclass.PackageItem;
 import utils.CustomInput;
 
 public class MenuInterface {
@@ -104,7 +107,8 @@ public class MenuInterface {
             MenuMgr.addDrinks(newDrinks);
             break;
         case 5:
-
+            PackageItem newPackage = createPackage(menuName, price, description, itemID);
+            MenuMgr.addPackage(newPackage);
         }
     }
 
@@ -144,6 +148,56 @@ public class MenuInterface {
             itemID = scanner.nextLine();
             MenuMgr.removePackage(itemID);
         }
+    }
+
+    private PackageItem createPackage(String name,double price,String description, String id){
+        Drinks packageDrinks = null;
+        MainCourse packageMainCourse = null;
+        Dessert packageDessert = null;
+        System.out.println("Enter the drinks ID: ");
+        String drinksID = scanner.nextLine();
+        boolean drinksExist = false;
+        while(!drinksExist){
+            try{
+                packageDrinks = MenuMgr.findDrinksbyID(drinksID);
+                drinksExist = true;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Drinks not found! ");
+                System.out.println("Enter Drinks ID again");
+            }
+        }
+        System.out.println("Enter the Main Course ID: ");
+        String maincourseID = scanner.nextLine();
+        boolean maincourseExist = false;
+        while(!maincourseExist){
+            try{
+                packageMainCourse = MenuMgr.findMainCoursebyID(maincourseID);
+                maincourseExist = true;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Main Course not found! ");
+                System.out.println("Enter Main Course ID again: ");
+            }
+        }
+        System.out.println("Enter the Dessert ID: ");
+        String dessertID = scanner.nextLine();
+        boolean dessertExist = false;
+        while(!dessertExist){
+            try{
+                packageDessert = MenuMgr.findDessertbyID(dessertID);
+                dessertExist = true;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Dessert not found! ");
+                System.out.println("Enter Dessert ID again");
+            }
+        }
+        ArrayList<MenuItem> itemsinPackage = new ArrayList<MenuItem>();
+        itemsinPackage.add(packageDrinks);
+        itemsinPackage.add(packageMainCourse);
+        itemsinPackage.add(packageDessert);
+
+        PackageItem newPackage = new PackageItem(name, price, description, itemsinPackage, id);
+        return newPackage;
+
     }
 
 }

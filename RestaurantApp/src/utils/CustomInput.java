@@ -65,6 +65,7 @@ public class CustomInput {
     }
 
     public static Calendar dateInput() {
+
         
         Calendar currentDateTime = (Calendar) Calendar.getInstance();  
         Calendar futureDateTime = (Calendar) Calendar.getInstance();  
@@ -80,46 +81,48 @@ public class CustomInput {
         futureDateTime.set(Calendar.YEAR, year);  
 
         System.out.println("Enter month(1-12): ");
-        int month = choice(1,12);
+        int month = choice(1, 12);
         futureDateTime.set(Calendar.MONTH, month);
 
         System.out.println("Enter day: ");
         int numDays = 0;
-        switch(month){
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                numDays = 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                numDays = 30;
-                break;
-            case 2:
-                if(((year%4==0)&&!(year%100==0))||(year%400==0)) numDays = 29;
-                else numDays = 28;
-                break;
+        switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            numDays = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            numDays = 30;
+            break;
+        case 2:
+            if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
+                numDays = 29;
+            else
+                numDays = 28;
+            break;
         }
         int day = choice(1, numDays);
         futureDateTime.set(Calendar.DAY_OF_MONTH, day);
 
         System.out.println("Enter hour(16-23): ");
-        int hour = choice(16,23);
+        int hour = choice(16, 23);
         futureDateTime.set(Calendar.HOUR_OF_DAY, hour);
 
         System.out.println("Enter minutes(0-59): ");
-        int min = choice(0,59);
+        int min = choice(0, 59);
         futureDateTime.set(Calendar.MINUTE, min);
 
-        futureDateTime.set(Calendar.SECOND,0);
- 
-        System.out.println("  Date (future) :" + futureDateTime.getTime() );  
+        futureDateTime.set(Calendar.SECOND, 0);
+
+        System.out.println("Date (future) :" + futureDateTime.getTime());
         return futureDateTime;
     }
 
