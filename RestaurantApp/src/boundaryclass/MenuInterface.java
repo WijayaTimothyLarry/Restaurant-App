@@ -36,6 +36,10 @@ public class MenuInterface {
         case 3:
             removeMenuOption();
             break;
+        
+        case 4:
+            updateMenuOption();
+            break;
 
         }
 
@@ -67,6 +71,7 @@ public class MenuInterface {
             break;
         case 5:
             MenuMgr.showPackage();
+            break;
 
         }
 
@@ -109,6 +114,7 @@ public class MenuInterface {
         case 5:
             PackageItem newPackage = createPackage(menuName, price, description, itemID);
             MenuMgr.addPackage(newPackage);
+            break;
         }
     }
 
@@ -127,26 +133,31 @@ public class MenuInterface {
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             MenuMgr.removeAppetizer(itemID);
+            break;
         case 2:
             MenuMgr.showMainCourse();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             MenuMgr.removeMainCourse(itemID);
+            break;
         case 3:
             MenuMgr.showDessert();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             MenuMgr.removeDessert(itemID);
+            break;
         case 4:
             MenuMgr.showDrinks();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             MenuMgr.removeDrinks(itemID);
+            break;
         case 5:
             MenuMgr.showPackage();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
             MenuMgr.removePackage(itemID);
+            break;
         }
     }
 
@@ -171,15 +182,19 @@ public class MenuInterface {
                     System.out.println("Enter the new name of the item: ");
                     String newname = scanner.nextLine();
                     MenuMgr.changeAppetizerName(itemID, newname);
+                    break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
                     double newprice = scanner.nextDouble();
                     MenuMgr.changeAppePrice(itemID, newprice);
+                    break;
                 case 3:
                     System.out.println("Enter the new description of the item: ");
                     String description = scanner.nextLine();
                     MenuMgr.changeAppetizerDescription(itemID, description);
+                    break;
             }
+            break;
         case 2:
             MenuMgr.showMainCourse();
             System.out.println("Enter the ID of item to be removed:");
@@ -191,30 +206,91 @@ public class MenuInterface {
                     System.out.println("Enter the new name of the item: ");
                     String newname = scanner.nextLine();
                     MenuMgr.changeMainCourseName(itemID, newname);
+                    break;
                 case 2:
                     System.out.println("Enter the new price of the item: ");
                     double newprice = scanner.nextDouble();
-                    MenuMgr.changeAppePrice(itemID, newprice);
+                    MenuMgr.changeMainCoursePrice(itemID, newprice);
+                    break;
                 case 3:
                     System.out.println("Enter the new description of the item: ");
                     String description = scanner.nextLine();
-                    MenuMgr.changeAppetizerDescription(itemID, description);
+                    MenuMgr.changeMainCourseDescription(itemID, description);
+                    break;
             }
+            break;
         case 3:
             MenuMgr.showDessert();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
-            MenuMgr.removeDessert(itemID);
+            System.out.println("Update (1)Name/(2)Price/(3)Description?");
+            int DessertChoice = scanner.nextInt();
+            switch(DessertChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDessertName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = scanner.nextDouble();
+                    MenuMgr.changeDessertPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDessertDescription(itemID, description);
+                    break;
+            }
+            break;
         case 4:
             MenuMgr.showDrinks();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
-            MenuMgr.removeDrinks(itemID);
+            System.out.println("Update (1)Name/(2)Price/(3)Description?");
+            int drinksChoice = scanner.nextInt();
+            switch(drinksChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDrinksName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = scanner.nextDouble();
+                    MenuMgr.changeDrinksPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDrinksDescription(itemID, description);
+                    break;
+            }
+            break;
         case 5:
             MenuMgr.showPackage();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
-            MenuMgr.removePackage(itemID);
+            System.out.println("Update (1)Name/(2)Price/(3)Description?");
+            int packagesChoice = scanner.nextInt();
+            switch(packagesChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changePackagesName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = scanner.nextDouble();
+                    MenuMgr.changePackagesPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changePackagesDescription(itemID, description);
+                    break;
+            }
+            break;
         }
     }
 
