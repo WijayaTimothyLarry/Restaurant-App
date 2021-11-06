@@ -16,9 +16,9 @@ public class TableInterface {
         System.out.println("(1) Check Table Availability");
         System.out.println("(2) Register customer to table");
         System.out.println("(3) Print a table's order");
-        System.out.println("(3) Add order item");
-        System.out.println("(4) Remove order item");
-        System.out.println("(5) Settle table");
+        System.out.println("(4) Add order item");
+        System.out.println("(5) Remove order item");
+        System.out.println("(6) Settle table");
         choice = scanner.nextInt();
         switch (choice) {
         case 1:
@@ -35,8 +35,14 @@ public class TableInterface {
         System.out.println("Enter waiter name:");
         String waiterName = scanner.nextLine();
         System.out.println("Enter Table Number:");
-        int tableNumber = CustomInput.nextInt();
+        int tableNumber = CustomInput.nextPositiveInt();
         TableMgr.registerCustomerToTable(waiterName, tableNumber);
+    }
+
+    public static void printTableOrder() {
+        System.out.println("Enter Table Number");
+        int tableNumber = CustomInput.nextPositiveInt();
+        OrderMgr.printTableOrder(tableNumber);
     }
 
     public static void addOrderItem() {
