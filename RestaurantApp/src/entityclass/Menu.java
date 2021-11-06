@@ -13,19 +13,23 @@ public class Menu implements Serializable {
 	private ArrayList<Dessert> dessertList;
 	private ArrayList<Drinks> drinksList;
 	private ArrayList<Appetizer> appeList;
-	private ArrayList<PackageItem> packageList;
+	private ArrayList<PackageItem> packagesList;
 	private ArrayList<MenuItem> menuList;
 	private static ArrayList<MenuItem> menuList2;
 
 	public Menu(ArrayList<Appetizer> appeList, ArrayList<MainCourse> mainCourseList, ArrayList<Dessert> dessertList,
-			ArrayList<Drinks> drinksList, ArrayList<PackageItem> packageList) {
+			ArrayList<Drinks> drinksList, ArrayList<PackageItem> packagesList) {
 		// TODO - implement Menu.Menu
 		this.appeList = appeList;
 		this.mainCourseList = mainCourseList;
 		this.dessertList = dessertList;
 		this.drinksList = drinksList;
-		this.packageList = packageList;
-
+		this.packagesList = packagesList;
+		this.menuList.addAll(appeList);
+		this.menuList.addAll(mainCourseList);
+		this.menuList.addAll(dessertList);
+		this.menuList.addAll(packagesList);
+		menuList2 = menuList;
 	}
 
 	public void printMainCourse() {
@@ -103,19 +107,51 @@ public class Menu implements Serializable {
 	public void printPackage() {
 		System.out.println("          SPECIAL PACKAGES         ");
 		System.out.println("******************************");
-		if (packageList.size() == 0) {
+		if (packagesList.size() == 0) {
 			System.out.println("This list is empty");
 		}
-		for (int i = 0; i < packageList.size(); i++) {
-			Appetizer item = appeList.get(i);
+		for (int i = 0; i < packagesList.size(); i++) {
+			PackageItem item = packagesList.get(i);
+			ArrayList<MenuItem> packageList = item.getpackageList();
 			System.out.println("Name: " + item.getItemName());
 			System.out.println("Price: " + item.getPrice());
 			System.out.println("Description: " + item.getDescription());
+			System.out.println("Items included are ");
+			for(int j =0; j<packageList.size();j++){
+				MenuItem iteminpackage = packageList.get(i);
+				System.out.printf("%d) %s",j+1,iteminpackage.getItemName());
+			}
 			System.out.println("ID: " + item.getItemID());
 			System.out.println("******************************");
 
 		}
 
+	}
+
+	public void printMenu(){
+		System.out.println("          MENU          ");
+		System.out.println("******************************");
+		if (menuList.size() == 0) {
+			System.out.println("This list is empty");
+		}
+		for (int i = 0; i < menuList.size(); i++) {
+			MenuItem item = menuList.get(i);
+			System.out.println("Name: " + item.getItemName());
+			System.out.println("Price: " + item.getPrice());
+			System.out.println("Description: " + item.getDescription());
+			if(item instanceof PackageItem){
+				System.out.println("Items included are");
+				PackageItem itemtopackage = (PackageItem) item;
+				ArrayList<MenuItem> packageList = itemtopackage.getpackageList();
+				for(int j =0; j<packageList.size();j++){
+					MenuItem iteminpackage = packageList.get(i);
+					System.out.printf("%d) %s",j+1,iteminpackage.getItemName());
+				}
+			}
+			System.out.println("ID: " + item.getItemID());
+			System.out.println("******************************");
+
+		}
 	}
 
 	/**
@@ -218,16 +254,16 @@ public class Menu implements Serializable {
 	 * @param packageList
 	 */
 
-	public ArrayList<PackageItem> getPackageList() {
-		return this.packageList;
+	public ArrayList<PackageItem> getPackagesList() {
+		return this.packagesList;
 	}
 
-	public void setPackageList(ArrayList<PackageItem> packageList) {
-		this.packageList = packageList;
+	public void setPackageList(ArrayList<PackageItem> packagesList) {
+		this.packagesList = packagesList;
 	}
 
 	public int removeforPackageList(String id) {
-		Iterator<PackageItem> itr = packageList.iterator();
+		Iterator<PackageItem> itr = packagesList.iterator();
 		while (itr.hasNext()) {
 			PackageItem food = itr.next();
 			if (food.getItemID() == id) {
@@ -242,7 +278,7 @@ public class Menu implements Serializable {
 	}
 
 	public void addintoPackageList(PackageItem package1) {
-		packageList.add(package1);
+		packagesList.add(package1);
 	}
 
 	/**
@@ -279,7 +315,7 @@ public class Menu implements Serializable {
 
 	public void setMenuList(ArrayList<MenuItem> menuList){
 		this.menuList = menuList;
-		this.menuList2 = menuList;
+		menuList2 = menuList;
 	}
 
 	public ArrayList<MenuItem> getMenuList() {
