@@ -86,6 +86,28 @@ public class CustomInput {
         return input;
     }
 
+    public static double nextPositiveDouble() {
+        double input = 0;
+        boolean invalidInput = true;
+        while (invalidInput) {
+            try {
+                System.out.println("Enter your choice:");
+                input = scanner.nextDouble();
+                if (input <= 0) {
+                    throw new Exception("Please input value above 0");
+                }
+                invalidInput = false;
+                System.out.println("");
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, please input a number");
+                scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return input;
+    }
+
     public static Calendar dateInput() {
 
         Calendar currentDateTime = (Calendar) Calendar.getInstance();
