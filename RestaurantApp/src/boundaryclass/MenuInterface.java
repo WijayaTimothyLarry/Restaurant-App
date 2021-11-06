@@ -1,6 +1,5 @@
 package boundaryclass;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import controllerclass.MenuMgr;
@@ -110,12 +109,41 @@ public class MenuInterface {
     }
 
     private void removeMenuOption() {
+        String itemID = "";
         System.out.println("(1) Remove an Appetizer");
         System.out.println("(2) Remove a Main Course");
         System.out.println("(3) Remove a Dessert");
         System.out.println("(4) Remove a Drinks");
         System.out.println("(5) Remove a Promo Packages");
         choice = CustomInput.choice(1, 5);
+
+        switch (choice) {
+        case 1:
+            MenuMgr.showAppetizer();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeAppetizer(itemID);
+        case 2:
+            MenuMgr.showMainCourse();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeMainCourse(itemID);
+        case 3:
+            MenuMgr.showDessert();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeDessert(itemID);
+        case 4:
+            MenuMgr.showDrinks();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removeDrinks(itemID);
+        case 5:
+            MenuMgr.showPackage();
+            System.out.println("Enter the ID of item to be removed:");
+            itemID = scanner.nextLine();
+            MenuMgr.removePackage(itemID);
+        }
     }
 
 }
