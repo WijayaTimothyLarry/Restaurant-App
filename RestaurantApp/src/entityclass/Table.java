@@ -2,6 +2,7 @@ package entityclass;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Table implements Serializable {
 
@@ -9,7 +10,7 @@ public class Table implements Serializable {
 	private int tableSize;
 	private Order tableOrder;
 
-	public enum TableStatus {
+	public static enum TableStatus {
 		EMPTY, OCCUPIED
 	}; // Table status' flag varialble
 
@@ -71,9 +72,19 @@ public class Table implements Serializable {
 		return this.tableOrder;
 	}
 
+	public void registerCustomerToTable() {
+		this.status = TableStatus.OCCUPIED;
+		Calendar currentTime = Calendar.getInstance();
+		this.tableOrder = new Order(currentTime, this.tableNumber, null);
+	}
+
 	public void settleTable() {
 		this.status = TableStatus.EMPTY;
 
+	}
+
+	public ArrayList<Reservation> getReservationList() {
+		return this.tableReservation;
 	}
 
 	public void addReservation(Reservation newReservation) {

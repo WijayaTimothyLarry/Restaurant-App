@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Order implements Serializable {
 
 	private int orderID;
-	private Date orderDate;
+	private Calendar orderDate;
 	private int tableNumber;
 	private String waiterName;
 	private ArrayList<OrderItem> orderItems;
@@ -15,12 +15,12 @@ public class Order implements Serializable {
 	private Invoice invoice;
 	// private Reservation reservation;
 
-	public Order(Date date, int tableNo, String waiterName, ArrayList<OrderItem> itemsOrdered) {
+	public Order(Calendar date, int tableNo, String waiterName) {
 		this.orderID = Calendar.getInstance().hashCode();
 		this.orderDate = date;
 		this.tableNumber = tableNo;
 		this.waiterName = waiterName;
-		this.orderItems = itemsOrdered;
+		this.orderItems = new ArrayList<OrderItem>();
 		this.invoice = null;
 	}
 
@@ -36,7 +36,7 @@ public class Order implements Serializable {
 		this.orderID = orderID;
 	}
 
-	public Date getOrderDate() {
+	public Calendar getOrderDate() {
 		return this.orderDate;
 	}
 
@@ -44,7 +44,7 @@ public class Order implements Serializable {
 	 * 
 	 * @param orderDate
 	 */
-	public void setOrderDate(Date orderDate) {
+	public void setOrderDate(Calendar orderDate) {
 		this.orderDate = orderDate;
 	}
 
@@ -109,33 +109,12 @@ public class Order implements Serializable {
 		return bill;
 	}
 
-	public void addOrderItem() {
+	public void addOrderItem(OrderItem newItem) {
 
 		if (this.invoice != null)
 			return; // lock order for editing when invoice already generated
 
-		int choice;
-		int index = 0;
-		ArrayList<MenuItem> foodMenu = new ArrayList<MenuItem>();
-		foodMenu = Menu.getMenu();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\nSelect the food item to add to the order:");
-		for (MenuItem menuItem : foodMenu)
-			System.out.println("(" + index++ + ") " + menuItem.getItemName());
-		System.out.println("Enter the number of your choice: ");
-		choice = sc.nextInt();
-		System.out.println("How many of the item would you like to add? ");
-		int number = sc.nextInt();
-		try {
-			String orderItemAdded = foodMenu.get(choice).getItemName();
-
-			OrderItem orderItem = new OrderItem(foodMenu.get(choice), number);
-
-			this.orderItems.add(orderItem);
-			System.out.println(orderItemAdded + " added to order.");
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Add order item failed! (Invalid index provided)");
-		}
+		this.orderItems.add(newItem);
 
 	}
 
