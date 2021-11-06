@@ -30,11 +30,17 @@ public class ReservationMgr {
         String newCustomerContactNo;
 
         System.out.println("Enter Customer's contact Number to make Reservation");
-        newCustomerContactNo = sc.next();
+        newCustomerContactNo = sc.nextLine();
         while (newCustomerContactNo.length() == 8 && ( newCustomerContactNo.charAt(0) == 9 || newCustomerContactNo.charAt(0) == 8)) 
         {
-            if(checkCustomerReservation(newCustomerContactNo) != null)    break;
+            if(checkCustomerReservation(newCustomerContactNo) != null)
+            {
+                System.out.println("Reservation already exists for this Customer's contact number");
+                break;
+            }
         }
+        System.out.println("Enter a vaild phone nunmber");
+
 
         LocalDate newReservDate = checkReservDate();
 
@@ -66,7 +72,9 @@ public class ReservationMgr {
         }
     }
 
-    private void startReservationTimer(Reservation newReserv) {
+    private void startReservationTimer(Reservation newReserv) 
+    {
+
 
     }
 

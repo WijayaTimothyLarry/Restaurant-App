@@ -21,7 +21,7 @@ public class Reservation implements Serializable
 	private int noOfPax;												// Number of customers under reservation
 	private int reservationID = 0;										// Unique ID for each reservation
 	private int tableNumber;											// Unique ID for each table
-	SimpleDateFormat sdf = new SimpleDateFormat(" yyy MM dd HH:mm");
+	SimpleDateFormat sdf = new SimpleDateFormat(" yyyy MM dd HH:mm");
 	Calendar calendar = new GregorianCalendar(2021,10,06);
 
 	public Reservation(Calendar dateTime, String customerName, String customerContactNo, int noOfPax, int tableNumber) 
@@ -90,7 +90,7 @@ public class Reservation implements Serializable
 	 * 
 	 * @param customerContactNo
 	 */
-	public void setCustomerContactNo(long customerContactNo) 			// Set the Customer's contact number for given Reservation Object
+	public void setCustomerContactNo(String customerContactNo) 			// Set the Customer's contact number for given Reservation Object
 	{
 		this.customerContactNo = customerContactNo;
 	}
