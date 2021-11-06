@@ -5,7 +5,6 @@ import java.util.Scanner;
 import controllerclass.MenuMgr;
 import controllerclass.OrderMgr;
 import controllerclass.TableMgr;
-import entityclass.Order;
 import utils.CustomInput;
 
 public class TableInterface {
@@ -16,8 +15,10 @@ public class TableInterface {
 
         System.out.println("(1) Check Table Availability");
         System.out.println("(2) Register customer to table");
+        System.out.println("(3) Print a table's order");
         System.out.println("(3) Add order item");
-        System.out.println("(4) Settle table");
+        System.out.println("(4) Remove order item");
+        System.out.println("(5) Settle table");
         choice = scanner.nextInt();
         switch (choice) {
         case 1:
@@ -41,7 +42,7 @@ public class TableInterface {
     public static void addOrderItem() {
         System.out.println("Enter Table Number");
         int tableNumber = CustomInput.nextInt();
-        if (!TableMgr.checkTableOcuupied(tableNumber)) {
+        if (!TableMgr.checkTableOccupied(tableNumber)) {
             System.out.println("There are no customer on this table");
         } else {
             boolean stillAdding = true;
@@ -67,7 +68,59 @@ public class TableInterface {
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("The appetizer ID is not recognized");
                     }
+                    break;
 
+                case 2:
+                    MenuMgr.showMainCourse();
+                    try {
+                        System.out.println("Enter Main Course ID:");
+                        String itemID = scanner.nextLine();
+                        System.out.println("Enter the quantity:");
+                        int quantity = CustomInput.nextPositiveInt();
+                        OrderMgr.addMainCourse(tableNumber, itemID, quantity);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("The Main Course ID is not recognized");
+                    }
+                    break;
+
+                case 3:
+                    MenuMgr.showDessert();
+                    try {
+                        System.out.println("Enter Dessert ID:");
+                        String itemID = scanner.nextLine();
+                        System.out.println("Enter the quantity:");
+                        int quantity = CustomInput.nextPositiveInt();
+                        OrderMgr.addDessert(tableNumber, itemID, quantity);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("The Dessert ID is not recognized");
+                    }
+                    break;
+
+                case 4:
+                    MenuMgr.showDrinks();
+                    try {
+                        System.out.println("Enter Drinks ID:");
+                        String itemID = scanner.nextLine();
+                        System.out.println("Enter the quantity:");
+                        int quantity = CustomInput.nextPositiveInt();
+                        OrderMgr.addDrinks(tableNumber, itemID, quantity);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("The Drink ID is not recognized");
+                    }
+                    break;
+
+                case 5:
+                    MenuMgr.showDessert();
+                    try {
+                        System.out.println("Enter Promo Package ID:");
+                        String itemID = scanner.nextLine();
+                        System.out.println("Enter the quantity:");
+                        int quantity = CustomInput.nextPositiveInt();
+                        OrderMgr.addPackage(tableNumber, itemID, quantity);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("The Promo Package ID is not recognized");
+                    }
+                    break;
                 }
             }
 
