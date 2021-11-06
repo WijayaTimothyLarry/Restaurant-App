@@ -1,23 +1,26 @@
 package entityclass;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Table implements Serializable {
 
-	static int maxTableNumber = 10;
 	private int tableNumber;
 	private int tableSize;
 
-	private enum TableStatus {
+	public enum TableStatus {
 		EMPTY, OCCUPIED, RESERVED
 	}; // Table status' flag varialble
 
-	TableStatus status = TableStatus.EMPTY;
+	TableStatus status;
+	private ArrayList<Reservation> tableReservation;
 
 	public Table(int tableNumber, int tableSize) // To create a new Table
 	{
 		this.tableNumber = tableNumber;
 		this.tableSize = tableSize;
+		this.status = TableStatus.EMPTY;
+		this.tableReservation = new ArrayList<Reservation>();
 	}
 
 	public int getTableNumber() // Return given Table's number
@@ -44,6 +47,10 @@ public class Table implements Serializable {
 		this.tableSize = tableSize;
 	}
 
+	public TableStatus getTableStatus() {
+		return status;
+	}
+
 	public void setToEmpty() // To set the Table's status as Empty
 	{
 		this.status = TableStatus.EMPTY;
@@ -59,4 +66,7 @@ public class Table implements Serializable {
 		this.status = TableStatus.RESERVED;
 	}
 
+	public void addReservation(Reservation newReservation) {
+		tableReservation.add(newReservation);
+	}
 }
