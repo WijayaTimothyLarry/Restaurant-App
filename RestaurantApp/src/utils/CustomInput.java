@@ -117,7 +117,7 @@ public class CustomInput {
 
         futureDateTime.set(Calendar.SECOND, 0);
 
-        System.out.println("  Date (future) :" + futureDateTime.getTime());
+        System.out.println("Date (future) :" + futureDateTime.getTime());
         return futureDateTime;
     }
 }
