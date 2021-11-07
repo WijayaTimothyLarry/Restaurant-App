@@ -13,19 +13,15 @@ import utils.ReservationUtils;
 public class TableMgr {
     private static ArrayList<Table> tableList = Restaurant.tableList;
 
-    public ArrayList<Integer> getAvailTableNoByPax(int newNoOfPax) {
-        return null;
-    }
-
-    public ArrayList<Table> getAvailableTables(int NoOfPax, Calendar time) {
+    public static ArrayList<Table> getAvailableTables(int noOfPax, Calendar time) {
         ArrayList<Table> availableTableList = new ArrayList<Table>();
         for (Table table : tableList) {
-            if (table.getTableSize() >= NoOfPax && table.getTableStatus() == TableStatus.EMPTY) {
+            if (table.getTableSize() >= noOfPax && table.getTableStatus() == TableStatus.EMPTY) {
                 availableTableList.add(table);
             }
         }
         if (availableTableList.isEmpty()) {
-            System.out.println("There are no empty tables for " + NoOfPax);
+            System.out.println("There are no empty tables for " + noOfPax);
             return availableTableList;
         }
         Iterator<Table> itr = availableTableList.iterator();
@@ -41,18 +37,19 @@ public class TableMgr {
             }
         }
         if (availableTableList.isEmpty()) {
-            System.out.println("There are no empty tables for " + NoOfPax);
+            System.out.println("There are no empty tables for " + noOfPax);
         }
         return availableTableList;
-
     }
 
     public static void registerCustomerToTable(String waiter, int tableNumber) {
-        Table customertable = null;
         for (Table table : tableList)
-
             if (table.getTableNumber() == tableNumber) {
-                customertable = table;
+                if (table.getTableStatus() == TableStatus.OCCUPIED) {
+                    System.out.println("Please choose another table");
+                } else {
+                    table.registerCustomerToTable(waiter);
+                }
             }
     }
 

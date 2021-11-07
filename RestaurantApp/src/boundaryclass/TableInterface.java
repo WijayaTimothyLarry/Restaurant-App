@@ -1,10 +1,13 @@
 package boundaryclass;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import controllerclass.MenuMgr;
 import controllerclass.OrderMgr;
 import controllerclass.TableMgr;
+import entityclass.Table;
 import utils.CustomInput;
 
 public class TableInterface {
@@ -28,7 +31,19 @@ public class TableInterface {
     }
 
     public static void checkTableAvailability() {
-
+        System.out.println("Enter number of pax:");
+        int noOfPax = CustomInput.nextPositiveInt();
+        Calendar currentTime = Calendar.getInstance();
+        ArrayList<Table> availableTable = TableMgr.getAvailableTables(noOfPax, currentTime);
+        if (availableTable.isEmpty())
+            System.out.println("There are no available table");
+        else {
+            System.out.println("List of available table");
+            for (Table table : availableTable) {
+                System.out.printf("Table %d /n", table.getTableNumber());
+            }
+            System.out.println("");
+        }
     }
 
     public static void registerCustomerToTable() {
