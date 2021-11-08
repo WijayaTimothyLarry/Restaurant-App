@@ -69,6 +69,9 @@ public class ReservationInterface {
         System.out.println("Enter the total number of people for this Reservation");
         int newNoOfPax = CustomInput.nextPositiveInt();
         ArrayList<Table> availableTable = ReservationMgr.getAvailableTables(newNoOfPax, reservationDate);
+        if (availableTable.isEmpty()) {
+            System.out.println("There are no available table for this timing");
+        }
         System.out.println("Available table:");
         for (Table table : availableTable) {
             System.out.printf("Table %d, table size = %d\n", table.getTableNumber(), table.getTableSize());
