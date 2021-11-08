@@ -8,7 +8,6 @@ import controllerclass.ReservationMgr;
 import entityclass.Reservation;
 import entityclass.Table;
 import utils.CustomInput;
-import utils.ReservationUtils;
 
 public class ReservationInterface {
     private static Scanner scanner = new Scanner(System.in);
@@ -66,7 +65,7 @@ public class ReservationInterface {
         System.out.println("Enter Customer Name");
         String customerName = scanner.nextLine();
         System.out.println("Enter the date and time of reservation");
-        Calendar reservationDate = ReservationUtils.dateInput();
+        Calendar reservationDate = CustomInput.dateInput();
         System.out.println("Enter the total number of people for this Reservation");
         int newNoOfPax = CustomInput.nextPositiveInt();
         ArrayList<Table> availableTable = ReservationMgr.getAvailableTables(newNoOfPax, reservationDate);
