@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 import boundaryclass.MenuInterface;
 import boundaryclass.ReservationInterface;
 import boundaryclass.TableInterface;

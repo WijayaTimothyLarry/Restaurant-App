@@ -88,220 +88,329 @@ public class MenuInterface {
     }
 
     private static void addNewMenuOption() {
+        boolean on = true;
 
-        System.out.println("(1) Add new Appetizer");
-        System.out.println("(2) Add new Main Course");
-        System.out.println("(3) Add new Dessert");
-        System.out.println("(4) Add new Drinks");
-        System.out.println("(5) Add new Promo Packages");
+        while (on) {
+            System.out.println("(1) Add new Appetizer");
+            System.out.println("(2) Add new Main Course");
+            System.out.println("(3) Add new Dessert");
+            System.out.println("(4) Add new Drinks");
+            System.out.println("(5) Add new Promo Packages");
+            System.out.println("(0) Go back");
 
-        choice = CustomInput.choice(1, 5);
-        System.out.print("New menu item name: ");
-        String menuName = scanner.nextLine();
-        System.out.print("Price of the new menu item:");
-        double price = CustomInput.nextDouble();
-        System.out.println("Description of new menu item:");
-        String description = scanner.nextLine();
-        System.out.println("New menu item ID:");
-        String itemID = scanner.nextLine();
-        switch (choice) {
-        case 1:
-            Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
-            MenuMgr.addAppe(newAppetizer);
-            break;
-        case 2:
-            MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
-            MenuMgr.addMainCourse(newMainCourse);
-            break;
-        case 3:
-            Dessert newDessert = new Dessert(menuName, price, description, itemID);
-            MenuMgr.addDessert(newDessert);
-            break;
-        case 4:
-            Drinks newDrinks = new Drinks(menuName, price, description, itemID);
-            MenuMgr.addDrinks(newDrinks);
-            break;
-        case 5:
-            PackageItem newPackage = createPackage(menuName, price, description, itemID);
-            MenuMgr.addPackage(newPackage);
-            break;
+            choice = CustomInput.choice(0, 5);
+            System.out.print("New menu item name: ");
+            String menuName = scanner.nextLine();
+            System.out.print("Price of the new menu item:");
+            double price = CustomInput.nextDouble();
+            System.out.println("Description of new menu item:");
+            String description = scanner.nextLine();
+            System.out.println("New menu item ID:");
+            String itemID = scanner.nextLine();
+            switch (choice) {
+            case 1:
+                Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
+                MenuMgr.addAppe(newAppetizer);
+                break;
+            case 2:
+                MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
+                MenuMgr.addMainCourse(newMainCourse);
+                break;
+            case 3:
+                Dessert newDessert = new Dessert(menuName, price, description, itemID);
+                MenuMgr.addDessert(newDessert);
+                break;
+            case 4:
+                Drinks newDrinks = new Drinks(menuName, price, description, itemID);
+                MenuMgr.addDrinks(newDrinks);
+                break;
+            case 5:
+                PackageItem newPackage = createPackage(menuName, price, description, itemID);
+                MenuMgr.addPackage(newPackage);
+                break;
+            case 0:
+                on = false;
+            }
         }
     }
 
     private static void removeMenuOption() {
+        Boolean on = true;
         String itemID = "";
-        System.out.println("(1) Remove an Appetizer");
-        System.out.println("(2) Remove a Main Course");
-        System.out.println("(3) Remove a Dessert");
-        System.out.println("(4) Remove a Drinks");
-        System.out.println("(5) Remove a Promo Packages");
-        choice = CustomInput.choice(1, 5);
 
-        switch (choice) {
-        case 1:
-            MenuMgr.showAppetizer();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            MenuMgr.removeAppetizer(itemID);
-            break;
-        case 2:
-            MenuMgr.showMainCourse();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            MenuMgr.removeMainCourse(itemID);
-            break;
-        case 3:
-            MenuMgr.showDessert();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            MenuMgr.removeDessert(itemID);
-            break;
-        case 4:
-            MenuMgr.showDrinks();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            MenuMgr.removeDrinks(itemID);
-            break;
-        case 5:
-            MenuMgr.showPackage();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            MenuMgr.removePackage(itemID);
-            break;
+        while (on) {
+            System.out.println("(1) Remove an Appetizer");
+            System.out.println("(2) Remove a Main Course");
+            System.out.println("(3) Remove a Dessert");
+            System.out.println("(4) Remove a Drinks");
+            System.out.println("(5) Remove a Promo Packages");
+            System.out.println("(0) Go back\n");
+            choice = CustomInput.choice(0, 5);
+
+            switch (choice) {
+            case 1:
+                MenuMgr.showAppetizer();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                MenuMgr.removeAppetizer(itemID);
+                break;
+            case 2:
+                MenuMgr.showMainCourse();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                MenuMgr.removeMainCourse(itemID);
+                break;
+            case 3:
+                MenuMgr.showDessert();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                MenuMgr.removeDessert(itemID);
+                break;
+            case 4:
+                MenuMgr.showDrinks();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                MenuMgr.removeDrinks(itemID);
+                break;
+            case 5:
+                MenuMgr.showPackage();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                MenuMgr.removePackage(itemID);
+                break;
+            case 0:
+                on = false;
+            }
         }
     }
 
     private static void updateMenuOption() {
+        Boolean on = true;
         String itemID = "";
-        System.out.println("(1) Update an Appetizer");
-        System.out.println("(2) Update a Main Course");
-        System.out.println("(3) Update a Dessert");
-        System.out.println("(4) Update a Drinks");
-        System.out.println("(5) Update a Promo Packages");
-        choice = CustomInput.choice(1, 5);
 
-        switch (choice) {
-        case 1:
-            MenuMgr.showAppetizer();
-            System.out.println("Enter the ID of item to be updated:");
-            itemID = scanner.nextLine();
-            System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int appeChoice = CustomInput.choice(1, 3);
-            switch (appeChoice) {
+        while (on) {
+            System.out.println("(1) Update an Appetizer");
+            System.out.println("(2) Update a Main Course");
+            System.out.println("(3) Update a Dessert");
+            System.out.println("(4) Update a Drinks");
+            System.out.println("(5) Update a Promo Packages");
+            System.out.println("(0) Go back");
+            choice = CustomInput.choice(0, 5);
+
+            switch (choice) {
             case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeAppetizerName(itemID, newname);
+                MenuMgr.showAppetizer();
+                System.out.println("Enter the ID of item to be updated:");
+                itemID = scanner.nextLine();
+                boolean appeExist = false;
+                while (!appeExist) {
+                    try {
+                        Appetizer changingAppetizer = MenuMgr.findAppetizerbyID(itemID);
+                        System.out.println("Name of appetizer: " + changingAppetizer.getItemName());
+                        System.out.println("Price of appetizer: " + changingAppetizer.getPrice());
+                        System.out.println("Description of appetizer" + changingAppetizer.getDescription());
+                        appeExist = true;
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Item not found!");
+                        System.out.println("Enter item ID again: ");
+                        itemID = scanner.nextLine();
+                    }
+                }
+                System.out.println("Update");
+                System.out.println("(1)Name");
+                System.err.println("(2)Price");
+                System.out.println("(3)Description");
+                System.out.println("(0) Go back");
+                int appeChoice = CustomInput.choice(0, 3);
+                switch (appeChoice) {
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeAppetizerName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeAppePrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeAppetizerDescription(itemID, description);
+                    break;
+                }
                 break;
             case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeAppePrice(itemID, newprice);
+                MenuMgr.showMainCourse();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                boolean mainCourseExist = false;
+                while (!mainCourseExist) {
+                    try {
+                        MainCourse changingMainCourse = MenuMgr.findMainCoursebyID(itemID);
+                        System.out.println("Name of Main Course: " + changingMainCourse.getItemName());
+                        System.out.println("Price of Main Course: " + changingMainCourse.getPrice());
+                        System.out.println("Description of Main Course" + changingMainCourse.getDescription());
+                        mainCourseExist = true;
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Item not found!");
+                        System.out.println("Enter item ID again: ");
+                        itemID = scanner.nextLine();
+                    }
+                }
+                System.out.println("Update");
+                System.out.println("(1)Name");
+                System.err.println("(2)Price");
+                System.out.println("(3)Description");
+                System.out.println("(0) Go back");
+                int mainCourseChoice = CustomInput.choice(0, 3);
+                switch (mainCourseChoice) {
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeMainCourseName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeMainCoursePrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeMainCourseDescription(itemID, description);
+                    break;
+                }
                 break;
             case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeAppetizerDescription(itemID, description);
+                MenuMgr.showDessert();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                boolean dessertExist = false;
+                while (!dessertExist) {
+                    try {
+                        Dessert changingDessert = MenuMgr.findDessertbyID(itemID);
+                        System.out.println("Name of Dessert: " + changingDessert.getItemName());
+                        System.out.println("Price of Dessert: " + changingDessert.getPrice());
+                        System.out.println("Description of Dessert" + changingDessert.getDescription());
+                        dessertExist = true;
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Item not found!");
+                        System.out.println("Enter item ID again: ");
+                        itemID = scanner.nextLine();
+                    }
+                }
+                System.out.println("Update");
+                System.out.println("(1)Name");
+                System.err.println("(2)Price");
+                System.out.println("(3)Description");
+                System.out.println("(0) Go back");
+                int DessertChoice = CustomInput.choice(0, 3);
+                switch (DessertChoice) {
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDessertName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeDessertPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDessertDescription(itemID, description);
+                    break;
+                }
                 break;
+            case 4:
+                MenuMgr.showDrinks();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                boolean drinksExist = false;
+                while (!drinksExist) {
+                    try {
+                        Drinks changingDrinks = MenuMgr.findDrinksbyID(itemID);
+                        System.out.println("Name of Drinks: " + changingDrinks.getItemName());
+                        System.out.println("Price of Drinks: " + changingDrinks.getPrice());
+                        System.out.println("Description of Drinks: " + changingDrinks.getDescription());
+                        drinksExist = true;
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Item not found!");
+                        System.out.println("Enter item ID again: ");
+                        itemID = scanner.nextLine();
+                    }
+                }
+                System.out.println("Update");
+                System.out.println("(1)Name");
+                System.err.println("(2)Price");
+                System.out.println("(3)Description");
+                System.out.println("(0) Go back");
+                int drinksChoice = CustomInput.choice(0, 3);
+                switch (drinksChoice) {
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDrinksName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeDrinksPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDrinksDescription(itemID, description);
+                    break;
+                }
+                break;
+            case 5:
+                MenuMgr.showPackage();
+                System.out.println("Enter the ID of item to be removed:");
+                itemID = scanner.nextLine();
+                boolean packageExist = false;
+                while (!packageExist) {
+                    try {
+                        PackageItem changingDrinks = MenuMgr.findPackagebyID(itemID);
+                        System.out.println("Name of Package: " + changingDrinks.getItemName());
+                        System.out.println("Price of Package: " + changingDrinks.getPrice());
+                        System.out.println("Description of Package: " + changingDrinks.getDescription());
+                        packageExist = true;
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Item not found!");
+                        System.out.println("Enter item ID again: ");
+                        itemID = scanner.nextLine();
+                    }
+                }
+                System.out.println("Update");
+                System.out.println("(1)Name");
+                System.err.println("(2)Price");
+                System.out.println("(3)Description");
+                System.out.println("(0) Go back");
+                int packagesChoice = CustomInput.choice(0, 3);
+                switch (packagesChoice) {
+
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changePackagesName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changePackagesPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changePackagesDescription(itemID, description);
+                    break;
+                }
             }
-            break;
-        case 2:
-            MenuMgr.showMainCourse();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int mainCourseChoice = CustomInput.choice(1, 3);
-            switch (mainCourseChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeMainCourseName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeMainCoursePrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeMainCourseDescription(itemID, description);
-                break;
-            }
-            break;
-        case 3:
-            MenuMgr.showDessert();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int DessertChoice = CustomInput.choice(1, 3);
-            switch (DessertChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeDessertName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeDessertPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeDessertDescription(itemID, description);
-                break;
-            }
-            break;
-        case 4:
-            MenuMgr.showDrinks();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int drinksChoice = CustomInput.choice(1, 3);
-            switch (drinksChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeDrinksName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeDrinksPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeDrinksDescription(itemID, description);
-                break;
-            }
-            break;
-        case 5:
-            MenuMgr.showPackage();
-            System.out.println("Enter the ID of item to be removed:");
-            itemID = scanner.nextLine();
-            System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int packagesChoice = CustomInput.choice(1, 3);
-            switch (packagesChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changePackagesName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changePackagesPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changePackagesDescription(itemID, description);
-                break;
-            }
-            break;
         }
+
     }
 
     private static PackageItem createPackage(String name, double price, String description, String id) {

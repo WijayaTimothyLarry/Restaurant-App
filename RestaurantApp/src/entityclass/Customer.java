@@ -6,7 +6,6 @@ public class Customer extends Person {
 	private String phoneNumber;
 
 	public Customer(String name, String gender, String phoneNumber, boolean hasMembership) {
-		// TODO - implement Customer.Customer
 		super(name, gender);
 		this.hasMembership = hasMembership;
 		this.phoneNumber = phoneNumber;

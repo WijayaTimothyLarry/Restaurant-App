@@ -2,7 +2,6 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class CustomInput {
@@ -16,7 +15,7 @@ public class CustomInput {
                 System.out.println("Enter your choice:");
                 input = scanner.nextInt();
                 if (input < lower || input > upper) {
-                    throw new Exception("Please input value from above choice");
+                    throw new Exception("Please input valid input");
                 }
                 invalidInput = false;
                 System.out.println("");
@@ -106,6 +105,16 @@ public class CustomInput {
             }
         }
         return input;
+    }
+
+    public static String phoneNumberInput() {
+        System.out.println("Enter phone number:");
+        String phoneNumber = scanner.nextLine();
+        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
+            System.out.println("Enter a valid phone number");
+            phoneNumber = scanner.nextLine();
+        }
+        return phoneNumber;
     }
 
     public static Calendar dateInput() {

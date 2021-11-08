@@ -11,21 +11,28 @@ public class ReservationInterface {
 
     public static void showOption() {
 
-        System.out.println("(1) Check Customer Reservation");
-        System.out.println("(2) Create New Reservation");
-        System.out.println("(3) Remove Customer Reservation");
-        choice = scanner.nextInt();
-        switch (choice) {
-        case 1:
-            checkCustomerReservation();
-            break;
-        case 2:
-            createNewReservation();
-            break;
-        case 3:
-            removeCustomerReservation();
-            break;
+        boolean on = true;
 
+        while (on) {
+            System.out.println("(1) Check Customer Reservation");
+            System.out.println("(2) Create New Reservation");
+            System.out.println("(3) Remove Customer Reservation");
+            System.out.println("(0) Go back");
+            choice = scanner.nextInt();
+            switch (choice) {
+            case 1:
+                checkCustomerReservation();
+                break;
+            case 2:
+                createNewReservation();
+                break;
+            case 3:
+                removeCustomerReservation();
+                break;
+            case 0:
+                on = false;
+
+            }
         }
 
     }
@@ -47,14 +54,14 @@ public class ReservationInterface {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
         while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
-        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
-        if (reservation != null) {
-            System.out.println("Customer already have the following reservation:");
-            reservation.printReservationInfo();
-        } else {
-            ReservationMgr.newReservation(phoneNumber);
+            Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
+            if (reservation != null) {
+                System.out.println("Customer already have the following reservation:");
+                reservation.printReservationInfo();
+            } else {
+                ReservationMgr.newReservation(phoneNumber);
+            }
         }
-    }
     }
 
     private static void removeCustomerReservation() {
