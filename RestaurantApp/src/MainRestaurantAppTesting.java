@@ -4,10 +4,10 @@ import boundaryclass.TableInterface;
 import database.Restaurant;
 import utils.CustomInput;
 
-public class MainRestaurantApp {
+public class MainRestaurantAppTesting {
 
     public static void main(String[] args) {
-        Restaurant.loadRestaurant();
+        Restaurant.createRestaurant();
         int choice;
         boolean on = true;
         while (on) {
@@ -32,7 +32,5 @@ public class MainRestaurantApp {
                 on = false;
             }
         }
-        Restaurant.saveRestaurant();
-
     }
 }

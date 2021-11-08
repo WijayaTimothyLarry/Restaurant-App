@@ -81,9 +81,11 @@ public class TableMgr {
     public static boolean checkMembership(String phoneNumber) {
         for (Customer member : memberList) {
             if (member.getPhoneNumber().equals(phoneNumber)) {
+                System.out.println("\nThis customer is a member 10% discount will be applied on the bill\n");
                 return true;
             }
         }
+        System.err.println("\nThis customer is not a member\n");
         return false;
     }
 
