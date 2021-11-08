@@ -358,10 +358,19 @@ public class Menu implements Serializable {
 		return -1;
 
 	}
+	/**
+	 * Function to add a drink into the drinksList
+	 * @param drink (Drinks)drinks item to be added into drinksList
+	 */
 
 	public void addintoDrinksList(Drinks drink) {
 		drinksList.add(drink);
 	}
+	/**
+	 * Function to find a drink in the drinksList based on the drink id
+	 * @param id (String) of the drink item
+	 * @return (int)index of found drink in drinksList
+	 */
 
 	public int findforDrinksList(String id) {
 		int i = 0;
@@ -374,23 +383,37 @@ public class Menu implements Serializable {
 		}
 		return -1;
 	}
+	/**
+	 * Function to set the index of a new drink in the drinksList
+	 * @param index (int) index of the new drink to be added in the drinksList
+	 * @param newDrinks (Drinks) item to be added into the drinksList
+	 */
 
 	public void setforDrinksList(int index, Drinks newDrinks) {
 		drinksList.set(index, newDrinks);
 	}
 
 	/**
-	 * 
-	 * @param packageList
+	 * Function to return list of all packages
+	 * @return (ArrayList<PackageItem>)list of all packages
 	 */
-
 	public ArrayList<PackageItem> getPackagesList() {
 		return this.packagesList;
 	}
 
+	/**
+	 * Function to set list of all packages
+	 * @param packagesList (ArrayList<PackageItem>)List of packages to be set
+	 */
 	public void setPackageList(ArrayList<PackageItem> packagesList) {
 		this.packagesList = packagesList;
 	}
+
+	/**
+	 * Function to remove from package list
+	 * @param id (String) of the package item to be removed
+	 * @return (int)1 if package item deleted or 1 if package item not found
+	 */
 
 	public int removeforPackageList(String id) {
 		Iterator<PackageItem> itr = packagesList.iterator();
@@ -406,10 +429,20 @@ public class Menu implements Serializable {
 		return -1;
 
 	}
+	/**
+	 * Function to add a package into the package list
+	 * @param package1 (PackageItem) item to be added into the package list
+	 */
 
 	public void addintoPackageList(PackageItem package1) {
 		packagesList.add(package1);
 	}
+
+	/**
+	 * Function to find the index of package item from its id in the package item list
+	 * @param id (String) package item id to be found
+	 * @return (int)index of the package item found
+	 */
 
 	public int findforPackageList(String id) {
 		int i = 0;
@@ -422,22 +455,39 @@ public class Menu implements Serializable {
 		}
 		return -1;
 	}
+	/**
+	 * Function to set a new package item and its index into the packages list
+	 * @param index (int) index of the package item to be set into the packages list
+	 * @param newPackageItem (PackageItem) item to be set in the package item list
+	 */
 
 	public void setforPackagesList(int index, PackageItem newPackageItem) {
 		packagesList.set(index, newPackageItem);
 	}
 
 	/**
-	 * 
-	 * @param appeList
+	 * Function to get the ArrayList of Appetizers
+	 * @return (ArrayList<Appetizer>)the ArrayList of Appetizers
 	 */
+
 	public ArrayList<Appetizer> getAppeList() {
 		return this.appeList;
 	}
 
+	/**
+	 * Function to set the Appetizer list from the ArrayList appeList
+	 * @param appeList (ArrayList<Appetizer>)ArrayList of all appetizers
+	 */
+
 	public void setAppeList(ArrayList<Appetizer> appeList) {
 		this.appeList = appeList;
 	}
+
+	/**
+	 * Function to remove an appetizer from the AppeList
+	 * @param id (String) of the appetizer to be removed from the AppeList
+	 * @return (int)1 if the appetizer is found and deleted or -1 if not found
+	 */
 
 	public int removeforAppeList(String id) {
 		Iterator<Appetizer> itr = appeList.iterator();
@@ -453,10 +503,20 @@ public class Menu implements Serializable {
 		return -1;
 
 	}
+	/**
+	 * Function to add an appetizer into the List of Appetizers
+	 * @param appe (Appetizer) item to be added 
+	 */
 
 	public void addintoAppeList(Appetizer appe) {
 		appeList.add(appe);
 	}
+
+	/**
+	 * Function to find for an appetizer in the AppeList
+	 * @param id (String) of the appetizer to find in the AppeList
+	 * @return (int)index of the appetizer in the Appelist if found or -1 if not in the Appelist
+	 */
 
 	public int findforAppeList(String id) {
 		int i = 0;
@@ -470,22 +530,49 @@ public class Menu implements Serializable {
 		return -1;
 	}
 
+	/**
+	 * Function to set a new appetizer with its index into te AppeList
+	 * @param index (int) of the appetizer to be added 
+	 * @param newAppetizer (Appetizer) iten to be added into the AppeList
+	 */
+
 	public void setforAppeList(int index, Appetizer newAppetizer) {
 		appeList.set(index, newAppetizer);
 	}
+
+	/**
+	 * Function to set///////////////////////////////////////////////////////////////
+	 * @param menuList
+	 */
 
 	public void setMenuList(ArrayList<MenuItem> menuList) {
 		this.menuList = menuList;
 		menuList2 = menuList;
 	}
 
+	/**
+	 * Function to get the Menu list
+	 * @return (ArrayList<MenuItem>)menuList of all the Menu items
+	 */
+
 	public ArrayList<MenuItem> getMenuList() {
 		return menuList;
 	}
 
+	/**
+	 * Function to get the Menu////////////////////
+	 * @return
+	 */
+
 	public static ArrayList<MenuItem> getMenu() {
 		return menuList2;
 	}
+	
+	/**
+	 * Function to remove an item from the Menu List
+	 * @param id (String) of the item to be removed from the Menu List
+	 * @return (int)1 if the item is removed from the Menu List and -1 if not removed
+	 */
 
 	public int removeforMenuList(String id) {
 		Iterator<MenuItem> itr = menuList.iterator();
@@ -499,9 +586,20 @@ public class Menu implements Serializable {
 		return -1;
 	}
 
+	/**
+	 * Function to add a food item into the MenuList
+	 * @param food (MenuItem) to be added into the MenuList
+	 */
+
 	public void addintoMenuList(MenuItem food) {
 		menuList.add(food);
 	}
+
+	/**
+	 * Function the find for an item in the MenuList	
+	 * @param id (String) of the item to find 
+	 * @return (int)index of the item if found in the MenuList -1 if not found
+	 */
 
 	public int findforMenuList(String id) {
 		int i = 0;
@@ -514,6 +612,12 @@ public class Menu implements Serializable {
 		}
 		return -1;
 	}
+
+	/**
+	 * Function to set an item in the MenuList
+	 * @param index (int) index of the item to be set into the MenuList
+	 * @param newMenuItem (MenuItem) item to be set into the MenuList
+	 */
 
 	public void setforMenuList(int index, MenuItem newMenuItem) {
 		menuList2.set(index, newMenuItem);
