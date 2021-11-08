@@ -13,15 +13,25 @@ public class Order implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 	private Invoice invoice;
+	private int pax;
 	// private Reservation reservation;
 
-	public Order(Calendar date, int tableNo, String waiterName) {
+	public Order(Calendar date, int tableNo, int pax, String waiterName) {
 		this.orderID = Calendar.getInstance().hashCode();
 		this.orderDate = date;
 		this.tableNumber = tableNo;
 		this.waiterName = waiterName;
 		this.orderItems = new ArrayList<OrderItem>();
 		this.invoice = null;
+		this.pax = pax;
+	}
+
+	public int getPax(){
+		return this.pax;
+	}
+
+	public void setPax(int pax){
+		this.pax = pax;
 	}
 
 	public int getOrderID() {
@@ -157,7 +167,7 @@ public class Order implements Serializable {
 	public String toString() {
 		String orderString = "";
 		for (OrderItem orderItem : orderItems) {
-			orderString += orderItem.getItem().getItemName() + "    " + orderItem.getPrice() + "\n";
+			orderString += orderItem.getQuantity() + orderItem.getItem().getItemName() + "    " + orderItem.getPrice() + "\n";
 		}
 		return orderString;
 	}

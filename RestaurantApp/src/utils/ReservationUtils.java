@@ -162,4 +162,16 @@ public class ReservationUtils {
             return true;
     }
 
+    // method to get difference between 2 Calendar timings
+    public static boolean diffOfTimingsByMins(Calendar timing1, Calendar timing2) {
+        long minsBetween = ChronoUnit.MINUTES.between(timing1.toInstant(), timing2.toInstant());
+        if (minsBetween < 0) {
+            minsBetween = ChronoUnit.MINUTES.between(timing2.toInstant(), timing1.toInstant());
+        }
+        if (minsBetween < 15) 
+            return false;
+        else
+            return true;
+    }
+
 }

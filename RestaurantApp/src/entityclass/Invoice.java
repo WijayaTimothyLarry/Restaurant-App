@@ -103,7 +103,10 @@ public class Invoice implements Serializable {
 		System.out.println("          RESTAURANT          ");
 		System.out.println("******************************");
 		System.out.println("Service staff: " + this.waiterName);
+		System.out.println("Table: " + this.tableNumber);
+		System.out.println("Pax: " + order.getPax());
 		System.out.println("InvoiceID: " + this.invoiceID);
+		System.out.println("..............................");
 		System.out.println("Ordered items: ");
 		System.out.println(order.toString());
 		System.out.println("Subtotal: " + this.price);
