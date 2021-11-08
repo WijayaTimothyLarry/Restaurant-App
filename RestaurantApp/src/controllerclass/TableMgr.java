@@ -13,10 +13,6 @@ import utils.ReservationUtils;
 public class TableMgr {
     private static ArrayList<Table> tableList = Restaurant.tableList;
 
-    public ArrayList<Integer> getAvailTableNoByPax(int newNoOfPax) {
-        return null;
-    }
-
     public ArrayList<Table> getAvailableTables(int NoOfPax, Calendar time) {
         ArrayList<Table> availableTableList = new ArrayList<Table>();
         for (Table table : tableList) {

@@ -11,10 +11,7 @@ public class Reservation implements Serializable {
 	private int reservationID = 0; // Unique ID for each reservation
 	private int tableNumber; // Unique ID for each table
 
-	public Reservation(Calendar reservationDateTime, String customerName, String customerContactNo, int noOfPax,
-			int tableNumber) {
-		// TODO - implement Reservation.Reservation
-		// this.reservationDateTime = Calendar.getInstance();
+	public Reservation(Calendar reservationDateTime, String customerName, String customerContactNo, int noOfPax, int tableNumber) {
 		this.customerName = customerName;
 		this.customerContactNo = customerContactNo;
 		this.noOfPax = noOfPax;
