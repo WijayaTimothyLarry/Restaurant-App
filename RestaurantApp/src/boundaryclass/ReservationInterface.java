@@ -14,19 +14,26 @@ public class ReservationInterface {
         System.out.println("(1) Check Customer Reservation");
         System.out.println("(2) Create New Reservation");
         System.out.println("(3) Remove Customer Reservation");
+        System.out.println("(0) Exit");
+        boolean on = true;
         choice = scanner.nextInt();
-        switch (choice) {
-        case 1:
-            checkCustomerReservation();
-            break;
-        case 2:
-            createNewReservation();
-            break;
-        case 3:
-            removeCustomerReservation();
-            break;
-
+        while(on){
+            switch (choice) {
+                case 1:
+                    checkCustomerReservation();
+                    break;
+                case 2:
+                    createNewReservation();
+                    break;
+                case 3:
+                    removeCustomerReservation();
+                    break;
+                case 0:
+                    on = false;
+                    break;
+                }
         }
+
 
     }
 
