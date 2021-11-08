@@ -55,7 +55,6 @@ public class CustomInput {
         boolean invalidInput = true;
         while (invalidInput) {
             try {
-                System.out.println("Enter your choice:");
                 input = scanner.nextInt();
                 invalidInput = false;
                 System.out.println("");

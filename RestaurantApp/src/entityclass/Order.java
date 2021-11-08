@@ -2,6 +2,7 @@ package entityclass;
 
 import java.util.*;
 
+import database.Restaurant;
 import utils.StringUtils;
 
 import java.io.Serializable;
@@ -12,17 +13,19 @@ public class Order implements Serializable {
 	private Calendar orderDate;
 	private int tableNumber;
 	private String waiterName;
+	private boolean isMember;
 	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 	private Invoice invoice;
 	private int pax;
 	// private Reservation reservation;
 
-	public Order(Calendar date, int tableNo, int pax, String waiterName) {
+	public Order(Calendar date, int tableNo, int pax, String waiterName, boolean isMember) {
 		this.orderID = Calendar.getInstance().hashCode();
 		this.orderDate = date;
 		this.tableNumber = tableNo;
 		this.waiterName = waiterName;
+		this.isMember = isMember;
 		this.orderItems = new ArrayList<OrderItem>();
 		this.invoice = null;
 		this.pax = pax;
@@ -90,6 +93,18 @@ public class Order implements Serializable {
 
 	/**
 	 * 
+	 * @param isMember
+	 */
+	public void setIsMember(boolean isMember) {
+		this.isMember = isMember;
+	}
+
+	public boolean getIsMember() {
+		return this.isMember;
+	}
+
+	/**
+	 * 
 	 * @param orderItems
 	 */
 	public void setOrderItems(ArrayList<OrderItem> orderItems) {
@@ -150,14 +165,15 @@ public class Order implements Serializable {
 		sc2.close();
 	}
 
-	// public void generateInvoice(){
+	public void generateInvoice() {
 
-	// if(this.invoice != null) return; //lock order for editing when invoice
-	// already generated
-	// this.invoice = new Invoice(this);
-	// this.reservation.getReserveTable().setStatus(TableStatus.VACATED);
-
-	// }
+		if (this.invoice != null)
+			return; // lock order for editing when invoice
+		// already generated
+		this.invoice = new Invoice(this);
+		Restaurant.invoiceList.add(invoice);
+		invoice.printInvoice();
+	}
 
 	/**
 	 * prints order items in the order's orderlineitems
