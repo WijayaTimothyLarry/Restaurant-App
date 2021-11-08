@@ -112,9 +112,13 @@ public class MenuInterface {
             switch (choice) {
             case 1:
                 try{
-                    Appetizer oldAppetizer = MenuMgr.findAppetizerbyID(itemID);
-                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldAppetizer.getItemName());
-
+                    boolean itemexist = true;
+                    while(itemexist){
+                        Appetizer oldAppetizer = MenuMgr.findAppetizerbyID(itemID);
+                        System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldAppetizer.getItemName());
+                        System.out.println("Enter a new unique ID: ");
+                        itemID = scanner.nextLine();
+                    }
                 }catch(IndexOutOfBoundsException e){
                     Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
                     MenuMgr.addAppe(newAppetizer);
@@ -122,9 +126,13 @@ public class MenuInterface {
                 break;
             case 2:
                 try{
-                    MainCourse oldMainCourse = MenuMgr.findMainCoursebyID(itemID);
-                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldMainCourse.getItemName());
-
+                    boolean itemexist = true;
+                    while(itemexist){
+                        MainCourse oldMainCourse = MenuMgr.findMainCoursebyID(itemID);
+                        System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldMainCourse.getItemName());
+                        System.out.println("Enter a new unique ID: ");
+                        itemID = scanner.nextLine();
+                    }
                 }catch(IndexOutOfBoundsException e){
                     MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
                     MenuMgr.addMainCourse(newMainCourse);
@@ -132,8 +140,13 @@ public class MenuInterface {
                 break;
             case 3:
                 try{
+                    boolean itemexist = true;
+                    while(itemexist){
                     Dessert oldDessert = MenuMgr.findDessertbyID(itemID);
                     System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDessert.getItemName());
+                    System.out.println("Enter a new unique ID: ");
+                    itemID = scanner.nextLine();
+                }
                 }catch(IndexOutOfBoundsException e){
                     Dessert newDessert = new Dessert(menuName, price, description, itemID);
                     MenuMgr.addDessert(newDessert);
@@ -141,8 +154,13 @@ public class MenuInterface {
                 break;
             case 4:
                 try{
+                    boolean itemexist = true;
+                    while(itemexist){
                     Drinks oldDrinks = MenuMgr.findDrinksbyID(itemID);
                     System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDrinks.getItemName());
+                    System.out.println("Enter a new unique ID: ");
+                    itemID = scanner.nextLine();
+                }
                 }catch(IndexOutOfBoundsException e){
                     Drinks newDrinks = new Drinks(menuName, price, description, itemID);
                     MenuMgr.addDrinks(newDrinks);
@@ -150,8 +168,13 @@ public class MenuInterface {
                 break;
             case 5:
                 try{
+                    boolean itemexist = true;
+                    while(itemexist){
                     PackageItem oldPackage = MenuMgr.findPackagebyID(itemID);
                     System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldPackage.getItemName());
+                    System.out.println("Enter a new unique ID: ");
+                    itemID = scanner.nextLine();
+                }
                 }catch(IndexOutOfBoundsException e){
                     PackageItem newPackage = createPackage(menuName, price, description, itemID);
                     MenuMgr.addPackage(newPackage);
