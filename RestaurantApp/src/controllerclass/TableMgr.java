@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import database.Restaurant;
+import entityclass.Customer;
 import entityclass.Reservation;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
@@ -12,6 +13,7 @@ import utils.ReservationUtils;
 
 public class TableMgr {
     private static ArrayList<Table> tableList = Restaurant.tableList;
+    private static ArrayList<Customer> memberList = Restaurant.memberList;
 
     public static ArrayList<Table> getAvailableTables(int noOfPax, Calendar time) {
 
@@ -31,7 +33,7 @@ public class TableMgr {
             ArrayList<Reservation> reservationList = table.getReservationList();
             for (Reservation reservation : reservationList) {
                 Calendar reservationTime = reservation.getReservationDateTime();
-                if (!ReservationUtils.diffOfTimings(reservationTime, time)) {
+                if (!ReservationUtils.diffOfTimings(reservationTime.getTime(), time.getTime())) {
                     itr.remove();
                     break;
                 }
@@ -43,21 +45,43 @@ public class TableMgr {
         return availableTableList;
     }
 
-    public static void registerCustomerToTable(String waiter, int tableNumber) {
-        for (Table table : tableList)
+    public static void registerCustomerToTable(String waiter, int noOfPax, int tableNumber, boolean isMember) {
+        for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 if (table.getTableStatus() == TableStatus.OCCUPIED) {
                     System.out.println("Please choose another table");
                 } else {
-                    table.registerCustomerToTable(waiter);
+                    table.registerCustomerToTable(waiter, noOfPax, isMember);
+                    ;
                 }
             }
+        }
     }
 
     public static boolean checkTableOccupied(int tableNumber) {
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 return (table.getTableStatus() == TableStatus.OCCUPIED);
+            }
+        }
+        return false;
+    }
+
+    public static void settleTable(int tableNumber) {
+
+        for (Table table : tableList) {
+            if (table.getTableNumber() == tableNumber) {
+                table.getOrder().generateInvoice();
+                table.setToEmpty();
+                table.setOrder(null);
+            }
+        }
+    }
+
+    public static boolean checkMembership(String phoneNumber) {
+        for (Customer member : memberList) {
+            if (member.getPhoneNumber().equals(phoneNumber)) {
+                return true;
             }
         }
         return false;

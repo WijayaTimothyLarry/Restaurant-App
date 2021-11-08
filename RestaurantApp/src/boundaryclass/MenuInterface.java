@@ -8,7 +8,6 @@ import entityclass.Appetizer;
 import entityclass.Dessert;
 import entityclass.Drinks;
 import entityclass.MainCourse;
-import entityclass.Menu;
 import entityclass.MenuItem;
 import entityclass.PackageItem;
 import utils.CustomInput;
@@ -100,7 +99,8 @@ public class MenuInterface {
             System.out.println("(0) Go back");
 
             choice = CustomInput.choice(0, 5);
-            if(choice ==0) break;
+            if (choice == 0)
+                break;
             System.out.print("New menu item name: ");
             String menuName = scanner.nextLine();
             System.out.print("Price of the new menu item:");
@@ -111,71 +111,71 @@ public class MenuInterface {
             String itemID = scanner.nextLine();
             switch (choice) {
             case 1:
-                try{
+                try {
                     boolean itemexist = true;
-                    while(itemexist){
+                    while (itemexist) {
                         Appetizer oldAppetizer = MenuMgr.findAppetizerbyID(itemID);
-                        System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldAppetizer.getItemName());
+                        System.out.printf("This ID, %s, belongs to item, %s\n", itemID, oldAppetizer.getItemName());
                         System.out.println("Enter a new unique ID: ");
                         itemID = scanner.nextLine();
                     }
-                }catch(IndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e) {
                     Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
                     MenuMgr.addAppe(newAppetizer);
                 }
                 break;
             case 2:
-                try{
+                try {
                     boolean itemexist = true;
-                    while(itemexist){
+                    while (itemexist) {
                         MainCourse oldMainCourse = MenuMgr.findMainCoursebyID(itemID);
-                        System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldMainCourse.getItemName());
+                        System.out.printf("This ID, %s, belongs to item, %s\n", itemID, oldMainCourse.getItemName());
                         System.out.println("Enter a new unique ID: ");
                         itemID = scanner.nextLine();
                     }
-                }catch(IndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e) {
                     MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
                     MenuMgr.addMainCourse(newMainCourse);
                 }
                 break;
             case 3:
-                try{
+                try {
                     boolean itemexist = true;
-                    while(itemexist){
-                    Dessert oldDessert = MenuMgr.findDessertbyID(itemID);
-                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDessert.getItemName());
-                    System.out.println("Enter a new unique ID: ");
-                    itemID = scanner.nextLine();
-                }
-                }catch(IndexOutOfBoundsException e){
+                    while (itemexist) {
+                        Dessert oldDessert = MenuMgr.findDessertbyID(itemID);
+                        System.out.printf("This ID, %s, belongs to item, %s\n", itemID, oldDessert.getItemName());
+                        System.out.println("Enter a new unique ID: ");
+                        itemID = scanner.nextLine();
+                    }
+                } catch (IndexOutOfBoundsException e) {
                     Dessert newDessert = new Dessert(menuName, price, description, itemID);
                     MenuMgr.addDessert(newDessert);
                 }
                 break;
             case 4:
-                try{
+                try {
                     boolean itemexist = true;
-                    while(itemexist){
-                    Drinks oldDrinks = MenuMgr.findDrinksbyID(itemID);
-                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDrinks.getItemName());
-                    System.out.println("Enter a new unique ID: ");
-                    itemID = scanner.nextLine();
-                }
-                }catch(IndexOutOfBoundsException e){
+                    while (itemexist) {
+                        Drinks oldDrinks = MenuMgr.findDrinksbyID(itemID);
+                        System.out.printf("This ID, %s, belongs to item, %s\n", itemID, oldDrinks.getItemName());
+                        System.out.println("Enter a new unique ID: ");
+                        itemID = scanner.nextLine();
+                    }
+                } catch (IndexOutOfBoundsException e) {
                     Drinks newDrinks = new Drinks(menuName, price, description, itemID);
                     MenuMgr.addDrinks(newDrinks);
                 }
                 break;
             case 5:
-                try{
+                try {
                     boolean itemexist = true;
-                    while(itemexist){
-                    PackageItem oldPackage = MenuMgr.findPackagebyID(itemID);
-                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldPackage.getItemName());
-                    System.out.println("Enter a new unique ID: ");
-                    itemID = scanner.nextLine();
-                }
-                }catch(IndexOutOfBoundsException e){
+                    while (itemexist) {
+                        PackageItem oldPackage = MenuMgr.findPackagebyID(itemID);
+                        System.out.printf("This ID, %s, belongs to item, %s\n", itemID, oldPackage.getItemName());
+                        System.out.println("Enter a new unique ID: ");
+                        itemID = scanner.nextLine();
+                    }
+                } catch (IndexOutOfBoundsException e) {
                     PackageItem newPackage = createPackage(menuName, price, description, itemID);
                     MenuMgr.addPackage(newPackage);
                 }

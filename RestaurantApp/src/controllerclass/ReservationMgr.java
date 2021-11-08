@@ -3,41 +3,24 @@ package controllerclass;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.Scanner;
 import database.Restaurant;
 import entityclass.Reservation;
 import entityclass.Table;
-import utils.CustomInput;
 import utils.ReservationUtils;
 
 public class ReservationMgr {
     private static ArrayList<Reservation> reservationList = Restaurant.reservationList;
     private static ArrayList<Table> tableList = Restaurant.tableList;
 
-    private static Scanner sc = new Scanner(System.in);
+    public static void newReservation(String customerPhoneNumber, Calendar reservationDate, String customerName,
+            int noOfPax, int tableNumber) {
 
-    public static void newReservation(String newCustomerContactNo) {
-        System.out.println("Enter the date and time of reservation");
-        Calendar reservationDate = CustomInput.dateInput();
+        Reservation newReserv = new Reservation(reservationDate, customerName, customerPhoneNumber, noOfPax,
+                tableNumber);
 
-        System.out.println("Enter the total number of people for this Reservation");
-        int newNoOfPax = CustomInput.nextPositiveInt();
-        ArrayList<Table> availableTable = getAvailableTables(newNoOfPax, reservationDate);
-        if (availableTable.isEmpty()) {
-            System.out.println("All tables are Reserved");
-        }
-
-        else {
-            System.out.println("Enter Customer Name:");
-            String newCustomerName = sc.next();
-
-            Reservation newReserv = new Reservation(reservationDate, newCustomerName, newCustomerContactNo, newNoOfPax,
-                    availableTable.get(0).getTableNumber());
-
-            reservationList.add(newReserv);
-            System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
-
-        }
+        reservationList.add(newReserv);
+        System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
+        System.out.println(reservationList.size());
 
     }
 
@@ -79,7 +62,7 @@ public class ReservationMgr {
             ArrayList<Reservation> reservationList = table.getReservationList();
             for (Reservation reservation : reservationList) {
                 Calendar reservationTime = reservation.getReservationDateTime();
-                if (!ReservationUtils.diffOfTimings(reservationTime, time)) {
+                if (!ReservationUtils.diffOfTimings(reservationTime.getTime(), time.getTime())) {
                     itr.remove();
                     break;
                 }

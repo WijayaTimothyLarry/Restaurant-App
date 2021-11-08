@@ -10,7 +10,6 @@ public class OrderItem implements Serializable {
 	private String name;
 
 	public OrderItem(MenuItem food, int quant) {
-		// TODO - implement OrderItem.OrderItem
 		this.item = food;
 		this.quantity = quant;
 		this.price = food.getPrice();
@@ -61,6 +60,5 @@ public class OrderItem implements Serializable {
 	public String toString() {
 		return this.getItem().getItemName();
 	}
-
 
 }

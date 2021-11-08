@@ -1,9 +1,13 @@
 package boundaryclass;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import controllerclass.ReservationMgr;
 import entityclass.Reservation;
+import entityclass.Table;
+import utils.CustomInput;
 
 public class ReservationInterface {
     private static Scanner scanner = new Scanner(System.in);
@@ -18,7 +22,7 @@ public class ReservationInterface {
             System.out.println("(2) Create New Reservation");
             System.out.println("(3) Remove Customer Reservation");
             System.out.println("(0) Go back");
-            choice = scanner.nextInt();
+            choice = CustomInput.choice(0, 3);
             switch (choice) {
             case 1:
                 checkCustomerReservation();
@@ -38,30 +42,42 @@ public class ReservationInterface {
     }
 
     private static void checkCustomerReservation() {
-        System.out.println("Enter customer phone number:");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {
-            System.out.println("Customer reservation information:");
+            System.out.println("Customer reservation information:\n");
             reservation.printReservationInfo();
         }
 
     }
 
     private static void createNewReservation() {
-        System.out.println("Enter customer phone number:");
-        String phoneNumber = scanner.nextLine();
-        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
-            Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
-            if (reservation != null) {
-                System.out.println("Customer already have the following reservation:");
-                reservation.printReservationInfo();
-            } else {
-                ReservationMgr.newReservation(phoneNumber);
-            }
+        String phoneNumber = CustomInput.phoneNumberInput();
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
+        if (reservation != null) {
+            System.out.println("Customer already have the following reservation:");
+            reservation.printReservationInfo();
+            return;
         }
+        System.out.println("Enter Customer Name");
+        String customerName = scanner.nextLine();
+        System.out.println("Enter the date and time of reservation");
+        Calendar reservationDate = CustomInput.dateInput();
+        System.out.println("Enter the total number of people for this Reservation");
+        int newNoOfPax = CustomInput.nextPositiveInt();
+        ArrayList<Table> availableTable = ReservationMgr.getAvailableTables(newNoOfPax, reservationDate);
+        if (availableTable.isEmpty()) {
+            System.out.println("There are no available table for this timing");
+        }
+        System.out.println("Available table:");
+        for (Table table : availableTable) {
+            System.out.printf("Table %d, table size = %d\n", table.getTableNumber(), table.getTableSize());
+        }
+        System.out.println("\nEnter table number to be reserved");
+        int tableNumber = CustomInput.nextPositiveInt();
+        ReservationMgr.newReservation(phoneNumber, reservationDate, customerName, newNoOfPax, tableNumber);
     }
 
     private static void removeCustomerReservation() {

@@ -77,7 +77,7 @@ public class Restaurant {
 				"Coffee flavoured Italian dessert topped with brazillian espresso powder", "D1");
 		Dessert dessert2 = new Dessert("Strawberry Shortcake", 6, "Sweetsour strawberry to freshen you from the grease",
 				"D2");
-		Dessert dessert3 = new Dessert("Blackforest Gâteau ", 7, "chocolate sponge cake with a rich cherry filling",
+		Dessert dessert3 = new Dessert("Blackforest Gateau ", 7, "chocolate sponge cake with a rich cherry filling",
 				"D3");
 
 		// add dessert to dessert menu
@@ -152,7 +152,7 @@ public class Restaurant {
 
 		// initialize 1 table for 10
 
-		Table newTable = new Table(17, 8);
+		Table newTable = new Table(17, 10);
 		tableList.add(newTable);
 
 		Restaurant.tableList = tableList;

@@ -19,7 +19,6 @@ public class Menu implements Serializable {
 
 	public Menu(ArrayList<Appetizer> appeList, ArrayList<MainCourse> mainCourseList, ArrayList<Dessert> dessertList,
 			ArrayList<Drinks> drinksList, ArrayList<PackageItem> packagesList) {
-		// TODO - implement Menu.Menu
 		this.appeList = appeList;
 		this.mainCourseList = mainCourseList;
 		this.dessertList = dessertList;
@@ -400,7 +399,6 @@ public class Menu implements Serializable {
 	}
 
 	public ArrayList<MenuItem> getMenuList() {
-		// TODO - implement Menu.getMenuList
 		return menuList;
 	}
 
