@@ -8,6 +8,7 @@ import entityclass.Appetizer;
 import entityclass.Dessert;
 import entityclass.Drinks;
 import entityclass.MainCourse;
+import entityclass.Menu;
 import entityclass.MenuItem;
 import entityclass.PackageItem;
 import utils.CustomInput;
@@ -110,24 +111,51 @@ public class MenuInterface {
             String itemID = scanner.nextLine();
             switch (choice) {
             case 1:
-                Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
-                MenuMgr.addAppe(newAppetizer);
+                try{
+                    Appetizer oldAppetizer = MenuMgr.findAppetizerbyID(itemID);
+                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldAppetizer.getItemName());
+
+                }catch(IndexOutOfBoundsException e){
+                    Appetizer newAppetizer = new Appetizer(menuName, price, description, itemID);
+                    MenuMgr.addAppe(newAppetizer);
+                }
                 break;
             case 2:
-                MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
-                MenuMgr.addMainCourse(newMainCourse);
+                try{
+                    MainCourse oldMainCourse = MenuMgr.findMainCoursebyID(itemID);
+                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldMainCourse.getItemName());
+
+                }catch(IndexOutOfBoundsException e){
+                    MainCourse newMainCourse = new MainCourse(menuName, price, description, itemID);
+                    MenuMgr.addMainCourse(newMainCourse);
+                }
                 break;
             case 3:
-                Dessert newDessert = new Dessert(menuName, price, description, itemID);
-                MenuMgr.addDessert(newDessert);
+                try{
+                    Dessert oldDessert = MenuMgr.findDessertbyID(itemID);
+                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDessert.getItemName());
+                }catch(IndexOutOfBoundsException e){
+                    Dessert newDessert = new Dessert(menuName, price, description, itemID);
+                    MenuMgr.addDessert(newDessert);
+                }
                 break;
             case 4:
-                Drinks newDrinks = new Drinks(menuName, price, description, itemID);
-                MenuMgr.addDrinks(newDrinks);
+                try{
+                    Drinks oldDrinks = MenuMgr.findDrinksbyID(itemID);
+                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldDrinks.getItemName());
+                }catch(IndexOutOfBoundsException e){
+                    Drinks newDrinks = new Drinks(menuName, price, description, itemID);
+                    MenuMgr.addDrinks(newDrinks);
+                }
                 break;
             case 5:
-                PackageItem newPackage = createPackage(menuName, price, description, itemID);
-                MenuMgr.addPackage(newPackage);
+                try{
+                    PackageItem oldPackage = MenuMgr.findPackagebyID(itemID);
+                    System.out.printf("This ID, %s, belongs to item, %s\n",itemID,oldPackage.getItemName());
+                }catch(IndexOutOfBoundsException e){
+                    PackageItem newPackage = createPackage(menuName, price, description, itemID);
+                    MenuMgr.addPackage(newPackage);
+                }
                 break;
             case 0:
                 on = false;
@@ -431,6 +459,7 @@ public class MenuInterface {
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Drinks not found! ");
                 System.out.println("Enter Drinks ID again");
+                drinksID = scanner.nextLine();
             }
         }
         System.out.println("Enter the Main Course ID: ");
@@ -443,6 +472,7 @@ public class MenuInterface {
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Main Course not found! ");
                 System.out.println("Enter Main Course ID again: ");
+                maincourseID = scanner.nextLine();
             }
         }
         System.out.println("Enter the Dessert ID: ");
@@ -455,6 +485,7 @@ public class MenuInterface {
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Dessert not found! ");
                 System.out.println("Enter Dessert ID again");
+                dessertID = scanner.nextLine();
             }
         }
         ArrayList<MenuItem> itemsinPackage = new ArrayList<MenuItem>();
