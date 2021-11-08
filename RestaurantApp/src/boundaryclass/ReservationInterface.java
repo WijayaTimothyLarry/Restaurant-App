@@ -46,13 +46,15 @@ public class ReservationInterface {
     private static void createNewReservation() {
         System.out.println("Enter customer phone number:");
         String phoneNumber = scanner.nextLine();
+        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation != null) {
             System.out.println("Customer already have the following reservation:");
             reservation.printReservationInfo();
         } else {
-
+            ReservationMgr.newReservation(phoneNumber);
         }
+    }
     }
 
     private static void removeCustomerReservation() {
