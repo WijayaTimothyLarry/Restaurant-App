@@ -190,7 +190,7 @@ public class Order implements Serializable {
 
 			orderString += StringUtils.rightPadding(Integer.toString(orderItem.getQuantity()), ' ', 2) + "   "
 					+ StringUtils.rightPadding(orderItem.getItem().getItemName(), ' ', 30) + " "
-					+ String.format("%.2f", orderItem.getPrice()) + "\n";
+					+ StringUtils.leftPadding(String.format("%.2f", orderItem.getPrice()),' ', 15) + "\n";
 
 		}
 		if (orderString.length() == 0)
