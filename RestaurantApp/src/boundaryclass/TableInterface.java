@@ -8,6 +8,7 @@ import controllerclass.MenuMgr;
 import controllerclass.OrderMgr;
 import controllerclass.TableMgr;
 import entityclass.Table;
+
 import utils.CustomInput;
 
 public class TableInterface {
@@ -15,20 +16,37 @@ public class TableInterface {
     static int choice;
 
     public static void showOption() {
+        boolean on = true;
 
-        System.out.println("(1) Check Table Availability");
-        System.out.println("(2) Register customer to table");
-        System.out.println("(3) Print a table's order");
-        System.out.println("(4) Add order item");
-        System.out.println("(5) Remove order item");
-        System.out.println("(6) Settle table");
-        choice = scanner.nextInt();
-        switch (choice) {
-        case 1:
-            checkTableAvailability();
+        while(on){
+            System.out.println("(1) Check Table Availability");
+            System.out.println("(2) Register customer to table");
+            System.out.println("(3) Print a table's order");
+            System.out.println("(4) Add order item");
+            System.out.println("(5) Remove order item");
+            System.out.println("(6) Settle table");
+            System.out.println("(0) Exit ");
+            choice = scanner.nextInt();
+            choice = CustomInput.choice(0, 6);
+            switch (choice) {
+            case 1:
+                checkTableAvailability();
+            case 2:
+                registerCustomerToTable();
+            case 3:
+                printTableOrder();
+            case 4:
+                addOrderItem();
+            case 5:
+                removeOrderItem();
+            case 6:
+                settleTable();
+            case 0:
+                on = false;
+            }
+        }
 
         }
-    }
 
     public static void checkTableAvailability() {
         System.out.println("Enter number of pax:");
@@ -44,6 +62,7 @@ public class TableInterface {
             }
             System.out.println("");
         }
+
     }
 
     public static void registerCustomerToTable() {
@@ -73,7 +92,7 @@ public class TableInterface {
                 System.out.println("(3) Add Dessert");
                 System.out.println("(4) Add Drinks");
                 System.out.println("(5) Add Promo Packages");
-                System.out.println("(6) Finish adding");
+                System.out.println("(0) Finish adding");
 
                 choice = CustomInput.choice(0, 5);
 
@@ -142,9 +161,43 @@ public class TableInterface {
                         System.out.println("The Promo Package ID is not recognized");
                     }
                     break;
+
+                case 0:
+                    stillAdding = false;
                 }
             }
 
         }
+    }
+
+    public static void removeOrderItem(){
+        System.out.println("Enter Table Number:");
+        int tableNumber = CustomInput.nextPositiveInt();
+        if (!TableMgr.checkTableOccupied(tableNumber)) {
+            System.out.println("There are no customer on this table");
+        } else {
+            boolean stillRemoving = true;
+            while (stillRemoving) {
+                System.out.println("(1) Remove an Order Item");
+                System.out.println("(0) Finish Removing");
+
+                choice = CustomInput.choice(0, 1);
+
+                switch (choice) {
+                case 1:
+                    OrderMgr.printTableOrder(tableNumber);
+                    OrderMgr.removeOrder(tableNumber);
+                    break;
+                case 0:
+                    stillRemoving = false;
+            }
+        }
+    }
+    }
+
+    public static void settleTable(){
+
+
+
     }
 }
