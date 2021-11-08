@@ -14,6 +14,7 @@ public class TableMgr {
     private static ArrayList<Table> tableList = Restaurant.tableList;
 
     public static ArrayList<Table> getAvailableTables(int noOfPax, Calendar time) {
+
         ArrayList<Table> availableTableList = new ArrayList<Table>();
         for (Table table : tableList) {
             if (table.getTableSize() >= noOfPax && table.getTableStatus() == TableStatus.EMPTY) {
