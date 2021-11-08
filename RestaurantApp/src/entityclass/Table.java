@@ -74,10 +74,10 @@ public class Table implements Serializable {
 		return this.tableOrder;
 	}
 
-	public void registerCustomerToTable(String waiterName) {
+	public void registerCustomerToTable(String waiterName, int pax) {
 		this.status = TableStatus.OCCUPIED;
 		Calendar currentTime = Calendar.getInstance();
-		this.tableOrder = new Order(currentTime, this.tableNumber, waiterName);
+		this.tableOrder = new Order(currentTime, this.tableNumber, pax, waiterName);
 		Restaurant.orderList.add(this.tableOrder);
 	}
 

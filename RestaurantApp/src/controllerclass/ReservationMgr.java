@@ -15,10 +15,12 @@ public class ReservationMgr {
     public static void newReservation(String customerPhoneNumber, Calendar reservationDate, String customerName,
             int noOfPax, int tableNumber) {
 
-        Reservation newReserv = new Reservation(reservationDate, customerName, customerName, noOfPax, tableNumber);
+        Reservation newReserv = new Reservation(reservationDate, customerName, customerPhoneNumber, noOfPax,
+                tableNumber);
 
         reservationList.add(newReserv);
         System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
+        System.out.println(reservationList.size());
 
     }
 

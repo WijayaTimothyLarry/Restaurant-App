@@ -44,13 +44,14 @@ public class TableMgr {
         return availableTableList;
     }
 
-    public static void registerCustomerToTable(String waiter, int tableNumber) {
-        for (Table table : tableList){
+    public static void registerCustomerToTable(String waiter, int noOfPax, int tableNumber) {
+        for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 if (table.getTableStatus() == TableStatus.OCCUPIED) {
                     System.out.println("Please choose another table");
                 } else {
-                    table.registerCustomerToTable(waiter);
+                    table.registerCustomerToTable(waiter, noOfPax);
+                    ;
                 }
             }
         }
@@ -65,14 +66,14 @@ public class TableMgr {
         return false;
     }
 
-    public static void unassignTable(int tableNumber){
-        
+    public static void unassignTable(int tableNumber) {
+
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 table.setToEmpty();
                 table.setOrder(null);
             }
+        }
     }
-}
 
 }

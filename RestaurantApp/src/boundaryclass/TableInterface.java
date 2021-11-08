@@ -18,7 +18,7 @@ public class TableInterface {
     public static void showOption() {
         boolean on = true;
 
-        while(on){
+        while (on) {
             System.out.println("(1) Check Table Availability");
             System.out.println("(2) Register customer to table");
             System.out.println("(3) Print a table's order");
@@ -26,27 +26,32 @@ public class TableInterface {
             System.out.println("(5) Remove order item");
             System.out.println("(6) Settle table");
             System.out.println("(0) Exit ");
-            choice = scanner.nextInt();
             choice = CustomInput.choice(0, 6);
             switch (choice) {
             case 1:
                 checkTableAvailability();
+                break;
             case 2:
                 registerCustomerToTable();
+                break;
             case 3:
                 printTableOrder();
+                break;
             case 4:
                 addOrderItem();
+                break;
             case 5:
                 removeOrderItem();
+                break;
             case 6:
                 settleTable();
+                break;
             case 0:
                 on = false;
             }
         }
 
-        }
+    }
 
     public static void checkTableAvailability() {
         System.out.println("Enter number of pax:");
@@ -56,9 +61,9 @@ public class TableInterface {
         if (availableTable.isEmpty())
             System.out.println("There are no available table");
         else {
-            System.out.println("List of available table");
+            System.out.println("List of available table:");
             for (Table table : availableTable) {
-                System.out.printf("Table %d /n", table.getTableNumber());
+                System.out.printf("Table %d \n", table.getTableNumber());
             }
             System.out.println("");
         }
@@ -68,13 +73,15 @@ public class TableInterface {
     public static void registerCustomerToTable() {
         System.out.println("Enter waiter name:");
         String waiterName = scanner.nextLine();
+        System.out.println("Enter No of Pax:");
+        int noOfPax = CustomInput.nextPositiveInt();
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
-        TableMgr.registerCustomerToTable(waiterName, tableNumber);
+        TableMgr.registerCustomerToTable(waiterName, noOfPax, tableNumber);
     }
 
     public static void printTableOrder() {
-        System.out.println("Enter Table Number");
+        System.out.println("Enter table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         OrderMgr.printTableOrder(tableNumber);
     }
@@ -150,7 +157,7 @@ public class TableInterface {
                     break;
 
                 case 5:
-                    MenuMgr.showDessert();
+                    MenuMgr.showPackage();
                     try {
                         System.out.println("Enter Promo Package ID:");
                         String itemID = scanner.nextLine();
@@ -170,7 +177,7 @@ public class TableInterface {
         }
     }
 
-    public static void removeOrderItem(){
+    public static void removeOrderItem() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         if (!TableMgr.checkTableOccupied(tableNumber)) {
@@ -190,12 +197,12 @@ public class TableInterface {
                     break;
                 case 0:
                     stillRemoving = false;
+                }
             }
         }
     }
-    }
 
-    public static void settleTable(){
+    public static void settleTable() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         TableMgr.unassignTable(tableNumber);

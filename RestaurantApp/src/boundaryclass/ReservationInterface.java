@@ -22,7 +22,7 @@ public class ReservationInterface {
             System.out.println("(2) Create New Reservation");
             System.out.println("(3) Remove Customer Reservation");
             System.out.println("(0) Go back");
-            choice = scanner.nextInt();
+            choice = CustomInput.choice(0, 3);
             switch (choice) {
             case 1:
                 checkCustomerReservation();
@@ -42,13 +42,12 @@ public class ReservationInterface {
     }
 
     private static void checkCustomerReservation() {
-        System.out.println("Enter customer phone number:");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
         } else {
-            System.out.println("Customer reservation information:");
+            System.out.println("Customer reservation information:\n");
             reservation.printReservationInfo();
         }
 
