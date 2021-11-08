@@ -60,8 +60,8 @@ public class ReservationUtils {
         currentDateTime.add(Calendar.YEAR, 1);
         int uppYear = currentDateTime.get(Calendar.YEAR);
 
-        int year = choice(lowYear, uppYear);
         System.out.printf("Enter year %d to %d\n", lowYear, uppYear);
+        int year = choice(lowYear, uppYear);
         futureDateTime.set(Calendar.YEAR, year);
 
         System.out.println("Enter month(1-12): ");
