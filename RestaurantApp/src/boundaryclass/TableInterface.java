@@ -73,11 +73,15 @@ public class TableInterface {
     public static void registerCustomerToTable() {
         System.out.println("Enter waiter name:");
         String waiterName = scanner.nextLine();
+        System.out.println("");
         System.out.println("Enter No of Pax:");
         int noOfPax = CustomInput.nextPositiveInt();
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
-        TableMgr.registerCustomerToTable(waiterName, noOfPax, tableNumber);
+        System.out.println("Enter customer phone number to check membership:");
+        String phoneNumber = CustomInput.phoneNumberInput();
+        boolean isMember = TableMgr.checkMembership(phoneNumber);
+        TableMgr.registerCustomerToTable(waiterName, noOfPax, tableNumber, isMember);
     }
 
     public static void printTableOrder() {
@@ -88,7 +92,7 @@ public class TableInterface {
 
     public static void addOrderItem() {
         System.out.println("Enter Table Number");
-        int tableNumber = CustomInput.nextInt();
+        int tableNumber = CustomInput.nextPositiveInt();
         if (!TableMgr.checkTableOccupied(tableNumber)) {
             System.out.println("There are no customer on this table");
         } else {
@@ -205,6 +209,6 @@ public class TableInterface {
     public static void settleTable() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
-        TableMgr.unassignTable(tableNumber);
+        TableMgr.settleTable(tableNumber);
     }
 }

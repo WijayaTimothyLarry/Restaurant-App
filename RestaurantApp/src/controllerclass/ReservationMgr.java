@@ -62,7 +62,7 @@ public class ReservationMgr {
             ArrayList<Reservation> reservationList = table.getReservationList();
             for (Reservation reservation : reservationList) {
                 Calendar reservationTime = reservation.getReservationDateTime();
-                if (!ReservationUtils.diffOfTimings(reservationTime, time)) {
+                if (!ReservationUtils.diffOfTimings(reservationTime.getTime(), time.getTime())) {
                     itr.remove();
                     break;
                 }
