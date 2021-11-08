@@ -39,6 +39,7 @@ public class ReservationInterface {
 
             }
         }
+        System.err.println("");
 
     }
 
@@ -46,7 +47,7 @@ public class ReservationInterface {
         String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
-            System.out.println("There are no reservation for this customer");
+            System.out.println("There are no reservation for this customer\n");
         } else {
             System.out.println("Customer reservation information:\n");
             reservation.printReservationInfo();
@@ -65,7 +66,7 @@ public class ReservationInterface {
         System.out.println("Enter Customer Name");
         String customerName = scanner.nextLine();
         System.out.println("Enter the date and time of reservation");
-        Calendar reservationDate =  ReservationUtils.dateInput();
+        Calendar reservationDate = ReservationUtils.dateInput();
         System.out.println("Enter the total number of people for this Reservation");
         int newNoOfPax = CustomInput.nextPositiveInt();
         ArrayList<Table> availableTable = ReservationMgr.getAvailableTables(newNoOfPax, reservationDate);
