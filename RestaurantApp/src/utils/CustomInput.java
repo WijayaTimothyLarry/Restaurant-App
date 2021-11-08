@@ -34,7 +34,6 @@ public class CustomInput {
         boolean invalidInput = true;
         while (invalidInput) {
             try {
-                System.out.println("Enter your choice:");
                 input = scanner.nextInt();
                 if (input <= 0) {
                     throw new Exception("Please input value above 0");
@@ -56,7 +55,6 @@ public class CustomInput {
         boolean invalidInput = true;
         while (invalidInput) {
             try {
-                System.out.println("Enter your choice:");
                 input = scanner.nextInt();
                 invalidInput = false;
                 System.out.println("");
@@ -73,7 +71,6 @@ public class CustomInput {
         boolean invalidInput = true;
         while (invalidInput) {
             try {
-                System.out.println("Enter your choice:\n");
                 input = scanner.nextDouble();
                 invalidInput = false;
                 System.out.println("");
@@ -109,9 +106,10 @@ public class CustomInput {
 
     public static String phoneNumberInput() {
         System.out.println("Enter phone number:");
+        scanner.nextLine();
         String phoneNumber = scanner.nextLine();
-        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
-            System.out.println("Enter a valid phone number");
+        while (!(phoneNumber.length() == 8 && (phoneNumber.charAt(0) == '9' || phoneNumber.charAt(0) == '8'))) {
+            System.out.println("Enter a valid phone number:");
             phoneNumber = scanner.nextLine();
         }
         return phoneNumber;

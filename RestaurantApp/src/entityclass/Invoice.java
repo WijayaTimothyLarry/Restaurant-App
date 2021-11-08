@@ -2,6 +2,8 @@ package entityclass;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
+import utils.StringUtils;
 import java.util.ArrayList;
 
 public class Invoice implements Serializable {
@@ -13,21 +15,25 @@ public class Invoice implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private String waiterName;
 	private double gst;
-	private double price;
-	private Calendar dateTime;
+	private double subtotal;
+	private Date dateTime;
+	private double SCHARGE;
 
 	public static final double GST = 0.07; // According to Singapore Goods and Services Tax
+	public static final double serviceCharge = 0.10; 
 
 	public Invoice(Order order) {
 		this.order = order;
 		this.invoiceID = Calendar.getInstance().hashCode(); // Assigning a unique value to an object by hashing
-		this.price = order.calTotalBill();
-		this.gst = this.price * GST;
-		this.totalBill = this.price + this.gst;
-		this.dateTime = Calendar.getInstance();
+		this.subtotal = order.calTotalBill();
+		this.gst = this.subtotal * GST;
+		this.SCHARGE = this.subtotal * serviceCharge;
+		this.totalBill = this.subtotal + this.gst + this.SCHARGE;
+		this.dateTime = Calendar.getInstance().getTime();
+		
 	}
 
-	public Calendar getDatetime() {
+	public Date getDatetime() {
 		return dateTime;
 	}
 
@@ -35,7 +41,7 @@ public class Invoice implements Serializable {
 	 * 
 	 * @param invoiceDateTime
 	 */
-	public void setDatetime(Calendar invoiceDateTime) {
+	public void setDatetime(Date invoiceDateTime) {
 		this.dateTime = invoiceDateTime;
 	}
 
@@ -100,16 +106,28 @@ public class Invoice implements Serializable {
 	}
 
 	public void printInvoice() {
-		System.out.println("          RESTAURANT          ");
-		System.out.println("******************************");
+		System.out.println("**************************************************");
+		System.out.println("                  STEAK & GRILLS                  ");
+		System.out.println("**************************************************");
 		System.out.println("Service staff: " + this.waiterName);
+		System.out.println("Table: " + this.tableNumber);
+		System.out.println("Pax: " + order.getPax());
 		System.out.println("InvoiceID: " + this.invoiceID);
-		System.out.println("Ordered items: ");
+		System.out.println("Date: " + this.dateTime);
+		System.out.println("--------------------------------------------------");
+		System.out.println("                      Orders                      ");
+		System.out.println("--------------------------------------------------");
 		System.out.println(order.toString());
-		System.out.println("Subtotal: " + this.price);
-		System.out.println("GST: " + this.gst);
-		System.out.println("TOTAL: " + this.totalBill);
-		System.out.println("******************************");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Subtotal: " + StringUtils.leftPadding(String.format("%.2f",this.subtotal),' ', 40));
+		System.out.println("GST(7%): " + StringUtils.leftPadding(String.format("%.2f",this.gst),' ', 41));
+		System.out.println("Service Charge(10%): " + StringUtils.leftPadding(String.format("%.2f",this.SCHARGE),' ', 29));
+		System.out.println("--------------------------------------------------");
+		System.out.println("TOTAL: " + StringUtils.leftPadding(String.format("%.2f",this.totalBill),' ', 43));
+		System.out.println("--------------------------------------------------");
+		System.out.println("TEL : 6737 4411          /  FAX : 6732 2366       ");
+		System.out.println("         52 Nanyang Ave, Singapore 639816         ");
+		System.out.println("**************************************************");
 	}
 
 }
