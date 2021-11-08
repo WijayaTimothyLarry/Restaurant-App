@@ -22,12 +22,17 @@ public class TableInterface {
         System.out.println("(4) Add order item");
         System.out.println("(5) Remove order item");
         System.out.println("(6) Settle table");
-        choice = scanner.nextInt();
-        switch (choice) {
-        case 1:
-            checkTableAvailability();
-
+        System.out.println("(0) Exit");
+        boolean on  = true;
+        while(on){
+            choice = scanner.nextInt();
+            switch (choice) {
+            case 1:
+                checkTableAvailability();
+    
+            }
         }
+
     }
 
     public static void checkTableAvailability() {
