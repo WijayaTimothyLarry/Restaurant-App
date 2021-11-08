@@ -2,7 +2,6 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class CustomInput {
@@ -16,7 +15,7 @@ public class CustomInput {
                 System.out.println("Enter your choice:");
                 input = scanner.nextInt();
                 if (input < lower || input > upper) {
-                    throw new Exception("Please input value from above choice");
+                    throw new Exception("Please input valid input");
                 }
                 invalidInput = false;
                 System.out.println("");
