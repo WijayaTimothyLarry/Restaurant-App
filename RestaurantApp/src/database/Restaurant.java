@@ -212,7 +212,7 @@ public class Restaurant {
 		ArrayList<Customer> memberList = new ArrayList<Customer>();
 
 		// initialize member
-		Customer member1 = new Customer("Sherwin", "Male", "12345678", true);
+		Customer member1 = new Customer("Sherwin", "Male", "96448561", true);
 		Customer member2 = new Customer("Larry", "Male", "23456789", true);
 		Customer member3 = new Customer("Junhui", "Male", "34567891", true);
 		Customer member4 = new Customer("Pheng Kai", "Male", "45678912", true);
