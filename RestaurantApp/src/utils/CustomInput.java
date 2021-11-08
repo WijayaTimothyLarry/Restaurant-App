@@ -21,7 +21,7 @@ public class CustomInput {
                 System.out.println("");
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input, please input an integer");
-                scanner.nextInt();
+                scanner.next();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -42,7 +42,7 @@ public class CustomInput {
                 System.out.println("");
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input, please input an integer");
-                scanner.nextInt();
+                scanner.next();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -60,7 +60,7 @@ public class CustomInput {
                 System.out.println("");
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input, please input an integer");
-                scanner.nextInt();
+                scanner.next();
             }
         }
         return input;
@@ -76,7 +76,7 @@ public class CustomInput {
                 System.out.println("");
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input, please input a number\n");
-                scanner.nextInt();
+                scanner.next();
             }
         }
         return input;
@@ -96,7 +96,7 @@ public class CustomInput {
                 System.out.println("");
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input, please input a number");
-                scanner.nextInt();
+                scanner.next();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
