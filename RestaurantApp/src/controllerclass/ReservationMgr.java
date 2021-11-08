@@ -3,64 +3,24 @@ package controllerclass;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
-import java.util.Scanner;
 import database.Restaurant;
 import entityclass.Reservation;
 import entityclass.Table;
+import utils.ReservationUtils;
 
 public class ReservationMgr {
     private static ArrayList<Reservation> reservationList = Restaurant.reservationList;
+    private static ArrayList<Table> tableList = Restaurant.tableList;
 
-    private static Scanner sc = new Scanner(System.in);
+    public static void newReservation(String customerPhoneNumber, Calendar reservationDate, String customerName,
+            int noOfPax, int tableNumber) {
 
-    public static void newReservation(String newCustomerContactNo) {        
-        System.out.println("Enter the date and time of reservation in: yyyy-MM-dd HH:mm ");
-        String strDate = sc.nextLine();
-        Calendar newReservDateTime = strToCalendarLong(strDate);
+        Reservation newReserv = new Reservation(reservationDate, customerName, customerPhoneNumber, noOfPax,
+                tableNumber);
 
-        //LocalTime newArrivalTime = checkReservTime();
-        // newReservDateTime.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE,
-        // Calendar.HOUR_OF_DAY, Calendar.MINUTE);
-
-        int newNoOfPax;
-
-        System.out.println("Enter the total number of people under Reservation");
-        newNoOfPax = sc.nextInt();
-        TableMgr tablesCtrl = new TableMgr();
-        while (newNoOfPax == (int) newNoOfPax) {
-            ArrayList<Table> tableNumbers = tablesCtrl.getAvailableTables(newNoOfPax, newReservDateTime);
-
-            if (tableNumbers.isEmpty()) {
-                System.out.println("All tables are Reserved");
-            }
-
-            else {
-                System.out.println("Enter Customer Name:");
-                String newCustomerName = sc.next();
-
-                Reservation newReserv = new Reservation(newReservDateTime, newCustomerName, newCustomerContactNo, newNoOfPax, tableNumbers.get(0).getTableNumber());
-
-                reservationList.add(newReserv);
-                startReservationTimer(newReserv);
-                System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
-
-            }
-        }
-    }
-
-
-    public static Calendar strToCalendarLong(String strDate) {
-        Calendar c = Calendar.getInstance();
-        try {
-            c.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(strDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return c;
-    }
-
-    private void startReservationTimer(Reservation newReserv) 
-    {
+        reservationList.add(newReserv);
+        System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
+        System.out.println(reservationList.size());
 
     }
 
@@ -82,6 +42,36 @@ public class ReservationMgr {
                 itr.remove();
             }
         }
+    }
+
+    public static ArrayList<Table> getAvailableTables(int noOfPax, Calendar time) {
+
+        ArrayList<Table> availableTableList = new ArrayList<Table>();
+        for (Table table : tableList) {
+            if (table.getTableSize() >= noOfPax) {
+                availableTableList.add(table);
+            }
+        }
+        if (availableTableList.isEmpty()) {
+            System.out.println("There are no empty tables for " + noOfPax);
+            return availableTableList;
+        }
+        Iterator<Table> itr = availableTableList.iterator();
+        while (itr.hasNext()) {
+            Table table = itr.next();
+            ArrayList<Reservation> reservationList = table.getReservationList();
+            for (Reservation reservation : reservationList) {
+                Calendar reservationTime = reservation.getReservationDateTime();
+                if (!ReservationUtils.diffOfTimings(reservationTime, time)) {
+                    itr.remove();
+                    break;
+                }
+            }
+        }
+        if (availableTableList.isEmpty()) {
+            System.out.println("There are no empty tables for " + noOfPax);
+        }
+        return availableTableList;
     }
 
 }

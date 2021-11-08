@@ -10,8 +10,6 @@ public class Person implements Serializable {
 	public Person(String name, String gender) {
 		this.name = name;
 		this.gender = gender;
-		// TODO - implement Person.Person
-
 	}
 
 	public String getName() {

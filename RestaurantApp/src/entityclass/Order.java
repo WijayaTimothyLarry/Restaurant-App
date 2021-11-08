@@ -28,11 +28,11 @@ public class Order implements Serializable {
 		this.pax = pax;
 	}
 
-	public int getPax(){
+	public int getPax() {
 		return this.pax;
 	}
 
-	public void setPax(int pax){
+	public void setPax(int pax) {
 		this.pax = pax;
 	}
 
@@ -108,14 +108,9 @@ public class Order implements Serializable {
 		this.totalBill = totalBill;
 	}
 
-	public void printReciept() {
-		// TODO - implement Order.printReciept
-
-	}
-
 	public double calTotalBill() {
 		double bill = 0;
-		for (OrderItem orderItem : orderItems){
+		for (OrderItem orderItem : orderItems) {
 			int quantity = orderItem.getQuantity();
 			double price = orderItem.getPrice();
 			bill += (quantity * price);
@@ -171,8 +166,14 @@ public class Order implements Serializable {
 	public String toString() {
 		String orderString = "";
 		for (OrderItem orderItem : orderItems) {
-			orderString += StringUtils.rightPadding(Integer.toString(orderItem.getQuantity()),' ', 2) + "        " + StringUtils.rightPadding(orderItem.getItem().getItemName(),' ',30) + " " + StringUtils.leftPadding(String.format("%.2f", orderItem.getPrice()),' ', 10) + "\n";
+
+			orderString += StringUtils.rightPadding(Integer.toString(orderItem.getQuantity()), ' ', 2) + "   "
+					+ StringUtils.rightPadding(orderItem.getItem().getItemName(), ' ', 30) + " "
+					+ String.format("%.2f", orderItem.getPrice()) + "\n";
+
 		}
+		if (orderString.length() == 0)
+			return "There are no order yet";
 		return orderString;
 	}
 
