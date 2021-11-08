@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import database.Restaurant;
+import entityclass.Invoice;
 import entityclass.Reservation;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
@@ -65,9 +66,11 @@ public class TableMgr {
     }
 
     public static void unassignTable(int tableNumber){
+        
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 table.setToEmpty();
+                table.setOrder(null);
             }
     }
 }
