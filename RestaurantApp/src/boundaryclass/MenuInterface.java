@@ -178,6 +178,7 @@ public class MenuInterface {
         System.out.println("(3) Update a Dessert");
         System.out.println("(4) Update a Drinks");
         System.out.println("(5) Update a Promo Packages");
+        
         choice = CustomInput.choice(1, 5);
 
         switch (choice) {
@@ -185,137 +186,207 @@ public class MenuInterface {
             MenuMgr.showAppetizer();
             System.out.println("Enter the ID of item to be updated:");
             itemID = scanner.nextLine();
+            boolean appeExist = false;
+            while(!appeExist){
+                try{
+                    Appetizer changingAppetizer = MenuMgr.findAppetizerbyID(itemID);
+                    System.out.println("Name of appetizer: "+ changingAppetizer.getItemName());
+                    System.out.println("Price of appetizer: "+ changingAppetizer.getPrice());
+                    System.out.println("Description of appetizer"+ changingAppetizer.getDescription());
+                    appeExist = true;
+                }catch(IndexOutOfBoundsException e){
+                    System.out.println("Item not found!");
+                    System.out.println("Enter item ID again: ");
+                    itemID = scanner.nextLine();
+                }
+            }
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int appeChoice = CustomInput.choice(1, 3);
+            int appeChoice = CustomInput.choice(1, 3); 
             switch (appeChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeAppetizerName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeAppePrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeAppetizerDescription(itemID, description);
-                break;
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeAppetizerName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeAppePrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeAppetizerDescription(itemID, description);
+                    break;
             }
             break;
         case 2:
             MenuMgr.showMainCourse();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
+            boolean mainCourseExist = false;
+            while(!mainCourseExist){
+                try{
+                    MainCourse changingMainCourse = MenuMgr.findMainCoursebyID(itemID);
+                    System.out.println("Name of Main Course: "+ changingMainCourse.getItemName());
+                    System.out.println("Price of Main Course: "+ changingMainCourse.getPrice());
+                    System.out.println("Description of Main Course"+ changingMainCourse.getDescription());
+                    mainCourseExist = true;
+                }catch(IndexOutOfBoundsException e){
+                    System.out.println("Item not found!");
+                    System.out.println("Enter item ID again: ");
+                    itemID = scanner.nextLine();
+                }
+            }
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
             int mainCourseChoice = CustomInput.choice(1, 3);
             switch (mainCourseChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeMainCourseName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeMainCoursePrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeMainCourseDescription(itemID, description);
-                break;
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeMainCourseName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeMainCoursePrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeMainCourseDescription(itemID, description);
+                    break;
             }
             break;
         case 3:
             MenuMgr.showDessert();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
+            boolean dessertExist = false;
+            while(!dessertExist){
+                try{
+                    Dessert changingDessert = MenuMgr.findDessertbyID(itemID);
+                    System.out.println("Name of Dessert: "+ changingDessert.getItemName());
+                    System.out.println("Price of Dessert: "+ changingDessert.getPrice());
+                    System.out.println("Description of Dessert"+ changingDessert.getDescription());
+                    dessertExist = true;
+                }catch(IndexOutOfBoundsException e){
+                    System.out.println("Item not found!");
+                    System.out.println("Enter item ID again: ");
+                    itemID = scanner.nextLine();
+                }
+            }
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
-            int DessertChoice = CustomInput.choice(1, 3);
-            switch (DessertChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeDessertName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeDessertPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeDessertDescription(itemID, description);
-                break;
+            int DessertChoice = CustomInput.choice(1,3);
+            switch(DessertChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDessertName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeDessertPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDessertDescription(itemID, description);
+                    break;
             }
             break;
         case 4:
             MenuMgr.showDrinks();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
+            boolean drinksExist = false;
+            while(!drinksExist){
+                try{
+                    Drinks changingDrinks = MenuMgr.findDrinksbyID(itemID);
+                    System.out.println("Name of Drinks: "+ changingDrinks.getItemName());
+                    System.out.println("Price of Drinks: "+ changingDrinks.getPrice());
+                    System.out.println("Description of Drinks: "+ changingDrinks.getDescription());
+                    drinksExist = true;
+                }catch(IndexOutOfBoundsException e){
+                    System.out.println("Item not found!");
+                    System.out.println("Enter item ID again: ");
+                    itemID = scanner.nextLine();
+                }
+            }
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
             int drinksChoice = CustomInput.choice(1, 3);
             switch (drinksChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changeDrinksName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changeDrinksPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changeDrinksDescription(itemID, description);
-                break;
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changeDrinksName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changeDrinksPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changeDrinksDescription(itemID, description);
+                    break;
             }
             break;
         case 5:
             MenuMgr.showPackage();
             System.out.println("Enter the ID of item to be removed:");
             itemID = scanner.nextLine();
+            boolean packageExist = false;
+            while(!packageExist){
+                try{
+                    PackageItem changingDrinks = MenuMgr.findPackagebyID(itemID);
+                    System.out.println("Name of Package: "+ changingDrinks.getItemName());
+                    System.out.println("Price of Package: "+ changingDrinks.getPrice());
+                    System.out.println("Description of Package: "+ changingDrinks.getDescription());
+                    packageExist = true;
+                }catch(IndexOutOfBoundsException e){
+                    System.out.println("Item not found!");
+                    System.out.println("Enter item ID again: ");
+                    itemID = scanner.nextLine();
+                }
+            }
             System.out.println("Update (1)Name/(2)Price/(3)Description?");
             int packagesChoice = CustomInput.choice(1, 3);
-            switch (packagesChoice) {
-            case 1:
-                System.out.println("Enter the new name of the item: ");
-                String newname = scanner.nextLine();
-                MenuMgr.changePackagesName(itemID, newname);
-                break;
-            case 2:
-                System.out.println("Enter the new price of the item: ");
-                double newprice = CustomInput.nextPositiveDouble();
-                MenuMgr.changePackagesPrice(itemID, newprice);
-                break;
-            case 3:
-                System.out.println("Enter the new description of the item: ");
-                String description = scanner.nextLine();
-                MenuMgr.changePackagesDescription(itemID, description);
-                break;
+            switch(packagesChoice){
+                case 1:
+                    System.out.println("Enter the new name of the item: ");
+                    String newname = scanner.nextLine();
+                    MenuMgr.changePackagesName(itemID, newname);
+                    break;
+                case 2:
+                    System.out.println("Enter the new price of the item: ");
+                    double newprice = CustomInput.nextPositiveDouble();
+                    MenuMgr.changePackagesPrice(itemID, newprice);
+                    break;
+                case 3:
+                    System.out.println("Enter the new description of the item: ");
+                    String description = scanner.nextLine();
+                    MenuMgr.changePackagesDescription(itemID, description);
+                    break;
             }
             break;
         }
     }
 
-    private static PackageItem createPackage(String name, double price, String description, String id) {
+    private static PackageItem createPackage(String name,double price,String description, String id){
         Drinks packageDrinks = null;
         MainCourse packageMainCourse = null;
         Dessert packageDessert = null;
         System.out.println("Enter the drinks ID: ");
         String drinksID = scanner.nextLine();
         boolean drinksExist = false;
-        while (!drinksExist) {
-            try {
+        while(!drinksExist){
+            try{
                 packageDrinks = MenuMgr.findDrinksbyID(drinksID);
                 drinksExist = true;
-            } catch (IndexOutOfBoundsException e) {
+            }catch (IndexOutOfBoundsException e){
                 System.out.println("Drinks not found! ");
                 System.out.println("Enter Drinks ID again");
             }
@@ -323,11 +394,11 @@ public class MenuInterface {
         System.out.println("Enter the Main Course ID: ");
         String maincourseID = scanner.nextLine();
         boolean maincourseExist = false;
-        while (!maincourseExist) {
-            try {
+        while(!maincourseExist){
+            try{
                 packageMainCourse = MenuMgr.findMainCoursebyID(maincourseID);
                 maincourseExist = true;
-            } catch (IndexOutOfBoundsException e) {
+            }catch (IndexOutOfBoundsException e){
                 System.out.println("Main Course not found! ");
                 System.out.println("Enter Main Course ID again: ");
             }
@@ -335,11 +406,11 @@ public class MenuInterface {
         System.out.println("Enter the Dessert ID: ");
         String dessertID = scanner.nextLine();
         boolean dessertExist = false;
-        while (!dessertExist) {
-            try {
+        while(!dessertExist){
+            try{
                 packageDessert = MenuMgr.findDessertbyID(dessertID);
                 dessertExist = true;
-            } catch (IndexOutOfBoundsException e) {
+            }catch (IndexOutOfBoundsException e){
                 System.out.println("Dessert not found! ");
                 System.out.println("Enter Dessert ID again");
             }
