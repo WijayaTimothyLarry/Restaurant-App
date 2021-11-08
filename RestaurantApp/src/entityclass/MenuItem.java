@@ -14,7 +14,6 @@ public class MenuItem implements Serializable {
 	private String itemID;
 
 	public MenuItem(String foodName, double foodprice, String foodDescription, String foodID) {
-		// TODO - implement MenuItem.MenuItem
 		this.itemName = foodName;
 		this.price = foodprice;
 		this.description = foodDescription;

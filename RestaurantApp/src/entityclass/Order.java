@@ -96,11 +96,6 @@ public class Order implements Serializable {
 		this.totalBill = totalBill;
 	}
 
-	public void printReciept() {
-		// TODO - implement Order.printReciept
-
-	}
-
 	public double calTotalBill() {
 		double bill = 0;
 		for (int i = 0; i < this.orderItems.size(); i++) {
