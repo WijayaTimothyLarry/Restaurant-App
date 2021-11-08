@@ -38,6 +38,7 @@ public class Restaurant {
 		createStaffList();
 		createInvoiceList();
 		createOrderList();
+		createMemberList();
 	}
 
 	public static void createMenu() {
@@ -222,6 +223,8 @@ public class Restaurant {
 		memberList.add(member2);
 		memberList.add(member3);
 		memberList.add(member4);
+
+		Restaurant.memberList = memberList;
 	}
 
 	public static void saveRestaurant() {
