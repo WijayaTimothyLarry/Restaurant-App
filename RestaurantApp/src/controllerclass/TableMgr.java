@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import database.Restaurant;
-import entityclass.Invoice;
 import entityclass.Reservation;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
