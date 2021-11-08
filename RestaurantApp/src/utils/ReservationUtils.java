@@ -2,6 +2,7 @@ package utils;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -151,7 +152,7 @@ public class ReservationUtils {
     }
 
     // method to get difference between 2 Calendar timings
-    public static boolean diffOfTimings(Calendar timing1, Calendar timing2) {
+    public static boolean diffOfTimings(Date timing1, Date timing2) {
         long hoursBetween = ChronoUnit.HOURS.between(timing1.toInstant(), timing2.toInstant());
         if (hoursBetween < 0) {
             hoursBetween = ChronoUnit.HOURS.between(timing2.toInstant(), timing1.toInstant());
@@ -163,7 +164,7 @@ public class ReservationUtils {
     }
 
     // method to get difference between 2 Calendar timings (check for 15mins expiry)
-    public static boolean expiryCheck(Calendar timing1, Calendar timing2) {
+    public static boolean expiryCheck(Date timing1, Date timing2) {
         long minsBetween = ChronoUnit.MINUTES.between(timing1.toInstant(), timing2.toInstant());
         if (minsBetween < 15) 
             return false;
