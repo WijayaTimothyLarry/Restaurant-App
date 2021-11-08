@@ -67,6 +67,7 @@ public class ReservationUtils {
         System.out.println("Enter month(1-12): ");
         int month = choice(1, 12);
         futureDateTime.set(Calendar.MONTH, month);
+        futureDateTime.add(Calendar.MONTH, -1);
 
         System.out.println("Enter day: ");
         int numDays = 0;
@@ -171,5 +172,7 @@ public class ReservationUtils {
         else
             return true;
     }
+
+    
 
 }
