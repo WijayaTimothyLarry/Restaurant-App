@@ -54,20 +54,19 @@ public class ReservationUtils {
         Calendar currentDateTime = (Calendar) Calendar.getInstance();
         Calendar futureDateTime = (Calendar) Calendar.getInstance();
 
-        System.out.println(" Date  (now):" + currentDateTime.getTime());
+        System.out.println("Date  (now):\n" + currentDateTime.getTime());
 
-        System.out.println("Enter year(up to next year): ");
         int lowYear = currentDateTime.get(Calendar.YEAR);
         currentDateTime.add(Calendar.YEAR, 1);
         int uppYear = currentDateTime.get(Calendar.YEAR);
 
         int year = choice(lowYear, uppYear);
+        System.out.printf("Enter year %d to %d\n", lowYear, uppYear);
         futureDateTime.set(Calendar.YEAR, year);
 
         System.out.println("Enter month(1-12): ");
         int month = choice(1, 12);
-        futureDateTime.set(Calendar.MONTH, month);
-        futureDateTime.add(Calendar.MONTH, -1);
+        futureDateTime.set(Calendar.MONTH, month - 1);
 
         System.out.println("Enter day: ");
         int numDays = 0;
@@ -167,12 +166,10 @@ public class ReservationUtils {
     // method to get difference between 2 Calendar timings (check for 15mins expiry)
     public static boolean expiryCheck(Date timing1, Date timing2) {
         long minsBetween = ChronoUnit.MINUTES.between(timing1.toInstant(), timing2.toInstant());
-        if (minsBetween < 15) 
+        if (minsBetween < 15)
             return false;
         else
             return true;
     }
-
-    
 
 }
