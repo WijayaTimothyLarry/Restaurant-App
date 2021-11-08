@@ -236,6 +236,7 @@ public class Restaurant {
 		data.add(Restaurant.staffList);
 		data.add(Restaurant.invoiceList);
 		data.add(Restaurant.orderList);
+		data.add(Restaurant.memberList);
 
 		try {
 			FileOutputStream fos = new FileOutputStream("restaurant.ser");
@@ -275,6 +276,7 @@ public class Restaurant {
 		Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
 		Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
 		Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
+		Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 	}
 
 	public static void testing() {
