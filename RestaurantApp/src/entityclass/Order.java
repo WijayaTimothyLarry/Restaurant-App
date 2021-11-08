@@ -2,6 +2,8 @@ package entityclass;
 
 import java.util.*;
 
+import utils.StringUtils;
+
 import java.io.Serializable;
 
 public class Order implements Serializable {
@@ -13,15 +15,25 @@ public class Order implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private double totalBill;
 	private Invoice invoice;
+	private int pax;
 	// private Reservation reservation;
 
-	public Order(Calendar date, int tableNo, String waiterName) {
+	public Order(Calendar date, int tableNo, int pax, String waiterName) {
 		this.orderID = Calendar.getInstance().hashCode();
 		this.orderDate = date;
 		this.tableNumber = tableNo;
 		this.waiterName = waiterName;
 		this.orderItems = new ArrayList<OrderItem>();
 		this.invoice = null;
+		this.pax = pax;
+	}
+
+	public int getPax(){
+		return this.pax;
+	}
+
+	public void setPax(int pax){
+		this.pax = pax;
 	}
 
 	public int getOrderID() {
@@ -98,8 +110,10 @@ public class Order implements Serializable {
 
 	public double calTotalBill() {
 		double bill = 0;
-		for (int i = 0; i < this.orderItems.size(); i++) {
-			bill += this.orderItems.get(i).getPrice();
+		for (OrderItem orderItem : orderItems){
+			int quantity = orderItem.getQuantity();
+			double price = orderItem.getPrice();
+			bill += (quantity * price);
 		}
 		return bill;
 	}
@@ -152,7 +166,7 @@ public class Order implements Serializable {
 	public String toString() {
 		String orderString = "";
 		for (OrderItem orderItem : orderItems) {
-			orderString += orderItem.getItem().getItemName() + "    " + orderItem.getPrice() + "\n";
+			orderString += StringUtils.rightPadding(Integer.toString(orderItem.getQuantity()),' ', 2) + "   " + StringUtils.rightPadding(orderItem.getItem().getItemName(),' ',30) + " " + String.format("%.2f", orderItem.getPrice()) + "\n";
 		}
 		return orderString;
 	}

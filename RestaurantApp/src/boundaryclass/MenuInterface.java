@@ -99,6 +99,7 @@ public class MenuInterface {
             System.out.println("(0) Go back");
 
             choice = CustomInput.choice(0, 5);
+            if(choice ==0) break;
             System.out.print("New menu item name: ");
             String menuName = scanner.nextLine();
             System.out.print("Price of the new menu item:");
@@ -130,6 +131,7 @@ public class MenuInterface {
                 break;
             case 0:
                 on = false;
+                break;
             }
         }
     }
@@ -408,6 +410,8 @@ public class MenuInterface {
                     MenuMgr.changePackagesDescription(itemID, description);
                     break;
                 }
+            case 0:
+                on = false;
             }
         }
 

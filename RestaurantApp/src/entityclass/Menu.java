@@ -118,7 +118,7 @@ public class Menu implements Serializable {
 			System.out.println("Description: " + item.getDescription());
 			System.out.println("Items included are ");
 			for (int j = 0; j < packageList.size(); j++) {
-				MenuItem iteminpackage = packageList.get(i);
+				MenuItem iteminpackage = packageList.get(j);
 				System.out.printf("(%d) %s \n", j + 1, iteminpackage.getItemName());
 			}
 			System.out.println("ID: " + item.getItemID());
@@ -171,7 +171,7 @@ public class Menu implements Serializable {
 		Iterator<MainCourse> itr = mainCourseList.iterator();
 		while (itr.hasNext()) {
 			MainCourse food = itr.next();
-			if (food.getItemID() == id) {
+			if (food.getItemID().equals(id)) {
 				System.out.println("Item found");
 				itr.remove();
 				System.out.println("Item deleted");
@@ -218,7 +218,7 @@ public class Menu implements Serializable {
 		Iterator<Dessert> itr = dessertList.iterator();
 		while (itr.hasNext()) {
 			Dessert food = itr.next();
-			if (food.getItemID() == id) {
+			if (food.getItemID().equals(id)) {
 				System.out.println("Item found");
 				itr.remove();
 				System.out.println("Item deleted");
@@ -266,7 +266,8 @@ public class Menu implements Serializable {
 		Iterator<Drinks> itr = drinksList.iterator();
 		while (itr.hasNext()) {
 			Drinks food = itr.next();
-			if (food.getItemID() == id) {
+			if (food.getItemID().equals(id)) {
+				
 				System.out.println("Item found");
 				itr.remove();
 				System.out.println("Item deleted");
@@ -314,7 +315,7 @@ public class Menu implements Serializable {
 		Iterator<PackageItem> itr = packagesList.iterator();
 		while (itr.hasNext()) {
 			PackageItem food = itr.next();
-			if (food.getItemID() == id) {
+			if (food.getItemID().equals(id)) {
 				System.out.println("Item found");
 				itr.remove();
 				System.out.println("Item deleted");
@@ -361,7 +362,7 @@ public class Menu implements Serializable {
 		Iterator<Appetizer> itr = appeList.iterator();
 		while (itr.hasNext()) {
 			Appetizer food = itr.next();
-			if (food.getItemID() == id) {
+			if (food.getItemID().equals(id)) {
 				System.out.println("Item found");
 				itr.remove();
 				System.out.println("Item deleted");
@@ -409,10 +410,8 @@ public class Menu implements Serializable {
 		Iterator<MenuItem> itr = menuList.iterator();
 		while (itr.hasNext()) {
 			MenuItem food = itr.next();
-			if (food.getItemID() == id) {
-				System.out.println("Item found");
+			if (food.getItemID().equals(id)) {
 				itr.remove();
-				System.out.println("Item deleted");
 				return 1;
 			}
 		}
