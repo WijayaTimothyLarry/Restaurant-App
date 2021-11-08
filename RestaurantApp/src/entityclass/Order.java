@@ -10,10 +10,6 @@ import utils.StringUtils;
 
 public class Order implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private int orderID;
 	private Calendar orderDate;
 	private int tableNumber;
