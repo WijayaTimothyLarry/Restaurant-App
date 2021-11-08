@@ -1,9 +1,13 @@
 package boundaryclass;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 import controllerclass.ReservationMgr;
 import entityclass.Reservation;
+import entityclass.Table;
+import utils.CustomInput;
 
 public class ReservationInterface {
     private static Scanner scanner = new Scanner(System.in);
@@ -51,17 +55,27 @@ public class ReservationInterface {
     }
 
     private static void createNewReservation() {
-        System.out.println("Enter customer phone number:");
-        String phoneNumber = scanner.nextLine();
-        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
-            Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
-            if (reservation != null) {
-                System.out.println("Customer already have the following reservation:");
-                reservation.printReservationInfo();
-            } else {
-                ReservationMgr.newReservation(phoneNumber);
-            }
+        String phoneNumber = CustomInput.phoneNumberInput();
+        Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
+        if (reservation != null) {
+            System.out.println("Customer already have the following reservation:");
+            reservation.printReservationInfo();
+            return;
         }
+        System.out.println("Enter Customer Name");
+        String customerName = scanner.nextLine();
+        System.out.println("Enter the date and time of reservation");
+        Calendar reservationDate = CustomInput.dateInput();
+        System.out.println("Enter the total number of people for this Reservation");
+        int newNoOfPax = CustomInput.nextPositiveInt();
+        ArrayList<Table> availableTable = ReservationMgr.getAvailableTables(newNoOfPax, reservationDate);
+        System.out.println("Available table:");
+        for (Table table : availableTable) {
+            System.out.printf("Table %d, table size = %d\n", table.getTableNumber(), table.getTableSize());
+        }
+        System.out.println("\nEnter table number to be reserved");
+        int tableNumber = CustomInput.nextPositiveInt();
+        ReservationMgr.newReservation(phoneNumber, reservationDate, customerName, newNoOfPax, tableNumber);
     }
 
     private static void removeCustomerReservation() {
