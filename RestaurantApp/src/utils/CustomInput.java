@@ -120,19 +120,19 @@ public class CustomInput {
         Calendar currentDateTime = (Calendar) Calendar.getInstance();
         Calendar futureDateTime = (Calendar) Calendar.getInstance();
 
-        System.out.println(" Date  (now):" + currentDateTime.getTime());
+        System.out.println("Date  (now):\n" + currentDateTime.getTime());
 
-        System.out.println("Enter year(up to next year): ");
         int lowYear = currentDateTime.get(Calendar.YEAR);
         currentDateTime.add(Calendar.YEAR, 1);
         int uppYear = currentDateTime.get(Calendar.YEAR);
 
+        System.out.printf("Enter year %d to %d\n", lowYear, uppYear);
         int year = choice(lowYear, uppYear);
         futureDateTime.set(Calendar.YEAR, year);
 
         System.out.println("Enter month(1-12): ");
         int month = choice(1, 12);
-        futureDateTime.set(Calendar.MONTH, month);
+        futureDateTime.set(Calendar.MONTH, month - 1);
 
         System.out.println("Enter day: ");
         int numDays = 0;
