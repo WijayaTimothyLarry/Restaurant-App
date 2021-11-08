@@ -2,6 +2,7 @@ package entityclass;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Invoice implements Serializable {
@@ -13,21 +14,25 @@ public class Invoice implements Serializable {
 	private ArrayList<OrderItem> orderItems;
 	private String waiterName;
 	private double gst;
-	private double price;
-	private Calendar dateTime;
+	private double subtotal;
+	private Date dateTime;
+	private double SCHARGE;
 
 	public static final double GST = 0.07; // According to Singapore Goods and Services Tax
+	public static final double serviceCharge = 0.10; 
 
 	public Invoice(Order order) {
 		this.order = order;
 		this.invoiceID = Calendar.getInstance().hashCode(); // Assigning a unique value to an object by hashing
-		this.price = order.calTotalBill();
-		this.gst = this.price * GST;
-		this.totalBill = this.price + this.gst;
-		this.dateTime = Calendar.getInstance();
+		this.subtotal = order.calTotalBill();
+		this.gst = this.subtotal * GST;
+		this.SCHARGE = this.subtotal * serviceCharge;
+		this.totalBill = this.subtotal + this.gst + this.SCHARGE;
+		this.dateTime = Calendar.getInstance().getTime();
+		
 	}
 
-	public Calendar getDatetime() {
+	public Date getDatetime() {
 		return dateTime;
 	}
 
@@ -35,7 +40,7 @@ public class Invoice implements Serializable {
 	 * 
 	 * @param invoiceDateTime
 	 */
-	public void setDatetime(Calendar invoiceDateTime) {
+	public void setDatetime(Date invoiceDateTime) {
 		this.dateTime = invoiceDateTime;
 	}
 
@@ -103,12 +108,17 @@ public class Invoice implements Serializable {
 		System.out.println("          RESTAURANT          ");
 		System.out.println("******************************");
 		System.out.println("Service staff: " + this.waiterName);
+		System.out.println("Table: " + this.tableNumber);
+		System.out.println("Pax: " + order.getPax());
 		System.out.println("InvoiceID: " + this.invoiceID);
+		System.out.println("Date: " + this.dateTime);
+		System.out.println("..............................");
 		System.out.println("Ordered items: ");
 		System.out.println(order.toString());
-		System.out.println("Subtotal: " + this.price);
-		System.out.println("GST: " + this.gst);
-		System.out.println("TOTAL: " + this.totalBill);
+		System.out.println("Subtotal: " + String.format("%.2f",this.subtotal));
+		System.out.println("GST(7%): " + String.format("%.2f",this.gst));
+		System.out.println("Service Charge(10%): " + String.format("%.2f",this.SCHARGE));
+		System.out.println("TOTAL: " + String.format("%.2f",this.totalBill));
 		System.out.println("******************************");
 	}
 

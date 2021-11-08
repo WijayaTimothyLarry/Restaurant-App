@@ -162,4 +162,13 @@ public class ReservationUtils {
             return true;
     }
 
+    // method to get difference between 2 Calendar timings (check for 15mins expiry)
+    public static boolean expiryCheck(Calendar timing1, Calendar timing2) {
+        long minsBetween = ChronoUnit.MINUTES.between(timing1.toInstant(), timing2.toInstant());
+        if (minsBetween < 15) 
+            return false;
+        else
+            return true;
+    }
+
 }
