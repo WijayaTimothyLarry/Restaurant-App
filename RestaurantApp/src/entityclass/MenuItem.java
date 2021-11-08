@@ -14,7 +14,6 @@ public class MenuItem implements Serializable {
 	private String itemID;
 
 	public MenuItem(String foodName, double foodprice, String foodDescription, String foodID) {
-		// TODO - implement MenuItem.MenuItem
 		this.itemName = foodName;
 		this.price = foodprice;
 		this.description = foodDescription;
@@ -26,19 +25,24 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set Name of the MenuItem
 	 * @param itemName
 	 */
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 
+
+/**
+ * 
+ * @return price of item
+ */
 	public double getPrice() {
 		return this.price;
 	}
 
 	/**
-	 * 
+	 * set the price of MenuItem
 	 * @param price
 	 */
 	public void setPrice(double price) {
@@ -50,19 +54,24 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Set the description of MenuItem
 	 * @param description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+
+/**
+ * 
+ * @return ID of item
+ */
 	public String getItemID() {
 		return this.itemID;
 	}
 
 	/**
-	 * 
+	 * Set ID of Item
 	 * @param itemID
 	 */
 	public void setItemID(String itemID) {
