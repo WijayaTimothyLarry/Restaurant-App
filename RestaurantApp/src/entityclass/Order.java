@@ -1,14 +1,19 @@
 package entityclass;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 import database.Restaurant;
 import utils.StringUtils;
 
-import java.io.Serializable;
-
 public class Order implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int orderID;
 	private Calendar orderDate;
 	private int tableNumber;
