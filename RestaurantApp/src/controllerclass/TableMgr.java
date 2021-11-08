@@ -5,13 +5,14 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import database.Restaurant;
+import entityclass.Invoice;
 import entityclass.Reservation;
 import entityclass.Table;
 import entityclass.Table.TableStatus;
 import utils.ReservationUtils;
 
 public class TableMgr {
-    private static ArrayList<Table> tableList = Restaurant.tableList;
+    public static ArrayList<Table> tableList = Restaurant.tableList;
 
     public static ArrayList<Table> getAvailableTables(int noOfPax, Calendar time) {
 
@@ -44,7 +45,7 @@ public class TableMgr {
     }
 
     public static void registerCustomerToTable(String waiter, int tableNumber) {
-        for (Table table : tableList)
+        for (Table table : tableList){
             if (table.getTableNumber() == tableNumber) {
                 if (table.getTableStatus() == TableStatus.OCCUPIED) {
                     System.out.println("Please choose another table");
@@ -52,6 +53,7 @@ public class TableMgr {
                     table.registerCustomerToTable(waiter);
                 }
             }
+        }
     }
 
     public static boolean checkTableOccupied(int tableNumber) {
@@ -62,5 +64,15 @@ public class TableMgr {
         }
         return false;
     }
+
+    public static void unassignTable(int tableNumber){
+        
+        for (Table table : tableList) {
+            if (table.getTableNumber() == tableNumber) {
+                table.setToEmpty();
+                table.setOrder(null);
+            }
+    }
+}
 
 }
