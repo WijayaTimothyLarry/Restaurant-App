@@ -119,7 +119,7 @@ public class Menu implements Serializable {
 			System.out.println("Description: " + item.getDescription());
 			System.out.println("Items included are ");
 			for (int j = 0; j < packageList.size(); j++) {
-				MenuItem iteminpackage = packageList.get(i);
+				MenuItem iteminpackage = packageList.get(j);
 				System.out.printf("(%d) %s \n", j + 1, iteminpackage.getItemName());
 			}
 			System.out.println("ID: " + item.getItemID());
