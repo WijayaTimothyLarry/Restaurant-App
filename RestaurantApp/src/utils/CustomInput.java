@@ -107,6 +107,16 @@ public class CustomInput {
         return input;
     }
 
+    public static String phoneNumberInput() {
+        System.out.println("Enter phone number:");
+        String phoneNumber = scanner.nextLine();
+        while (phoneNumber.length() == 8 && (phoneNumber.charAt(0) == 9 || phoneNumber.charAt(0) == 8)) {
+            System.out.println("Enter a valid phone number");
+            phoneNumber = scanner.nextLine();
+        }
+        return phoneNumber;
+    }
+
     public static Calendar dateInput() {
 
         Calendar currentDateTime = (Calendar) Calendar.getInstance();
