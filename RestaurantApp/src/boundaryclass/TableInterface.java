@@ -196,8 +196,8 @@ public class TableInterface {
     }
 
     public static void settleTable(){
-
-
-
+        System.out.println("Enter Table Number:");
+        int tableNumber = CustomInput.nextPositiveInt();
+        TableMgr.unassignTable(tableNumber);
     }
 }
