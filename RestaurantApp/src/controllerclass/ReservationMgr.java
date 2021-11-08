@@ -19,6 +19,10 @@ public class ReservationMgr {
                 tableNumber);
 
         reservationList.add(newReserv);
+        for (Table table : tableList) {
+            if (table.getTableNumber() == tableNumber)
+                table.addReservation(newReserv);
+        }
         System.out.println("New Reservation successfully made for Table Number: " + newReserv.getTableNumber());
         System.out.println(reservationList.size());
 
