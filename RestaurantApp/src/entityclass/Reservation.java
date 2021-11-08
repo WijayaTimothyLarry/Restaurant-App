@@ -96,45 +96,13 @@ public class Reservation implements Serializable {
 		return this.reservationID;
 	}
 
-	// public boolean checkReservationAvail(LocalDateTime time) // Checks if the
-	// next reservation can be made for a given
-	// // time
-	// { // by comparing to see if the new arrival time overlaps with an existing
-	// boolean available = false; // Reservation timing
-	// if (time.toLocalDate().compareTo(date) == 0) {
-	// if (time.toLocalTime().compareTo(LocalTime.parse("14:00")) < 0) {
-	// if (arrivalTime.compareTo(LocalTime.parse("14:00")) < 0) {
-	// available = true;
-	// }
-	// } else {
-	// if (arrivalTime.compareTo(LocalTime.parse("19:00")) < 0) {
-	// available = true;
-	// }
-	// }
-	// }
-	// return available;
-	// }
-
 	public void printReservationInfo() // Print the details of a given reservation
 	{
-		System.out.println(" \n Reservation ID: " + reservationID);
-		System.out.println(" \n Customer's Contact Number: " + customerContactNo);
-		System.out.println(" \n Customer's Name: " + customerName);
-		System.out.println(" \n Date Time: " + reservationDateTime.getTime());
-		System.out.println(" \n Table ID: " + tableNumber);
+		System.out.println("\nReservation ID: " + reservationID);
+		System.out.println("\nCustomer's Contact Number: " + customerContactNo);
+		System.out.println("\nCustomer's Name: " + customerName);
+		System.out.println("\nDate Time: " + reservationDateTime.getTime());
+		System.out.println("\nTable ID: " + tableNumber);
+		System.out.println("");
 	}
-
-	/*
-	 * public void setReservationID(int reservationID) { this.reservationID =
-	 * reservationID; this.status = TableStatus.OCCUPIED; }
-	 */
-
-	/*
-	 * 
-	 * - function to remove Res based on time
-	 * 
-	 * - Adding new Reservation by array or immediately upon object creation to be
-	 * passed to the constructor
-	 * 
-	 */
 }
