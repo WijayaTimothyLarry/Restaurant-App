@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import database.Restaurant;
+
 public class Table implements Serializable {
 
 	private int tableNumber;
@@ -72,10 +74,11 @@ public class Table implements Serializable {
 		return this.tableOrder;
 	}
 
-	public void registerCustomerToTable() {
+	public void registerCustomerToTable(String waiterName) {
 		this.status = TableStatus.OCCUPIED;
 		Calendar currentTime = Calendar.getInstance();
-		this.tableOrder = new Order(currentTime, this.tableNumber, null);
+		this.tableOrder = new Order(currentTime, this.tableNumber, waiterName);
+		Restaurant.orderList.add(this.tableOrder);
 	}
 
 	public void settleTable() {

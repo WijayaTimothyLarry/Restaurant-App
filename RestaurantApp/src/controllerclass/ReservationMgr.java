@@ -1,6 +1,5 @@
 package controllerclass;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -11,6 +10,7 @@ import entityclass.Table;
 
 public class ReservationMgr {
     private static ArrayList<Reservation> reservationList = Restaurant.reservationList;
+
     private static Scanner sc = new Scanner(System.in);
 
     public static void newReservation(String newCustomerContactNo) {        
@@ -47,6 +47,7 @@ public class ReservationMgr {
             }
         }
     }
+
 
     public static Calendar strToCalendarLong(String strDate) {
         Calendar c = Calendar.getInstance();
