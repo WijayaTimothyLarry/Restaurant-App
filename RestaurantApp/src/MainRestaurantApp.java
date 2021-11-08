@@ -7,7 +7,7 @@ import utils.CustomInput;
 public class MainRestaurantApp {
 
     public static void main(String[] args) {
-        Restaurant.createRestaurant();
+        Restaurant.loadRestaurant();
         int choice;
         boolean on = true;
         while (on) {
@@ -32,6 +32,7 @@ public class MainRestaurantApp {
                 on = false;
             }
         }
+        Restaurant.saveRestaurant();
 
     }
 }
