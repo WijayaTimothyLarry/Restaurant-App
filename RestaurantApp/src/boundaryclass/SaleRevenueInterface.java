@@ -18,29 +18,31 @@ public class SaleRevenueInterface {
             System.out.println("(2) Monthly sales revenue");
             System.out.println("(3) Yerly sales revenue");
             System.out.println("(0) Go back");
-            choice = CustomInput.choice(0, 4);
+            choice = CustomInput.choice(0, 3);
             switch (choice) {
             case 1:
                 System.out.println("Enter date to check daily revenue");
                 date = CustomInput.dailyRevenueDateInput();
                 double daySaleRevenue = SaleRevenueMgr.getDailyRevenue(date);
-                System.out.println("Daily Revenue for above date:");
-                System.out.printf(" = %.2f", daySaleRevenue);
+                System.out.print("Daily Revenue for above date:");
+                System.out.printf(" = $%.2f\n\n", daySaleRevenue);
                 break;
             case 2:
                 System.out.println("Enter date to check daily revenue");
                 date = CustomInput.mothlyRevenueDateInput();
                 double monthSaleRevenue = SaleRevenueMgr.getMonthlyRevenue(date);
-                System.out.println("Daily Revenue for above date:");
-                System.out.printf(" = %.2f", monthSaleRevenue);
+                System.out.print("Daily Revenue for above date:");
+                System.out.printf(" = $%.2f\n\n", monthSaleRevenue);
                 break;
             case 3:
                 System.out.println("Enter date to check daily revenue");
                 date = CustomInput.yearlyRevenueDateInput();
                 double yearSaleRevenue = SaleRevenueMgr.getYearlyRevenue(date);
-                System.out.println("Daily Revenue for above date:");
-                System.out.printf(" = %.2f", yearSaleRevenue);
+                System.out.print("Daily Revenue for above date:");
+                System.out.printf(" = $%.2f\n\n", yearSaleRevenue);
                 break;
+            case 0:
+                on = false;
             }
 
         }
