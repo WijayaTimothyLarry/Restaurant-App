@@ -38,6 +38,14 @@ public class ReservationMgr {
         return null;
     }
 
+    public static ArrayList<Reservation> checkTableReservation(int tableNumber) {
+        for (Table table : tableList) {
+            if (table.getTableNumber() == tableNumber)
+                return table.getReservationList();
+        }
+        return null;
+    }
+
     public static void removeReservation(String phoneNumber) {
         Iterator<Reservation> itr = reservationList.iterator();
         while (itr.hasNext()) {
