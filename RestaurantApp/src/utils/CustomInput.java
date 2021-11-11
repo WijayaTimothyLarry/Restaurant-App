@@ -209,4 +209,85 @@ public class CustomInput {
         boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
         return comparison;
     }
+
+    public static Calendar dailyRevenueDateInput() {
+
+        Calendar currentDateTime = (Calendar) Calendar.getInstance();
+        Calendar futureDateTime = (Calendar) Calendar.getInstance();
+
+        System.out.println("Current Date and Time:\n" + currentDateTime.getTime());
+
+        System.out.println("\nEnter year:");
+        int year = nextPositiveInt();
+        futureDateTime.set(Calendar.YEAR, year);
+
+        System.out.println("Enter month(1-12): ");
+        int month = choice(1, 12);
+        futureDateTime.set(Calendar.MONTH, month - 1);
+
+        System.out.println("Enter day: ");
+        int numDays = 0;
+        switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            numDays = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            numDays = 30;
+            break;
+        case 2:
+            if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
+                numDays = 29;
+            else
+                numDays = 28;
+            break;
+        }
+        int day = choice(1, numDays);
+        futureDateTime.set(Calendar.DAY_OF_MONTH, day);
+
+        System.out.printf("Inputted Date: %d/%d/%d\n", day, month, year);
+        return futureDateTime;
+    }
+
+    public static Calendar mothlyRevenueDateInput() {
+
+        Calendar currentDateTime = (Calendar) Calendar.getInstance();
+        Calendar futureDateTime = (Calendar) Calendar.getInstance();
+
+        System.out.println("Current Date and Time:\n" + currentDateTime.getTime());
+
+        System.out.println("\nEnter year:");
+        int year = nextPositiveInt();
+        futureDateTime.set(Calendar.YEAR, year);
+
+        System.out.println("Enter month(1-12): ");
+        int month = choice(1, 12);
+        futureDateTime.set(Calendar.MONTH, month - 1);
+
+        System.out.printf("Inputted month / year: %d/%d\n", month, year);
+        return futureDateTime;
+    }
+
+    public static Calendar yearlyRevenueDateInput() {
+
+        Calendar currentDateTime = (Calendar) Calendar.getInstance();
+        Calendar futureDateTime = (Calendar) Calendar.getInstance();
+
+        System.out.println("Current Date and Time:\n" + currentDateTime.getTime());
+
+        System.out.println("\nEnter year:");
+        int year = nextPositiveInt();
+        futureDateTime.set(Calendar.YEAR, year);
+
+        System.out.printf("Inputted year: %d\n", year);
+        return futureDateTime;
+    }
 }
