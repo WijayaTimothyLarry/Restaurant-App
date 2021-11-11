@@ -67,5 +67,33 @@ public class ReservationUtils {
         else
             return true;
     }
+    // method to compare date, month and year
+    public static boolean compareDMY(Date timing1, Date timing2){
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH) && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+        return comparison;
+    }
 
+    //method to compare month and year
+    public static boolean compareMY(Date timing1, Date timing2){
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+        return comparison;
+    }
+
+    //method to compare year
+    public static boolean compareY(Date timing1, Date timing2){
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
+        return comparison;
+    }
 }
