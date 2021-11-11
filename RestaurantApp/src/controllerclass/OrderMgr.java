@@ -19,7 +19,7 @@ public class OrderMgr {
     public static void printTableOrder(int tableNumber) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no order for this table");
+            System.out.println("There is no order for this table\n");
         } else {
             System.out.printf("Table %d Order\n", tableNumber);
             System.out.println(tableOrder.toString());
@@ -29,7 +29,7 @@ public class OrderMgr {
     public static void addAppetizer(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             Appetizer appetizer = restaurantMenu.getAppeList().get(restaurantMenu.findforAppeList(itemID));
             OrderItem newItem = new OrderItem(appetizer, quantity);
@@ -40,7 +40,7 @@ public class OrderMgr {
     public static void addMainCourse(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             MainCourse mainCourse = restaurantMenu.getMainCourseList()
                     .get(restaurantMenu.findforMainCourseList(itemID));
@@ -52,7 +52,7 @@ public class OrderMgr {
     public static void addDessert(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             Dessert dessert = restaurantMenu.getDessertList().get(restaurantMenu.findforDessertList(itemID));
             OrderItem newItem = new OrderItem(dessert, quantity);
@@ -63,7 +63,7 @@ public class OrderMgr {
     public static void addDrinks(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             Drinks drinks = restaurantMenu.getDrinksList().get(restaurantMenu.findforDrinksList(itemID));
             OrderItem newItem = new OrderItem(drinks, quantity);
@@ -74,7 +74,7 @@ public class OrderMgr {
     public static void addPackage(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             PackageItem packageItem = restaurantMenu.getPackagesList().get(restaurantMenu.findforPackageList(itemID));
             OrderItem newItem = new OrderItem(packageItem, quantity);
@@ -93,7 +93,7 @@ public class OrderMgr {
     public static void removeOrder(int tableNumber) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
-            System.out.println("There is no customer in this table");
+            System.out.println("There is no customer in this table\n");
         } else {
             tableOrder.removeOrderItem();
         }
