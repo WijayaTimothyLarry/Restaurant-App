@@ -24,7 +24,7 @@ public class TableMgr {
             }
         }
         if (availableTableList.isEmpty()) {
-            System.out.println("There are no empty tables for " + noOfPax);
+            System.out.printf("There are no empty tables for %d\n\n", noOfPax);
             return availableTableList;
         }
         Iterator<Table> itr = availableTableList.iterator();
@@ -40,7 +40,7 @@ public class TableMgr {
             }
         }
         if (availableTableList.isEmpty()) {
-            System.out.println("There are no empty tables for " + noOfPax);
+            System.out.printf("There are no empty tables for %d\n\n", noOfPax);
         }
         return availableTableList;
     }
@@ -49,8 +49,11 @@ public class TableMgr {
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 if (table.getTableStatus() == TableStatus.OCCUPIED) {
-                    System.out.println("Please choose another table");
+                    System.out.println("Please choose another table\n");
                 } else {
+                    if (table.getTableSize() < noOfPax) {
+                        System.out.println("Please choose a bigger table\n");
+                    }
                     table.registerCustomerToTable(waiter, noOfPax, isMember);
                     ;
                 }
@@ -62,6 +65,18 @@ public class TableMgr {
         for (Table table : tableList) {
             if (table.getTableNumber() == tableNumber) {
                 return (table.getTableStatus() == TableStatus.OCCUPIED);
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkTableSize(int tableNumber, int noOfPax) {
+        for (Table table : tableList) {
+            if (table.getTableNumber() == tableNumber) {
+                if (table.getTableSize() < noOfPax)
+                    return false;
+                else
+                    return true;
             }
         }
         return false;
