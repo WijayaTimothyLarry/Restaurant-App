@@ -83,6 +83,7 @@ public class Table implements Serializable {
 
 	public void settleTable() {
 		this.status = TableStatus.EMPTY;
+		this.tableOrder = null;
 
 	}
 
