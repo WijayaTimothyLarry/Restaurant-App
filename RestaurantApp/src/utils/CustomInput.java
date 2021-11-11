@@ -2,6 +2,7 @@ package utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Date;
 import java.util.Calendar;
 
 public class CustomInput {
@@ -120,13 +121,13 @@ public class CustomInput {
         Calendar currentDateTime = (Calendar) Calendar.getInstance();
         Calendar futureDateTime = (Calendar) Calendar.getInstance();
 
-        System.out.println("Date  (now):\n" + currentDateTime.getTime());
+        System.out.println("Current Date and Time:\n" + currentDateTime.getTime());
 
         int lowYear = currentDateTime.get(Calendar.YEAR);
         currentDateTime.add(Calendar.YEAR, 1);
         int uppYear = currentDateTime.get(Calendar.YEAR);
 
-        System.out.printf("Enter year %d to %d\n", lowYear, uppYear);
+        System.out.printf("\nEnter year %d to %d\n", lowYear, uppYear);
         int year = choice(lowYear, uppYear);
         futureDateTime.set(Calendar.YEAR, year);
 
@@ -174,5 +175,38 @@ public class CustomInput {
 
         System.out.println("Date (future) :" + futureDateTime.getTime());
         return futureDateTime;
+    }
+
+    // method to compare date, month and year
+    public static boolean compareDMY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
+                && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+        return comparison;
+    }
+
+    // method to compare month and year
+    public static boolean compareMY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+        return comparison;
+    }
+
+    // method to compare year
+    public static boolean compareY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
+        return comparison;
     }
 }
