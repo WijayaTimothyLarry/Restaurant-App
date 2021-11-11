@@ -53,7 +53,7 @@ public class TableInterface {
 
     }
 
-    public static void checkTableAvailability() {
+    private static void checkTableAvailability() {
         System.out.println("Enter number of pax:");
         int noOfPax = CustomInput.nextPositiveInt();
         Calendar currentTime = Calendar.getInstance();
@@ -70,7 +70,7 @@ public class TableInterface {
 
     }
 
-    public static void registerCustomerToTable() {
+    private static void registerCustomerToTable() {
         System.out.println("Enter waiter name:");
         String waiterName = scanner.nextLine();
         System.out.println("");
@@ -84,13 +84,13 @@ public class TableInterface {
         TableMgr.registerCustomerToTable(waiterName, noOfPax, tableNumber, isMember);
     }
 
-    public static void printTableOrder() {
+    private static void printTableOrder() {
         System.out.println("Enter table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         OrderMgr.printTableOrder(tableNumber);
     }
 
-    public static void addOrderItem() {
+    private static void addOrderItem() {
         System.out.println("Enter Table Number");
         int tableNumber = CustomInput.nextPositiveInt();
         if (!TableMgr.checkTableOccupied(tableNumber)) {
@@ -181,7 +181,7 @@ public class TableInterface {
         }
     }
 
-    public static void removeOrderItem() {
+    private static void removeOrderItem() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         if (!TableMgr.checkTableOccupied(tableNumber)) {
@@ -206,7 +206,7 @@ public class TableInterface {
         }
     }
 
-    public static void settleTable() {
+    private static void settleTable() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         TableMgr.settleTable(tableNumber);
