@@ -63,7 +63,7 @@ public class TableInterface {
         else {
             System.out.println("List of available table:");
             for (Table table : availableTable) {
-                System.out.printf("Table %d \n", table.getTableNumber());
+                System.out.printf("Table %d size = %d\n", table.getTableNumber(), table.getTableSize());
             }
             System.out.println("");
         }
@@ -71,13 +71,24 @@ public class TableInterface {
     }
 
     private static void registerCustomerToTable() {
+        boolean invalidTable = true;
+        int tableNumber = 0;
         System.out.println("Enter waiter name:");
         String waiterName = scanner.nextLine();
         System.out.println("");
         System.out.println("Enter No of Pax:");
         int noOfPax = CustomInput.nextPositiveInt();
-        System.out.println("Enter Table Number:");
-        int tableNumber = CustomInput.nextPositiveInt();
+        while (invalidTable) {
+            System.out.println("Enter Table Number:");
+            tableNumber = CustomInput.nextPositiveInt();
+            if (TableMgr.checkTableOccupied(tableNumber))
+                System.out.println("This table is occupied. Please choose another table");
+            else if (!TableMgr.checkTableSize(tableNumber, noOfPax))
+                System.out.println("Please choose a bigger table");
+            else
+                invalidTable = false;
+        }
+
         System.out.println("Enter customer phone number to check membership:");
         String phoneNumber = CustomInput.phoneNumberInput();
         boolean isMember = TableMgr.checkMembership(phoneNumber);
