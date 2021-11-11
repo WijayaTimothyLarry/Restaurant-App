@@ -66,6 +66,7 @@ public class ReservationInterface {
         }
 
         else {
+            System.out.printf("Table %d Reservation(s):\n\n", tableNumber);
             for (Reservation reservation : reservationList) {
                 reservation.printReservationInfo();
             }
