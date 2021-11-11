@@ -19,18 +19,23 @@ public class ReservationInterface {
 
         while (on) {
             System.out.println("(1) Check Customer Reservation");
-            System.out.println("(2) Create New Reservation");
-            System.out.println("(3) Remove Customer Reservation");
+            System.out.println("(2) Check Table Reservation(s)");
+            System.out.println("(3) Create New Reservation");
+            System.out.println("(4) Remove Customer Reservation");
             System.out.println("(0) Go back");
-            choice = CustomInput.choice(0, 3);
+            choice = CustomInput.choice(0, 4);
             switch (choice) {
             case 1:
                 checkCustomerReservation();
                 break;
             case 2:
-                createNewReservation();
+                int tableNumber = CustomInput.nextPositiveInt();
+                checkTableReservation(tableNumber);
                 break;
             case 3:
+                createNewReservation();
+                break;
+            case 4:
                 removeCustomerReservation();
                 break;
             case 0:
@@ -52,6 +57,19 @@ public class ReservationInterface {
             reservation.printReservationInfo();
         }
 
+    }
+
+    private static void checkTableReservation(int tableNumber) {
+        ArrayList<Reservation> reservationList = ReservationMgr.checkTableReservation(tableNumber);
+        if (reservationList == null) {
+            System.out.println("\n There are no reservation for this Table\n");
+        }
+
+        else {
+            for (Reservation reservation : reservationList) {
+                reservation.printReservationInfo();
+            }
+        }
     }
 
     private static void createNewReservation() {
