@@ -29,6 +29,7 @@ public class ReservationInterface {
                 checkCustomerReservation();
                 break;
             case 2:
+                System.out.println("Enter Table Number:");
                 int tableNumber = CustomInput.nextPositiveInt();
                 checkTableReservation(tableNumber);
                 break;
@@ -62,13 +63,15 @@ public class ReservationInterface {
     private static void checkTableReservation(int tableNumber) {
         ArrayList<Reservation> reservationList = ReservationMgr.checkTableReservation(tableNumber);
         if (reservationList == null) {
-            System.out.println("\n There are no reservation for this Table\n");
-        }
-
-        else {
-            System.out.printf("Table %d Reservation(s):\n\n", tableNumber);
-            for (Reservation reservation : reservationList) {
-                reservation.printReservationInfo();
+            System.out.println("\n Please enter a valid table number\n");
+        } else {
+            if (reservationList.size() == 0)
+                System.out.println("There are no reservation for this table\n");
+            else {
+                System.out.printf("Table %d Reservation(s):\n\n", tableNumber);
+                for (Reservation reservation : reservationList) {
+                    reservation.printReservationInfo();
+                }
             }
         }
     }
