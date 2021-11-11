@@ -4,24 +4,39 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import entityclass.Invoice;
+import utils.CustomInput;
 import database.Restaurant;
 
 public class SaleRevenueMgr {
     private static ArrayList<Invoice> invoiceList = Restaurant.invoiceList;
 
-    public static void printDailyRevenue(Calendar date) {
-        ArrayList<Invoice> dailyInvoices = new ArrayList<Invoice>();
+    public static double getDailyRevenue(Calendar date) {
+        double daySaleRevenue = 0;
         for (Invoice invoice : invoiceList) {
-            date.get(Calendar.DAY_OF_MONTH);
-
+            if (CustomInput.compareDMY(date.getTime(), invoice.getDatetime())) {
+                daySaleRevenue += invoice.getTotalBill();
+            }
         }
+        return daySaleRevenue;
     }
 
-    public static void printMonthlyRevenue(Calendar date) {
-
+    public static double getMonthlyRevenue(Calendar date) {
+        double monthSaleRevenue = 0;
+        for (Invoice invoice : invoiceList) {
+            if (CustomInput.compareMY(date.getTime(), invoice.getDatetime())) {
+                monthSaleRevenue += invoice.getTotalBill();
+            }
+        }
+        return monthSaleRevenue;
     }
 
-    public static void printYearlyRevenue(Calendar date) {
-
+    public static double getYearlyRevenue(Calendar date) {
+        double yearSaleRevenue = 0;
+        for (Invoice invoice : invoiceList) {
+            if (CustomInput.compareY(date.getTime(), invoice.getDatetime())) {
+                yearSaleRevenue += invoice.getTotalBill();
+            }
+        }
+        return yearSaleRevenue;
     }
 }
