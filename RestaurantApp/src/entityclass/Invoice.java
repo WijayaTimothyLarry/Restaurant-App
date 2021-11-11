@@ -138,11 +138,11 @@ public class Invoice implements Serializable {
 					+ StringUtils.leftPadding(String.format("%.2f", this.discountedSubtotal * 0.10), ' ', 29));
 			System.out.println("GST(7%): " + StringUtils.leftPadding(String.format("%.2f", this.gst), ' ', 41));
 			System.out.println("--------------------------------------------------");
-			System.out.println("TOTAL: " + StringUtils.leftPadding(String.format("%.2f", this.SCHARGE), ' ', 43));
+			System.out.println("TOTAL: " + StringUtils.leftPadding(String.format("%.2f", this.totalBill), ' ', 43));
 			System.out.println("--------------------------------------------------");
 			System.out.println("TEL : 6737 4411          /  FAX : 6732 2366       ");
 			System.out.println("         52 Nanyang Ave, Singapore 639816         ");
-			System.out.println("**************************************************");
+			System.out.println("**************************************************\n\n");
 
 		} else {
 			System.out.println(
@@ -153,7 +153,7 @@ public class Invoice implements Serializable {
 			System.out.println("--------------------------------------------------");
 			System.out.println("TEL : 6737 4411          /  FAX : 6732 2366       ");
 			System.out.println("         52 Nanyang Ave, Singapore 639816         ");
-			System.out.println("**************************************************\n");
+			System.out.println("**************************************************\n\n");
 		}
 	}
 
