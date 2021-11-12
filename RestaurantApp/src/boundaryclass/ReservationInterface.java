@@ -16,7 +16,7 @@ public class ReservationInterface {
     public static void showOption() {
 
         boolean on = true;
-
+        ReservationMgr.removeExpiredReservation();
         while (on) {
             System.out.println("(1) Check Customer Reservation");
             System.out.println("(2) Check Table Reservation(s)");
@@ -105,7 +105,7 @@ public class ReservationInterface {
 
     private static void removeCustomerReservation() {
         System.out.println("Enter customer phone number:");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
         if (reservation == null) {
             System.out.println("There are no reservation for this customer");
@@ -113,7 +113,7 @@ public class ReservationInterface {
             System.out.println("The following reservation will be removed:");
             reservation.printReservationInfo();
             System.out.println("Insert 1 to confirm");
-            int confirmation = scanner.nextInt();
+            int confirmation = CustomInput.nextInt();
             if (confirmation == 1) {
                 ReservationMgr.removeReservation(phoneNumber);
                 System.out.println("Reservation has been removed");

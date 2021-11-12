@@ -48,10 +48,20 @@ public class ReservationMgr {
 
     public static void removeReservation(String phoneNumber) {
         Iterator<Reservation> itr = reservationList.iterator();
+        int reservationID;
+        int tableNumber;
         while (itr.hasNext()) {
             Reservation reservation = itr.next();
             if (reservation.getCustomerContactNo().equals(phoneNumber)) {
+                reservationID = reservation.getReservationID();
+                tableNumber = reservation.getTableNumber();
+                for (Table table : tableList) {
+                    if (table.getTableNumber() == tableNumber) {
+                        table.removeReservation(reservationID);
+                    }
+                }
                 itr.remove();
+                break;
             }
         }
     }
@@ -84,6 +94,19 @@ public class ReservationMgr {
             System.out.println("There are no empty tables for " + noOfPax);
         }
         return availableTableList;
+    }
+
+    public static void removeExpiredReservation() {
+        Calendar currentTime = Calendar.getInstance();
+        Iterator<Reservation> itr = reservationList.iterator();
+        while (itr.hasNext()) {
+            Reservation reservation = itr.next();
+            if (ReservationUtils.expiryCheck(reservation.getReservationDateTime().getTime(), currentTime.getTime())) {
+                String phoneNumber = reservation.getCustomerContactNo();
+                removeReservation(phoneNumber);
+            }
+        }
+
     }
 
 }
