@@ -125,30 +125,13 @@ public class MenuMgr {
      */
 
     public static void showMenu() {
-        ArrayList<MenuItem> menuList = restaurantMenu.getMenuList();
         System.out.println("          MENU          ");
         System.out.println("******************************");
-        if (menuList.size() == 0) {
-            System.out.println("This list is empty");
-        }
-        for (int i = 0; i < menuList.size(); i++) {
-            MenuItem item = menuList.get(i);
-            System.out.println("Name: " + item.getItemName());
-            System.out.println("Price: " + item.getPrice());
-            System.out.println("Description: " + item.getDescription());
-            if (item instanceof PackageItem) {
-                System.out.println("Items included are");
-                PackageItem itemtopackage = (PackageItem) item;
-                ArrayList<MenuItem> packageList = itemtopackage.getpackageList();
-                for (int j = 0; j < packageList.size(); j++) {
-                    MenuItem iteminpackage = packageList.get(i);
-                    System.out.printf("%d) %s", j + 1, iteminpackage.getItemName());
-                }
-            }
-            System.out.println("ID: " + item.getItemID());
-            System.out.println("******************************\n");
-
-        }
+        showAppetizer();
+        showMainCourse();
+        showDessert();
+        showDrinks();
+        showPackage();
     }
 
     // Functions to edit menu
