@@ -207,6 +207,19 @@ public class MenuMgr {
         showPackage();
     }
 
+    public static void addintoPackage(String packageID, String foodID){
+        if(foodID.charAt(0)=='A'){
+            Appetizer appetizeritem = findAppetizerbyID(foodID);
+            restaurantMenu.addIntoItemsInPackageList(packageID, appetizeritem);
+        }else if(foodID.charAt(0)=='M'){
+            MainCourse maincourseitem = findMainCoursebyID(foodID);
+            restaurantMenu.addIntoItemsInPackageList(packageID, maincourseitem);
+        }else if(foodID.charAt(0)=='B'){
+            Drinks drinksitem = findDrinksbyID(foodID);
+            restaurantMenu.addIntoItemsInPackageList(packageID, drinksitem);
+        }
+    }
+
     // 2) Delete item
     // Appetizer
     /**
@@ -288,6 +301,12 @@ public class MenuMgr {
         }
     }
 
+    public static void removeiteminPackage(String packageID, String foodID){
+        if(restaurantMenu.removeforitemsinPackageList(packageID, foodID)==-1){
+            System.out.println("Item not found");
+        }
+    }
+
     // Find items
     // 1 - Appetizer
     /**
@@ -357,6 +376,7 @@ public class MenuMgr {
         int i = restaurantMenu.findforPackageList(id);
         return restaurantMenu.getPackagesList().get(i);
     }
+
 
     // Update Items
     // 1)Change Name

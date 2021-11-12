@@ -41,6 +41,10 @@ public class Restaurant {
 		createMemberList();
 	}
 
+	/**
+	 * Function to create and initialise menu for the restaurant
+	 * Add sample items to Appetizer List, Main Course List, Dessert List, Drinks List and PackageList
+	 */
 	public static void createMenu() {
 
 		ArrayList<Appetizer> appeList = new ArrayList<Appetizer>();
@@ -124,6 +128,11 @@ public class Restaurant {
 
 	}
 
+	/**
+	 * Function to create and initialise tables in the restaurant
+	 * Add 5 tables of size 2, 5 tables of size 4, 3 tables of size 6 ,3 tables of size 8 and 1 table of size 10 
+	 * Initialize staff list	 
+	 */
 	public static void createTableList() {
 		ArrayList<Table> tableList = new ArrayList<Table>();
 
@@ -160,6 +169,13 @@ public class Restaurant {
 
 	}
 
+	/**
+	 * Create and initialize staff for the restaurant
+	 * Add 5 waiters to the restaurant
+	 * Add 3 chefs to the restaurant
+	 * Add 1 manager to the restaurant
+	 * Initialize staffList
+	 */
 	public static void createStaffList() {
 		ArrayList<Staff> staffList = new ArrayList<Staff>();
 
@@ -196,19 +212,31 @@ public class Restaurant {
 		Restaurant.staffList = staffList;
 	}
 
+	/**
+	 * Function to create and initialize Reservation List
+	 */
 	public static void createReservationList() {
 		Restaurant.reservationList = new ArrayList<Reservation>();
 
 	}
+	/**
+	 * Function to create and initialize Invoice List
+	 */
 
 	public static void createInvoiceList() {
 		Restaurant.invoiceList = new ArrayList<Invoice>();
 	}
 
+	/**
+	 * Function to create and initialize Order List
+	 */
 	public static void createOrderList() {
 		Restaurant.orderList = new ArrayList<Order>();
 	}
 
+	/**
+	 * Function to create and initialize Member List
+	 */
 	public static void createMemberList() {
 		ArrayList<Customer> memberList = new ArrayList<Customer>();
 
@@ -227,6 +255,9 @@ public class Restaurant {
 		Restaurant.memberList = memberList;
 	}
 
+	/**
+	 * Function to save restaurant in serializable form
+	 */
 	public static void saveRestaurant() {
 
 		ArrayList<Object> data = new ArrayList<Object>();

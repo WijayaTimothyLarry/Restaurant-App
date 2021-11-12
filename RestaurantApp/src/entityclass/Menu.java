@@ -312,6 +312,26 @@ public class Menu implements Serializable {
 
 	}
 
+	public int removeforitemsinPackageList(String packageID,String foodID){
+		try{
+			PackageItem packageofInterest = packagesList.get(findforPackageList(packageID));
+			ArrayList<MenuItem> listofInterest = packageofInterest.getpackageList();
+			Iterator<MenuItem> itr = listofInterest.iterator();
+			while(itr.hasNext()){
+				MenuItem itemofInterest = itr.next();
+				if(itemofInterest.getItemID().equals(foodID)){
+					System.out.println("Item found");
+					itr.remove();
+					System.out.println("Item deleted");
+					return 1;
+				}
+			}
+			return -1;
+		}catch(IndexOutOfBoundsException e){
+			return -1;
+		}
+	}
+
 	/**
 	 * Function to add a package into the package list
 	 * 
@@ -320,6 +340,16 @@ public class Menu implements Serializable {
 
 	public void addintoPackageList(PackageItem package1) {
 		packagesList.add(package1);
+	}
+
+	public void addIntoItemsInPackageList(String packageID,MenuItem food){
+		try{
+			PackageItem packageofInterest  = packagesList.get(findforPackageList(packageID));
+			ArrayList<MenuItem> listofInterest = packageofInterest.getpackageList();
+			listofInterest.add(food);
+		}catch(IndexOutOfBoundsException e){
+			System.out.println("Invalid Package!");
+		}
 	}
 
 	/**
