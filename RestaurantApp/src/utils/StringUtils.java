@@ -1,6 +1,13 @@
 package utils;
 
 public class StringUtils {
+    /**
+     * Function to perform left padding
+     * @param input input string to be padded
+     * @param ch filling characters on the right
+     * @param L Number of spaces to left pad
+     * @return (String)New formatted string
+     */
     public static String
     leftPadding(String input, char ch, int L) //put ch as whitespaces
     {
@@ -19,6 +26,13 @@ public class StringUtils {
     }
   
     // Function to perform right padding
+    /**
+     * Function to perform right padding
+     * @param input input string to be padded
+     * @param ch filling characters on the left
+     * @param L Number of spaces to right pad
+     * @return (String)New formmated string
+     */
     public static String
     rightPadding(String input, char ch, int L) // put ch as whitespaces
     {
