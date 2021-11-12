@@ -8,7 +8,6 @@ public class Menu implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 635888539451999683L;
 	private ArrayList<MainCourse> mainCourseList;
 	private ArrayList<Dessert> dessertList;
 	private ArrayList<Drinks> drinksList;

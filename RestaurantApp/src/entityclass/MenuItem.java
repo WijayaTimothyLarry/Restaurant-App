@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class MenuItem implements Serializable {
 
-	private static final long serialVersionUID = -699417389557533574L;
 	private String itemName;
 	private double price;
 	private String description;
@@ -12,10 +11,11 @@ public class MenuItem implements Serializable {
 
 	/**
 	 * Constructor for MenuItem
-	 * @param itemName (String)Name of MenuItem
-	 * @param price (double)Price of MenuItem
+	 * 
+	 * @param itemName    (String)Name of MenuItem
+	 * @param price       (double)Price of MenuItem
 	 * @param description (String)Description of MenuItem
-	 * @param itemID (String)ID of MenuItem
+	 * @param itemID      (String)ID of MenuItem
 	 */
 	public MenuItem(String itemName, double price, String description, String itemID) {
 		this.itemName = itemName;
@@ -26,6 +26,7 @@ public class MenuItem implements Serializable {
 
 	/**
 	 * Return the name of MenuItem
+	 * 
 	 * @return name of MenuItem
 	 */
 	public String getItemName() {
@@ -34,23 +35,25 @@ public class MenuItem implements Serializable {
 
 	/**
 	 * Set Name of the MenuItem
+	 * 
 	 * @param itemName
 	 */
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 
-
 	/**
- 	* Function to return Price of MenuItem
- 	* @return price of item
- 	*/
+	 * Function to return Price of MenuItem
+	 * 
+	 * @return price of item
+	 */
 	public double getPrice() {
 		return this.price;
 	}
 
 	/**
 	 * set the price of MenuItem
+	 * 
 	 * @param price
 	 */
 	public void setPrice(double price) {
@@ -63,23 +66,24 @@ public class MenuItem implements Serializable {
 
 	/**
 	 * Set the description of MenuItem
+	 * 
 	 * @param description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-/**
- * 
- * @return ID of item
- */
+	/**
+	 * 
+	 * @return ID of item
+	 */
 	public String getItemID() {
 		return this.itemID;
 	}
 
 	/**
 	 * Set ID of Item
+	 * 
 	 * @param itemID
 	 */
 	public void setItemID(String itemID) {
