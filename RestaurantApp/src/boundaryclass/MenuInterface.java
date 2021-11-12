@@ -17,7 +17,8 @@ public class MenuInterface {
     private static int choice;
 
     /**
-     * Function to show all front-end options available for user to choose for them to edit Menu
+     * Function to show all front-end options available for user to choose for them
+     * to edit Menu
      */
     public static void showOption() {
         boolean on = true;
@@ -55,8 +56,9 @@ public class MenuInterface {
     }
 
     /**
-     * Function for user to choose which list to display
-     * Call corresponding show functions from MenuMgr
+     * Function for user to choose which list to display Call corresponding show
+     * functions from MenuMgr
+     * 
      * @see MenuMgr
      */
     private static void displayOption() {
@@ -96,8 +98,9 @@ public class MenuInterface {
     }
 
     /**
-     * Function to add new MenuItem into a list of users choice
-     * Call corresponding function from MenuMgr
+     * Function to add new MenuItem into a list of users choice Call corresponding
+     * function from MenuMgr
+     * 
      * @see MenuMgr
      */
     private static void addNewMenuOption() {
@@ -117,7 +120,7 @@ public class MenuInterface {
             System.out.print("New menu item name: ");
             String menuName = scanner.nextLine();
             System.out.print("Price of the new menu item:");
-            double price = CustomInput.nextDouble();
+            double price = CustomInput.nextPositiveDouble();
             System.out.println("Description of new menu item:");
             String description = scanner.nextLine();
             System.out.println("New menu item ID:");
@@ -201,8 +204,9 @@ public class MenuInterface {
     }
 
     /**
-     * Function to remove an existing MenuItem from a list of user's choice
-     * Call corresponding function from MenuMgr
+     * Function to remove an existing MenuItem from a list of user's choice Call
+     * corresponding function from MenuMgr
+     * 
      * @see MenuMgr
      */
     private static void removeMenuOption() {
@@ -254,9 +258,11 @@ public class MenuInterface {
             }
         }
     }
+
     /**
-     * Function for user to update a MenuItem from the list of their choice
-     * Call corresponding function from MenuMgr
+     * Function for user to update a MenuItem from the list of their choice Call
+     * corresponding function from MenuMgr
+     * 
      * @see MenuMgr
      */
 
@@ -490,8 +496,11 @@ public class MenuInterface {
         }
 
     }
+
     /**
-     * Seperate function to create new PackageItem as PromoPackages includes a list of MenuItem
+     * Seperate function to create new PackageItem as PromoPackages includes a list
+     * of MenuItem
+     * 
      * @param name
      * @param price
      * @param description
