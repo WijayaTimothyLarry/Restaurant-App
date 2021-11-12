@@ -9,22 +9,59 @@ import java.util.ArrayList;
 public class Invoice implements Serializable {
 
 	private Order order;
+	/**
+	 * (int)ID of the invoice
+	 */
 	private int invoiceID;
+	/**
+	 * (int)Table number of the invoice
+	 */
 	private int tableNumber;
+	/**
+	 *(double) Total bill of the order
+	 */
 	private double totalBill;
+	/**
+	 * (ArrayList<OrderItem>)items ordered by the table
+	 */
 	private ArrayList<OrderItem> orderItems;
+	/**
+	 * (String)Name of the waiter serving the table
+	 */
 	private String waiterName;
+	/**
+	 * (double)GST according to Singapore Goods and Services Tax
+	 */
 	private double gst;
+	/**
+	 * (double)Subtotal of the order made
+	 */
 	private double subtotal;
+	/**
+	 * (Date)date when the order is made
+	 */
 	private Date dateTime;
+	/**
+	 * (double)Service charge according to  Singapore regulations
+	 */
 	private double SCHARGE;
+	/**
+	 * (double)Discount given to members
+	 */
 	private double discount;
+	/**
+	 * (double)Subtotal after discount
+	 */
 	private double discountedSubtotal;
 
 	public static final double GST = 0.07; // According to Singapore Goods and Services Tax
 	public static final double serviceCharge = 0.10;
 	public static final double memDiscount = 0.10;
 
+	/**
+	 * Constructor for invoice
+	 * @param order (Order)Order that invoice is constructed from
+	 */
 	public Invoice(Order order) {
 		this.order = order;
 		this.invoiceID = Calendar.getInstance().hashCode(); // Assigning a unique value to an object by hashing
@@ -38,78 +75,105 @@ public class Invoice implements Serializable {
 
 	}
 
+	/**
+	 * Function to return time when the order is made
+	 * @return (Date)time when the order is made
+	 */
 	public Date getDatetime() {
 		return dateTime;
 	}
 
 	/**
-	 * 
-	 * @param invoiceDateTime
+	 * Function to set the time when the order is made
+	 * @param invoiceDateTime (date)time when order is made
 	 */
 	public void setDatetime(Date invoiceDateTime) {
 		this.dateTime = invoiceDateTime;
 	}
 
+	/**
+	 * Function to return ID of invoice
+	 * @return (int)ID of invoice
+	 */
 	public int getInvoiceID() {
 		return this.invoiceID;
 	}
 
 	/**
-	 * 
-	 * @param invoiceID
+	 * Function to set ID of invoice
+	 * @param invoiceID (int)ID of invoice
 	 */
 	public void setInvoiceID(int invoiceID) {
 		this.invoiceID = invoiceID;
 	}
 
+	/**
+	 * Function to get table number
+	 * @return (int)table number
+	 */
 	public int getTableNumber() {
 		return this.tableNumber;
 	}
 
 	/**
-	 * 
-	 * @param tableNumber
+	 * Function to set table number
+	 * @param tableNumber (int)table number
 	 */
 	public void setTableNumber(int tableNumber) {
 		this.tableNumber = tableNumber;
 	}
 
+	/**
+	 * Function to get total bill
+	 * @return (double)total bill
+	 */
 	public double getTotalBill() {
 		return this.totalBill;
 	}
 
 	/**
-	 * 
-	 * @param totalBill
+	 * Function to set total bill
+	 * @param totalBill (double)total bill
 	 */
 	public void setTotalBill(double totalBill) {
 		this.totalBill = totalBill;
 	}
 
+	/**
+	 * Function to get the list of items ordered
+	 * @return (ArrayList<OrderItem>) list of items ordered
+	 */
 	public ArrayList<OrderItem> getOrderItems() {
 		return this.orderItems;
 	}
 
 	/**
-	 * 
-	 * @param orderItems
+	 * Function to set the list of items ordered
+	 * @param orderItems (ArrayList<OrderItem>) list of item ordered
 	 */
 	public void setOrderItems(ArrayList<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
+	/**
+	 * Function to get the waiter's name
+	 * @return (String)name of the waiter
+	 */
 	public String getWaiterName() {
 		return this.waiterName;
 	}
 
 	/**
-	 * 
-	 * @param waiterName
+	 * Function to set waiter's name
+	 * @param waiterName (String)Name of the waiter
 	 */
 	public void setWaiterName(String waiterName) {
 		this.waiterName = waiterName;
 	}
 
+	/**
+	 * Function to print out the entire invoice
+	 */
 	public void printInvoice() {
 		System.out.println("**************************************************");
 		System.out.println("                  STEAK & GRILLS                  ");
