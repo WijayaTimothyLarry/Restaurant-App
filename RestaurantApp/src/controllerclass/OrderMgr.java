@@ -155,6 +155,6 @@ public class OrderMgr {
                 return;
             }
         }
-        System.out.println("There is no order item with this item ID");
+        System.out.println("There is no order item with this item ID\n");
     }
 }

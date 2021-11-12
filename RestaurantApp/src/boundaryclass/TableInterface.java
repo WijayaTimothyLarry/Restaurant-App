@@ -226,13 +226,11 @@ public class TableInterface {
         if (!TableMgr.checkTableOccupied(tableNumber)) {
             System.out.println("There are no customer on this table");
         } else {
-            boolean stillAdding = true;
-            while (stillAdding) {
-                OrderMgr.printTableOrder(tableNumber);
-                System.out.println("Enter the ID of item to be removed:");
-                String itemID = scanner.nextLine();
-                OrderMgr.removeOrderItem(tableNumber, itemID);
-            }
+
+            OrderMgr.printTableOrder(tableNumber);
+            System.out.println("Enter the ID of item to be removed:");
+            String itemID = scanner.nextLine();
+            OrderMgr.removeOrderItem(tableNumber, itemID);
 
         }
     }
