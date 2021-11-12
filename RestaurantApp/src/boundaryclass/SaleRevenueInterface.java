@@ -8,6 +8,14 @@ import utils.CustomInput;
 public class SaleRevenueInterface {
     static int choice;
 
+    /**
+     * Function to show options for user to display sales revenue
+     * (1)- Display Daily Sales revenue of a specific date
+     * (2)- Display Monthly Sales revenue of a specific month
+     * (3)- Display Yearly Sales revenue of a specific year
+     * (4)-Exit
+     * @see SaleRevenueMgr
+     */
     public static void showOption() {
 
         boolean on = true;
@@ -46,7 +54,7 @@ public class SaleRevenueInterface {
             }
 
         }
-        System.err.println("");
+        System.out.println("");
 
     }
 
