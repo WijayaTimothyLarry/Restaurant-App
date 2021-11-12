@@ -174,7 +174,7 @@ public class Order implements Serializable {
 
 		}
 		if (orderString.length() == 0)
-			return "There are no order yet";
+			return "There are no order yet\n";
 		return orderString;
 	}
 
