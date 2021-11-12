@@ -10,7 +10,14 @@ import entityclass.Table;
 import utils.CustomInput;
 
 public class ReservationInterface {
+    /**
+     * Scanner object to receive customer's input in the interface
+     */
     private static Scanner scanner = new Scanner(System.in);
+
+    /**
+     * choice of customer's selection
+     */
     static int choice;
 
     public static void showOption() {
@@ -48,6 +55,10 @@ public class ReservationInterface {
 
     }
 
+    /**
+     * private static void : checkCustomerReservation
+     * Function to start checking if a reservation exists for the given customer based on the customer's phone number
+     */
     private static void checkCustomerReservation() {
         String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
@@ -60,6 +71,11 @@ public class ReservationInterface {
 
     }
 
+    /**
+     * private static void : checkTableReservation
+     * Function to check if Reservations exist for the given tablenumber
+     * @param tableNumber (int) Number of the table to check reservation for
+     */
     private static void checkTableReservation(int tableNumber) {
         ArrayList<Reservation> reservationList = ReservationMgr.checkTableReservation(tableNumber);
         if (reservationList == null) {
@@ -76,6 +92,10 @@ public class ReservationInterface {
         }
     }
 
+    /**
+     * private static void : createNewReservation
+     * Function to create a new Reservation based on the customer's phone number, name, number of pax, table number and the reservation's date and time.
+     */
     private static void createNewReservation() {
         String phoneNumber = CustomInput.phoneNumberInput();
         Reservation reservation = ReservationMgr.checkCustomerReservation(phoneNumber);
