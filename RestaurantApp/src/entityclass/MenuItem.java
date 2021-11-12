@@ -4,22 +4,30 @@ import java.io.Serializable;
 
 public class MenuItem implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -699417389557533574L;
 	private String itemName;
 	private double price;
 	private String description;
 	private String itemID;
 
-	public MenuItem(String foodName, double foodprice, String foodDescription, String foodID) {
-		this.itemName = foodName;
-		this.price = foodprice;
-		this.description = foodDescription;
-		this.itemID = foodID;
+	/**
+	 * Constructor for MenuItem
+	 * @param itemName (String)Name of MenuItem
+	 * @param price (double)Price of MenuItem
+	 * @param description (String)Description of MenuItem
+	 * @param itemID (String)ID of MenuItem
+	 */
+	public MenuItem(String itemName, double price, String description, String itemID) {
+		this.itemName = itemName;
+		this.price = price;
+		this.description = description;
+		this.itemID = itemID;
 	}
 
+	/**
+	 * Return the name of MenuItem
+	 * @return name of MenuItem
+	 */
 	public String getItemName() {
 		return this.itemName;
 	}
@@ -33,10 +41,10 @@ public class MenuItem implements Serializable {
 	}
 
 
-/**
- * 
- * @return price of item
- */
+	/**
+ 	* Function to return Price of MenuItem
+ 	* @return price of item
+ 	*/
 	public double getPrice() {
 		return this.price;
 	}

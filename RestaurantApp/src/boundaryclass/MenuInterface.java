@@ -16,6 +16,9 @@ public class MenuInterface {
     private static Scanner scanner = new Scanner(System.in);
     private static int choice;
 
+    /**
+     * Function to show all front-end options available for user to choose for them to edit Menu
+     */
     public static void showOption() {
         boolean on = true;
 
@@ -51,6 +54,11 @@ public class MenuInterface {
 
     }
 
+    /**
+     * Function for user to choose which list to display
+     * Call corresponding show functions from MenuMgr
+     * @see MenuMgr
+     */
     private static void displayOption() {
         boolean on = true;
         while (on) {
@@ -87,6 +95,11 @@ public class MenuInterface {
 
     }
 
+    /**
+     * Function to add new MenuItem into a list of users choice
+     * Call corresponding function from MenuMgr
+     * @see MenuMgr
+     */
     private static void addNewMenuOption() {
         boolean on = true;
 
@@ -187,6 +200,11 @@ public class MenuInterface {
         }
     }
 
+    /**
+     * Function to remove an existing MenuItem from a list of user's choice
+     * Call corresponding function from MenuMgr
+     * @see MenuMgr
+     */
     private static void removeMenuOption() {
         Boolean on = true;
         String itemID = "";
@@ -236,6 +254,11 @@ public class MenuInterface {
             }
         }
     }
+    /**
+     * Function for user to update a MenuItem from the list of their choice
+     * Call corresponding function from MenuMgr
+     * @see MenuMgr
+     */
 
     private static void updateMenuOption() {
         Boolean on = true;
@@ -467,7 +490,14 @@ public class MenuInterface {
         }
 
     }
-
+    /**
+     * Seperate function to create new PackageItem as PromoPackages includes a list of MenuItem
+     * @param name
+     * @param price
+     * @param description
+     * @param id
+     * @return new PackageItem created
+     */
     private static PackageItem createPackage(String name, double price, String description, String id) {
         Drinks packageDrinks = null;
         MainCourse packageMainCourse = null;
