@@ -12,7 +12,14 @@ import entityclass.Table;
 import utils.CustomInput;
 
 public class TableInterface {
+    /**
+     * Scanner object to receive customer inputs
+     */
     private static Scanner scanner = new Scanner(System.in);
+
+    /**
+     * choice of customer's selection
+     */
     static int choice;
 
     public static void showOption() {
@@ -53,6 +60,10 @@ public class TableInterface {
 
     }
 
+    /**
+     * private static void : checkTableAvailability
+     * Starting Function to check the Table availability for a given number of pax and time
+     */
     private static void checkTableAvailability() {
         System.out.println("Enter number of pax:");
         int noOfPax = CustomInput.nextPositiveInt();
@@ -70,6 +81,11 @@ public class TableInterface {
 
     }
 
+    /**
+     * public static void : registerCustomerToTable
+     * Function to start registering a customer to the given Table based on waiter name, number of pax and table Number
+     * Checks if membership exists under given customer's contact number
+     */
     private static void registerCustomerToTable() {
         boolean invalidTable = true;
         int tableNumber = 0;
@@ -95,12 +111,20 @@ public class TableInterface {
         TableMgr.registerCustomerToTable(waiterName, noOfPax, tableNumber, isMember);
     }
 
+    /**
+     * private static void: printTableOrder
+     * Function to print the Table's order for a given tableNumber
+     */
     private static void printTableOrder() {
         System.out.println("Enter table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
         OrderMgr.printTableOrder(tableNumber);
     }
 
+    /**
+     * private static void : addOrderItem
+     * Function to add an order item to the given table.
+     */
     private static void addOrderItem() {
         System.out.println("Enter Table Number");
         int tableNumber = CustomInput.nextPositiveInt();
@@ -192,6 +216,10 @@ public class TableInterface {
         }
     }
 
+    /**
+     * private static void : removeOrderItem
+     * Function to remove an existing order item from the order of a given table
+     */
     private static void removeOrderItem() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
@@ -217,6 +245,10 @@ public class TableInterface {
         }
     }
 
+    /**
+     * private static void : settleTable
+     * Function to sttle and unassign a table for the given tableNumber
+     */
     private static void settleTable() {
         System.out.println("Enter Table Number:");
         int tableNumber = CustomInput.nextPositiveInt();
