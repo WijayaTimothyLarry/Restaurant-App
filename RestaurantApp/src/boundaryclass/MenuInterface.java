@@ -80,9 +80,10 @@ public class MenuInterface {
             System.out.println("(3) Display Dessert");
             System.out.println("(4) Display Drinks");
             System.out.println("(5) Display Promo Packages");
+            System.out.println("(6) Display The Complete Menu");
             System.out.println("(0) Go back");
 
-            choice = CustomInput.choice(0, 5);
+            choice = CustomInput.choice(0, 6);
             System.out.println("");
 
             switch (choice) {
@@ -100,6 +101,9 @@ public class MenuInterface {
                 break;
             case 5:
                 MenuMgr.showPackage();
+                break;
+            case 6:
+                MenuMgr.showMenu();
                 break;
             case 0:
                 on = false;
@@ -136,8 +140,8 @@ public class MenuInterface {
                 break;
             System.out.print("New menu item name: ");
             String menuName = scanner.nextLine();
-            System.out.print("Price of the new menu item:");
-            double price = CustomInput.nextDouble();
+            System.out.println("Price of the new menu item");
+            double price = CustomInput.nextPositiveDouble();
             System.out.println("Description of new menu item:");
             String description = scanner.nextLine();
             System.out.println("New menu item ID:");
@@ -280,6 +284,7 @@ public class MenuInterface {
             }
         }
     }
+
     /**
      * Function for user to update a MenuItem from the list of their choice
      * Call corresponding function from MenuMgr
@@ -529,8 +534,11 @@ public class MenuInterface {
         }
 
     }
+
     /**
-     * Seperate function to create new PackageItem as PromoPackages includes a list of MenuItem
+     * Seperate function to create new PackageItem as PromoPackages includes a list
+     * of MenuItem
+     * 
      * @param name
      * @param price
      * @param description
