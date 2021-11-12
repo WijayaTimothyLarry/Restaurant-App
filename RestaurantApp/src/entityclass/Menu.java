@@ -303,8 +303,10 @@ public class Menu implements Serializable {
 			PackageItem food = itr.next();
 			if (food.getItemID().equals(id)) {
 				System.out.println("Item found");
+				System.out.println();
 				itr.remove();
 				System.out.println("Item deleted");
+				System.out.println();
 				return 1;
 			}
 		}
@@ -321,8 +323,10 @@ public class Menu implements Serializable {
 				MenuItem itemofInterest = itr.next();
 				if(itemofInterest.getItemID().equals(foodID)){
 					System.out.println("Item found");
+					System.out.println();
 					itr.remove();
 					System.out.println("Item deleted");
+					System.out.println();
 					return 1;
 				}
 			}

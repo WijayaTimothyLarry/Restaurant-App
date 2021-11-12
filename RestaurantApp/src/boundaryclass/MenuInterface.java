@@ -532,12 +532,15 @@ public class MenuInterface {
                     while(true){
                         try{
                             System.out.println("Enter id of item to be changed: ");
+                            System.out.println();
                             String foodID = scanner.nextLine();
                             MenuMgr.removeiteminPackage(itemID, foodID);
                             System.out.println("Enter id of item to be added into this package: ");
+                            System.out.println();
                             String newfoodID = scanner.nextLine();
                             MenuMgr.addintoPackage(itemID, newfoodID);
                             System.out.println("Item added");
+                            System.out.println();
                             break;
                         }catch(IndexOutOfBoundsException e){
                             System.out.println("Invalid input! Try again");
