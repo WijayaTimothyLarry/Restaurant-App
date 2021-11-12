@@ -17,12 +17,11 @@ public class MenuInterface {
     private static int choice;
 
     /**
-     * Function to show all front-end options available for user to choose for them to edit Menu
-     * (1)Display a menu of their choice
-     * (2)Add an item to a list of their choice
-     * (3)Remove an item from a list of their choice
-     * (4)Update an item from a list of their choice
-     * (0)Exit the program
+     * Function to show all front-end options available for user to choose for them
+     * to edit Menu (1)Display a menu of their choice (2)Add an item to a list of
+     * their choice (3)Remove an item from a list of their choice (4)Update an item
+     * from a list of their choice (0)Exit the program
+     * 
      * @see MenuMgr
      */
     public static void showOption() {
@@ -61,15 +60,11 @@ public class MenuInterface {
     }
 
     /**
-     * Function for user to choose which list to display
-     * Call corresponding show functions from MenuMgr
-     * Input result:
-     * (1) Display Appetizer list
-     * (2) Display Main Course List
-     * (3) Display Dessert List
-     * (4) Display Drinks List
-     * (5) Display Promo Pacakge List
-     * (0) Go back to the previous menu
+     * Function for user to choose which list to display Call corresponding show
+     * functions from MenuMgr Input result: (1) Display Appetizer list (2) Display
+     * Main Course List (3) Display Dessert List (4) Display Drinks List (5) Display
+     * Promo Pacakge List (0) Go back to the previous menu
+     * 
      * @see MenuMgr
      */
     private static void displayOption() {
@@ -113,15 +108,12 @@ public class MenuInterface {
     }
 
     /**
-     * Function to add new MenuItem into a list of users choice
-     * Call corresponding function from MenuMgr
-     * Input corresponds to:
-     * (1)Add a new item to Appetizer list
-     * (2)Add a new item to Main Course list
-     * (3)Add a new item to Dessert list
-     * (4)Add a new item to Drinks List
-     * (5)Add a new item to PackageItem list
-     * (0)Go back to the previous menu
+     * Function to add new MenuItem into a list of users choice Call corresponding
+     * function from MenuMgr Input corresponds to: (1)Add a new item to Appetizer
+     * list (2)Add a new item to Main Course list (3)Add a new item to Dessert list
+     * (4)Add a new item to Drinks List (5)Add a new item to PackageItem list (0)Go
+     * back to the previous menu
+     * 
      * @see MenuMgr
      */
     private static void addNewMenuOption() {
@@ -225,14 +217,12 @@ public class MenuInterface {
     }
 
     /**
-     * Function to remove an existing MenuItem from a list of user's choice
-     * Call corresponding function from MenuMgr
-     * Input corresponds to
-     * (1)Remove an item from Appetizer list
-     * (2)Remove an item from Main Course list
-     * (3)Remove an item from Dessert list
-     * (4)Remove an item from PackageItem list
-     * (0)Go back to the previous menu
+     * Function to remove an existing MenuItem from a list of user's choice Call
+     * corresponding function from MenuMgr Input corresponds to (1)Remove an item
+     * from Appetizer list (2)Remove an item from Main Course list (3)Remove an item
+     * from Dessert list (4)Remove an item from PackageItem list (0)Go back to the
+     * previous menu
+     * 
      * @see MenuMgr
      */
     private static void removeMenuOption() {
@@ -286,21 +276,17 @@ public class MenuInterface {
     }
 
     /**
-     * Function for user to update a MenuItem from the list of their choice
-     * Call corresponding function from MenuMgr
-     * Index corresponds to
-     * (1)Update an item in Appetizer List
-     * (2)Update an item in Main Course list
-     * (3)Update an item in Dessert List
-     * (4)Update an item in Drinks list
-     * (5)Update an item in PackageItem list
-     * (0)Go back to the previous menu
-     * After a valid input is made, user will have to  choose with item they want to change by ID and 
-     * will be prompted to make another input on which attributes of the MenuItem do they want to change
-     * Choice includes:
-     * (1)Change Name of the corresponding MenuItem
-     * (2)Change Price of the corresponding MenuItem
-     * (3)Change Description of the corresponding MenuItem
+     * Function for user to update a MenuItem from the list of their choice Call
+     * corresponding function from MenuMgr Index corresponds to (1)Update an item in
+     * Appetizer List (2)Update an item in Main Course list (3)Update an item in
+     * Dessert List (4)Update an item in Drinks list (5)Update an item in
+     * PackageItem list (0)Go back to the previous menu After a valid input is made,
+     * user will have to choose with item they want to change by ID and will be
+     * prompted to make another input on which attributes of the MenuItem do they
+     * want to change Choice includes: (1)Change Name of the corresponding MenuItem
+     * (2)Change Price of the corresponding MenuItem (3)Change Description of the
+     * corresponding MenuItem
+     * 
      * @see MenuMgr
      */
 
@@ -514,23 +500,23 @@ public class MenuInterface {
                 switch (packagesChoice) {
 
                 case 1:
-                    System.out.println("Enter the new name of the item: ");
+                    System.out.println("Enter the new name of the item: \n");
                     String newname = scanner.nextLine();
                     MenuMgr.changePackagesName(itemID, newname);
                     break;
                 case 2:
-                    System.out.println("Enter the new price of the item: ");
+                    System.out.println("Enter the new price of the item: \n");
                     double newprice = CustomInput.nextPositiveDouble();
                     MenuMgr.changePackagesPrice(itemID, newprice);
                     break;
                 case 3:
-                    System.out.println("Enter the new description of the item: ");
+                    System.out.println("Enter the new description of the item: \n");
                     String description = scanner.nextLine();
                     MenuMgr.changePackagesDescription(itemID, description);
                     break;
                 case 4:
-                    while(true){
-                        try{
+                    while (true) {
+                        try {
                             System.out.println("Enter id of item to be changed: ");
                             System.out.println();
                             String foodID = scanner.nextLine();
@@ -542,7 +528,7 @@ public class MenuInterface {
                             System.out.println("Item added");
                             System.out.println();
                             break;
-                        }catch(IndexOutOfBoundsException e){
+                        } catch (IndexOutOfBoundsException e) {
                             System.out.println("Invalid input! Try again");
                             continue;
                         }
