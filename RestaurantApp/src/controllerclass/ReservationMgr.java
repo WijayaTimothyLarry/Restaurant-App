@@ -156,14 +156,23 @@ public class ReservationMgr {
      * after 15 minutes of the booking time
      */
     public static void removeExpiredReservation() {
+        int reservationID;
+        int tableNumber;
         Calendar currentTime = Calendar.getInstance();
         Iterator<Reservation> itr = reservationList.iterator();
         while (itr.hasNext()) {
             Reservation reservation = itr.next();
             Calendar reservationTime = reservation.getReservationDateTime();
             if (ReservationUtils.expiryCheck(reservationTime.getTime(), currentTime.getTime())) {
-                String phoneNumber = reservation.getCustomerContactNo();
-                removeReservation(phoneNumber);
+                reservationID = reservation.getReservationID();
+                tableNumber = reservation.getTableNumber();
+                for (Table table : tableList) {
+                    if (table.getTableNumber() == tableNumber) {
+                        table.removeReservation(reservationID);
+                    }
+                }
+                itr.remove();
+                break;
             }
         }
 
