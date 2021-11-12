@@ -19,7 +19,7 @@ public class MainRestaurantApp {
             System.out.println("(1) Menu interface");
             System.out.println("(2) Reservation Interface");
             System.out.println("(3) Table Interface");
-            System.err.println("(4) Sales Revenue");
+            System.err.println("(4) Sales Revenue Interface");
             System.out.println("(0) Exit");
             choice = CustomInput.choice(0, 4);
 
