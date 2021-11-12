@@ -5,7 +5,10 @@ import database.Restaurant;
 import utils.CustomInput;
 
 public class MainRestaurantApp {
-
+    /**
+     * 
+     * Main Function to start restaurant app
+     */
     public static void main(String[] args) {
         Restaurant.loadRestaurant();
         int choice;
