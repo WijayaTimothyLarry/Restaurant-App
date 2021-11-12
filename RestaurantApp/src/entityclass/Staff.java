@@ -19,7 +19,7 @@ public class Staff extends Person {
 	 * @param gender (String) Gender of a given Staff
 	 * @param employeeID (String) Employee ID for a given Staff
 	 * @param jobTitle (String) Job Titlte for a given Staff.
-	 * @return Staff 
+	 * @see Person
 	 */
 	public Staff(String name, String gender, String employeeID, String jobTitle) {
 

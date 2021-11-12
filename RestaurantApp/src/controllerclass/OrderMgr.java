@@ -13,9 +13,19 @@ import entityclass.OrderItem;
 import entityclass.PackageItem;
 
 public class OrderMgr {
+    /**
+     * Static list of Order Made by Table
+     */
     static ArrayList<Order> orderList = Restaurant.orderList;
+    /**
+     * Static list of Menu of the Restaurant
+     */
     static Menu restaurantMenu = Restaurant.restaurantMenu;
 
+    /**
+     * Function to print the order of a table based on tablenumber
+     * @param tableNumber (int)tableNumber of the table which order is printed
+     */
     public static void printTableOrder(int tableNumber) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
@@ -26,6 +36,12 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to add an Appetizer to the order of a table based on tableNumber
+     * @param tableNumber (int)Table Number of the table which order is added 
+     * @param itemID (String)ID of the Appetizer
+     * @param quantity (int)Quantity of appetizer ordered
+     */
     public static void addAppetizer(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
