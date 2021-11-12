@@ -222,62 +222,6 @@ public class CustomInput {
         return futureDateTime;
     }
 
-    // method to compare date, month and year
-    /**
-     * Function to compare if two dates are the same
-     * 
-     * @param timing1 (Date)first timing to compare
-     * @param timing2 (Date)second timing to compare
-     * @return (boolean)true if the two timings are the same, false otherwise
-     */
-    public static boolean compareDMY(Date timing1, Date timing2) {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        cal1.setTime(timing1);
-        cal2.setTime(timing2);
-        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
-                && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
-        return comparison;
-    }
-
-    // method to compare month and year
-    /**
-     * Function to compare if the month and year of two timings are the same
-     * 
-     * @param timing1 (Date)first timing to compare
-     * @param timing2 (Date)second timing to compare
-     * @return (boolean)True if the month and year of the two timings are the same,
-     *         false otherwise
-     */
-    public static boolean compareMY(Date timing1, Date timing2) {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        cal1.setTime(timing1);
-        cal2.setTime(timing2);
-        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
-        return comparison;
-    }
-
-    // method to compare year
-    /**
-     * Function to compare if the year of two timings are the same
-     * 
-     * @param timing1 (Date)First timing to compare
-     * @param timing2 (Date)Second timing to compare
-     * @return (boolean)True if the year of the two timings are the same,false
-     *         otherwise
-     */
-    public static boolean compareY(Date timing1, Date timing2) {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        cal1.setTime(timing1);
-        cal2.setTime(timing2);
-        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
-        return comparison;
-    }
-
     /**
      * Function for user to input a day's date to record daily revenue
      * 
@@ -374,5 +318,61 @@ public class CustomInput {
 
         System.out.printf("Inputted year: %d\n", year);
         return futureDateTime;
+    }
+
+     // method to compare date, month and year
+    /**
+     * Function to compare if two dates are the same
+     * 
+     * @param timing1 (Date)first timing to compare
+     * @param timing2 (Date)second timing to compare
+     * @return (boolean)true if the two timings are the same, false otherwise
+     */
+    public static boolean compareDMY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)
+                && cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH);
+        return comparison;
+    }
+
+    // method to compare month and year
+    /**
+     * Function to compare if the month and year of two timings are the same
+     * 
+     * @param timing1 (Date)first timing to compare
+     * @param timing2 (Date)second timing to compare
+     * @return (boolean)True if the month and year of the two timings are the same,
+     *         false otherwise
+     */
+    public static boolean compareMY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
+        return comparison;
+    }
+
+    // method to compare year
+    /**
+     * Function to compare if the year of two timings are the same
+     * 
+     * @param timing1 (Date)First timing to compare
+     * @param timing2 (Date)Second timing to compare
+     * @return (boolean)True if the year of the two timings are the same,false
+     *         otherwise
+     */
+    public static boolean compareY(Date timing1, Date timing2) {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(timing1);
+        cal2.setTime(timing2);
+        boolean comparison = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
+        return comparison;
     }
 }
