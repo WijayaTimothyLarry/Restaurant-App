@@ -53,6 +53,12 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to add a Main Course to the order of a table based on tableNumber
+     * @param tableNumber (int)Table Number of the table which order is added
+     * @param itemID (String)ID of the MainCourse
+     * @param quantity (int)Quantity of MainCourse ordered
+     */
     public static void addMainCourse(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
@@ -65,6 +71,12 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to add a Dessert to the order of a table based on tableNumber
+     * @param tableNumber (int)Table Number of the table which order is added
+     * @param itemID (String)ID of the Dessert
+     * @param quantity (int)Quantity of Dessert ordered
+     */
     public static void addDessert(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
@@ -76,6 +88,12 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to add a Drinks item to the order of a table based on tableNumber
+     * @param tableNumber (int)Table Number of the table which order is added
+     * @param itemID (String)ID of the Drinks
+     * @param quantity (int)Quantity of Drinks ordered
+     */
     public static void addDrinks(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
@@ -87,6 +105,12 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to add a PackageItem to the order of a table based on tableNumber
+     * @param tableNumber (int)Table Number of the table which order is added
+     * @param itemID (String)ID of the PromoPackage
+     * @param quantity (int)Quantity of the Package ordered
+     */
     public static void addPackage(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
         if (tableOrder == null) {
@@ -98,6 +122,11 @@ public class OrderMgr {
         }
     }
 
+    /**
+     * Function to retrieve order of the Table based on tableNumber
+     * @param tableNumber Number of the table that we are checking
+     * @return (Order)order of the table; null if no order is attached to the table
+     */
     public static Order getTableOrder(int tableNumber) {
         for (Order order : orderList) {
             if (order.getTableNumber() == tableNumber)
@@ -105,6 +134,11 @@ public class OrderMgr {
         }
         return null;
     }
+
+    /**
+     * Function to remove order from a table based on tableNumber
+     * @param tableNumber Number of the table that we are removing order from
+     */
 
     public static void removeOrder(int tableNumber) {
         Order tableOrder = getTableOrder(tableNumber);
