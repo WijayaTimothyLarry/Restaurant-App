@@ -124,7 +124,7 @@ public class MenuMgr {
      * Function to print Menu(Compilation of all list)
      */
 
-    public void showMenu() {
+    public static void showMenu() {
         ArrayList<MenuItem> menuList = restaurantMenu.getMenuList();
         System.out.println("          MENU          ");
         System.out.println("******************************");
