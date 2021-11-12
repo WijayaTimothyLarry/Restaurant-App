@@ -61,8 +61,8 @@ public class TableInterface {
     }
 
     /**
-     * private static void : checkTableAvailability
-     * Starting Function to check the Table availability for a given number of pax and time
+     * private static void : checkTableAvailability Starting Function to check the
+     * Table availability for a given number of pax and time
      */
     private static void checkTableAvailability() {
         System.out.println("Enter number of pax:");
@@ -82,9 +82,9 @@ public class TableInterface {
     }
 
     /**
-     * public static void : registerCustomerToTable
-     * Function to start registering a customer to the given Table based on waiter name, number of pax and table Number
-     * Checks if membership exists under given customer's contact number
+     * public static void : registerCustomerToTable Function to start registering a
+     * customer to the given Table based on waiter name, number of pax and table
+     * Number Checks if membership exists under given customer's contact number
      */
     private static void registerCustomerToTable() {
         boolean invalidTable = true;
@@ -112,8 +112,8 @@ public class TableInterface {
     }
 
     /**
-     * private static void: printTableOrder
-     * Function to print the Table's order for a given tableNumber
+     * private static void: printTableOrder Function to print the Table's order for
+     * a given tableNumber
      */
     private static void printTableOrder() {
         System.out.println("Enter table Number:");
@@ -122,8 +122,8 @@ public class TableInterface {
     }
 
     /**
-     * private static void : addOrderItem
-     * Function to add an order item to the given table.
+     * private static void : addOrderItem Function to add an order item to the given
+     * table.
      */
     private static void addOrderItem() {
         System.out.println("Enter Table Number");
@@ -217,37 +217,29 @@ public class TableInterface {
     }
 
     /**
-     * private static void : removeOrderItem
-     * Function to remove an existing order item from the order of a given table
+     * private static void : removeOrderItem Function to remove an existing order
+     * item from the order of a given table
      */
     private static void removeOrderItem() {
-        System.out.println("Enter Table Number:");
+        System.out.println("Enter Table Number");
         int tableNumber = CustomInput.nextPositiveInt();
         if (!TableMgr.checkTableOccupied(tableNumber)) {
             System.out.println("There are no customer on this table");
         } else {
-            boolean stillRemoving = true;
-            while (stillRemoving) {
-                System.out.println("(1) Remove an Order Item");
-                System.out.println("(0) Finish Removing");
-
-                choice = CustomInput.choice(0, 1);
-
-                switch (choice) {
-                case 1:
-                    OrderMgr.printTableOrder(tableNumber);
-                    OrderMgr.removeOrder(tableNumber);
-                    break;
-                case 0:
-                    stillRemoving = false;
-                }
+            boolean stillAdding = true;
+            while (stillAdding) {
+                OrderMgr.printTableOrder(tableNumber);
+                System.out.println("Enter the ID of item to be removed:");
+                String itemID = scanner.nextLine();
+                OrderMgr.removeOrderItem(tableNumber, itemID);
             }
+
         }
     }
 
     /**
-     * private static void : settleTable
-     * Function to sttle and unassign a table for the given tableNumber
+     * private static void : settleTable Function to settle and unassign a table for
+     * the given tableNumber
      */
     private static void settleTable() {
         System.out.println("Enter Table Number:");

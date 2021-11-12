@@ -1,6 +1,7 @@
 package controllerclass;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import database.Restaurant;
 import entityclass.Appetizer;
@@ -8,6 +9,7 @@ import entityclass.Dessert;
 import entityclass.Drinks;
 import entityclass.MainCourse;
 import entityclass.Menu;
+import entityclass.MenuItem;
 import entityclass.Order;
 import entityclass.OrderItem;
 import entityclass.PackageItem;
@@ -24,6 +26,7 @@ public class OrderMgr {
 
     /**
      * Function to print the order of a table based on tablenumber
+     * 
      * @param tableNumber (int)tableNumber of the table which order is printed
      */
     public static void printTableOrder(int tableNumber) {
@@ -38,9 +41,10 @@ public class OrderMgr {
 
     /**
      * Function to add an Appetizer to the order of a table based on tableNumber
-     * @param tableNumber (int)Table Number of the table which order is added 
-     * @param itemID (String)ID of the Appetizer
-     * @param quantity (int)Quantity of appetizer ordered
+     * 
+     * @param tableNumber (int)Table Number of the table which order is added
+     * @param itemID      (String)ID of the Appetizer
+     * @param quantity    (int)Quantity of appetizer ordered
      */
     public static void addAppetizer(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
@@ -55,9 +59,10 @@ public class OrderMgr {
 
     /**
      * Function to add a Main Course to the order of a table based on tableNumber
+     * 
      * @param tableNumber (int)Table Number of the table which order is added
-     * @param itemID (String)ID of the MainCourse
-     * @param quantity (int)Quantity of MainCourse ordered
+     * @param itemID      (String)ID of the MainCourse
+     * @param quantity    (int)Quantity of MainCourse ordered
      */
     public static void addMainCourse(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
@@ -73,9 +78,10 @@ public class OrderMgr {
 
     /**
      * Function to add a Dessert to the order of a table based on tableNumber
+     * 
      * @param tableNumber (int)Table Number of the table which order is added
-     * @param itemID (String)ID of the Dessert
-     * @param quantity (int)Quantity of Dessert ordered
+     * @param itemID      (String)ID of the Dessert
+     * @param quantity    (int)Quantity of Dessert ordered
      */
     public static void addDessert(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
@@ -90,9 +96,10 @@ public class OrderMgr {
 
     /**
      * Function to add a Drinks item to the order of a table based on tableNumber
+     * 
      * @param tableNumber (int)Table Number of the table which order is added
-     * @param itemID (String)ID of the Drinks
-     * @param quantity (int)Quantity of Drinks ordered
+     * @param itemID      (String)ID of the Drinks
+     * @param quantity    (int)Quantity of Drinks ordered
      */
     public static void addDrinks(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
@@ -107,9 +114,10 @@ public class OrderMgr {
 
     /**
      * Function to add a PackageItem to the order of a table based on tableNumber
+     * 
      * @param tableNumber (int)Table Number of the table which order is added
-     * @param itemID (String)ID of the PromoPackage
-     * @param quantity (int)Quantity of the Package ordered
+     * @param itemID      (String)ID of the PromoPackage
+     * @param quantity    (int)Quantity of the Package ordered
      */
     public static void addPackage(int tableNumber, String itemID, int quantity) {
         Order tableOrder = getTableOrder(tableNumber);
@@ -124,6 +132,7 @@ public class OrderMgr {
 
     /**
      * Function to retrieve order of the Table based on tableNumber
+     * 
      * @param tableNumber Number of the table that we are checking
      * @return (Order)order of the table; null if no order is attached to the table
      */
@@ -135,17 +144,17 @@ public class OrderMgr {
         return null;
     }
 
-    /**
-     * Function to remove order from a table based on tableNumber
-     * @param tableNumber Number of the table that we are removing order from
-     */
-
-    public static void removeOrder(int tableNumber) {
+    public static void removeOrderItem(int tableNumber, String itemID) {
         Order tableOrder = getTableOrder(tableNumber);
-        if (tableOrder == null) {
-            System.out.println("There is no customer in this table\n");
-        } else {
-            tableOrder.removeOrderItem();
+        ArrayList<OrderItem> orderItems = tableOrder.getOrderItems();
+        Iterator<OrderItem> itr = orderItems.iterator();
+        while (itr.hasNext()) {
+            MenuItem menuItem = itr.next().getItem();
+            if (menuItem.getItemID().equals(itemID)) {
+                itr.remove();
+                return;
+            }
         }
+        System.out.println("There is no order item with this item ID");
     }
 }
