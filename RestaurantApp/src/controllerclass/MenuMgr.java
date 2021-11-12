@@ -161,10 +161,10 @@ public class MenuMgr {
      * @see Menu
      */
     public static void addAppe(Appetizer appe) {
-        System.out.println("Current Appetizers:");
-        showAppetizer();
         restaurantMenu.addintoAppeList(appe);
         restaurantMenu.addintoMenuList(appe);
+        System.out.println("Updated Appetizers:");
+        showAppetizer();
     }
 
     // Main Course
@@ -177,6 +177,8 @@ public class MenuMgr {
     public static void addMainCourse(MainCourse maincourse) {
         restaurantMenu.addintoMainCourseList(maincourse);
         restaurantMenu.addintoMenuList(maincourse);
+        System.out.println("Updated Main Courses:");
+        showMainCourse();
     }
 
     // Dessert
@@ -189,6 +191,8 @@ public class MenuMgr {
     public static void addDessert(Dessert dessert) {
         restaurantMenu.addintoDessertList(dessert);
         restaurantMenu.addintoMenuList(dessert);
+        System.out.println("Updated Desserts:");
+        showDessert();
     }
 
     // Drinks
@@ -201,6 +205,8 @@ public class MenuMgr {
     public static void addDrinks(Drinks drinks) {
         restaurantMenu.addintoDrinksList(drinks);
         restaurantMenu.addintoMenuList(drinks);
+        System.out.println("Updated Drinks:");
+        showDrinks();
     }
 
     // Package
@@ -211,8 +217,11 @@ public class MenuMgr {
      * @see Menu
      */
     public static void addPackage(PackageItem packages) {
+
         restaurantMenu.addintoPackageList(packages);
         restaurantMenu.addintoMenuList(packages);
+        System.out.println("Updated Packages:");
+        showPackage();
     }
 
     // 2) Delete item
@@ -226,7 +235,7 @@ public class MenuMgr {
      */
     public static void removeAppetizer(String id) {
         if (restaurantMenu.removeforAppeList(id) == -1) {
-            System.out.println("Item not found");
+            System.out.println("Item not found\n");
         } else {
             restaurantMenu.removeforMenuList(id);
         }
