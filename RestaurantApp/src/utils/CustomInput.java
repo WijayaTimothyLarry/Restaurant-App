@@ -7,7 +7,8 @@ import java.util.Calendar;
 
 public class CustomInput {
     private static Scanner scanner = new Scanner(System.in);
-
+    private static final int opening = 16;
+    private static final int closing = 23;
     public static int choice(int lower, int upper) {
         int input = 0;
         boolean invalidInput = true;
@@ -164,7 +165,7 @@ public class CustomInput {
         futureDateTime.set(Calendar.DAY_OF_MONTH, day);
 
         System.out.println("Enter hour(16-23): ");
-        int hour = choice(16, 23);
+        int hour = choice(opening, closing);
         futureDateTime.set(Calendar.HOUR_OF_DAY, hour);
 
         System.out.println("Enter minutes(0-59): ");
