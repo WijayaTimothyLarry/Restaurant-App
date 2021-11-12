@@ -9,8 +9,9 @@ public class CustomInput {
     private static Scanner scanner = new Scanner(System.in);
 
     /**
-     * Function to ensure that inputted choice if valid
-     * Prompt user to reenter input if choice is not valid
+     * Function to ensure that inputted choice if valid Prompt user to reenter input
+     * if choice is not valid
+     * 
      * @param lower (int)Lower bound of valid input(inclusive)
      * @param upper (int)Upper bound of valid input(inclusive)
      * @return (int)valid input
@@ -36,9 +37,11 @@ public class CustomInput {
         }
         return input;
     }
+
     /**
-     * Function to scan in next positive integer as input
-     * Prompt user to reenter input if input is not an integer or input is negative
+     * Function to scan in next positive integer as input Prompt user to reenter
+     * input if input is not an integer or input is negative
+     * 
      * @return (int)Valid Postive Integer input
      */
 
@@ -64,8 +67,9 @@ public class CustomInput {
     }
 
     /**
-     * Function to scan in next integer as input
-     * Prompt user to reenter input if input is not an integer
+     * Function to scan in next integer as input Prompt user to reenter input if
+     * input is not an integer
+     * 
      * @return (int)Valid Integer input
      */
     public static int nextInt() {
@@ -85,8 +89,9 @@ public class CustomInput {
     }
 
     /**
-     * Function to scan in next Double as input
-     * Prompt user to reenter input if input is not a double
+     * Function to scan in next Double as input Prompt user to reenter input if
+     * input is not a double
+     * 
      * @return (double)Valid Double Input
      */
     public static double nextDouble() {
@@ -106,8 +111,9 @@ public class CustomInput {
     }
 
     /**
-     * Function to scan in next positive double as input
-     * Prompt user to reenter input if input is not a positive double
+     * Function to scan in next positive double as input Prompt user to reenter
+     * input if input is not a positive double
+     * 
      * @return (double)Valid Positive Double Input
      */
     public static double nextPositiveDouble() {
@@ -115,7 +121,7 @@ public class CustomInput {
         boolean invalidInput = true;
         while (invalidInput) {
             try {
-                System.out.println("Enter your choice:");
+                System.out.println("Enter your value:");
                 input = scanner.nextDouble();
                 if (input <= 0) {
                     throw new Exception("Please input value above 0");
@@ -133,8 +139,9 @@ public class CustomInput {
     }
 
     /**
-     * Function to scan in next valid phone number as input
-     * Prompt user to reenter input if input is not a valid phone number
+     * Function to scan in next valid phone number as input Prompt user to reenter
+     * input if input is not a valid phone number
+     * 
      * @return (String) Valid Phone Number input
      */
     public static String phoneNumberInput() {
@@ -149,8 +156,9 @@ public class CustomInput {
     }
 
     /**
-     * Function to scan in next valid date as input
-     * Prompt user to reenter input if input is not a valid date
+     * Function to scan in next valid date as input Prompt user to reenter input if
+     * input is not a valid date
+     * 
      * @return (Calendar) Valid formatted Date input
      */
     public static Calendar dateInput() {
@@ -217,6 +225,7 @@ public class CustomInput {
     // method to compare date, month and year
     /**
      * Function to compare if two dates are the same
+     * 
      * @param timing1 (Date)first timing to compare
      * @param timing2 (Date)second timing to compare
      * @return (boolean)true if the two timings are the same, false otherwise
@@ -235,9 +244,11 @@ public class CustomInput {
     // method to compare month and year
     /**
      * Function to compare if the month and year of two timings are the same
+     * 
      * @param timing1 (Date)first timing to compare
      * @param timing2 (Date)second timing to compare
-     * @return (boolean)True if the month and year of the two timings are the same, false otherwise
+     * @return (boolean)True if the month and year of the two timings are the same,
+     *         false otherwise
      */
     public static boolean compareMY(Date timing1, Date timing2) {
         Calendar cal1 = Calendar.getInstance();
@@ -252,9 +263,11 @@ public class CustomInput {
     // method to compare year
     /**
      * Function to compare if the year of two timings are the same
+     * 
      * @param timing1 (Date)First timing to compare
      * @param timing2 (Date)Second timing to compare
-     * @return (boolean)True if the year of the two timings are the same,false otherwise
+     * @return (boolean)True if the year of the two timings are the same,false
+     *         otherwise
      */
     public static boolean compareY(Date timing1, Date timing2) {
         Calendar cal1 = Calendar.getInstance();
@@ -267,6 +280,7 @@ public class CustomInput {
 
     /**
      * Function for user to input a day's date to record daily revenue
+     * 
      * @return (Calendar)Today's date
      */
     public static Calendar dailyRevenueDateInput() {
@@ -315,8 +329,10 @@ public class CustomInput {
         System.out.printf("Inputted Date: %d/%d/%d\n", day, month, year);
         return futureDateTime;
     }
+
     /**
      * Function for user to input a month for revenue recording purposes
+     * 
      * @return (Calendar)Month inputted by user
      */
 
@@ -341,6 +357,7 @@ public class CustomInput {
 
     /**
      * Function for user to input a year for revenune recording purposes
+     * 
      * @return (Calendar)Year inputted by user
      */
 
