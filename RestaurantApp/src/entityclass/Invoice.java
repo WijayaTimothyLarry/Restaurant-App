@@ -72,6 +72,7 @@ public class Invoice implements Serializable {
 		this.gst = (this.SCHARGE + this.subtotal) * GST;
 		this.totalBill = this.discountedSubtotal + this.gst + this.SCHARGE;
 		this.dateTime = Calendar.getInstance().getTime();
+		this.waiterName = order.getWaiterName();
 
 	}
 
