@@ -3,6 +3,7 @@ package entityclass;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import database.Restaurant;
 
@@ -167,5 +168,15 @@ public class Table implements Serializable {
 	 */
 	public void addReservation(Reservation newReservation) {
 		tableReservation.add(newReservation);
+	}
+
+	public void removeReservation(int reservationID) {
+		Iterator<Reservation> itr = this.tableReservation.iterator();
+		while (itr.hasNext()) {
+			Reservation reservation = itr.next();
+			if (reservation.getReservationID() == reservationID) {
+				itr.remove();
+			}
+		}
 	}
 }
