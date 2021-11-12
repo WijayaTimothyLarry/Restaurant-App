@@ -488,7 +488,7 @@ public class MenuInterface {
                 break;
             case 5:
                 MenuMgr.showPackage();
-                System.out.println("Enter the ID of item to be removed:");
+                System.out.println("Enter the ID of item to be updated:");
                 itemID = scanner.nextLine();
                 boolean packageExist = false;
                 while (!packageExist) {
@@ -506,10 +506,11 @@ public class MenuInterface {
                 }
                 System.out.println("Update");
                 System.out.println("(1)Name");
-                System.err.println("(2)Price");
+                System.out.println("(2)Price");
                 System.out.println("(3)Description");
+                System.out.println("(4)Items in Package");
                 System.out.println("(0) Go back");
-                int packagesChoice = CustomInput.choice(0, 3);
+                int packagesChoice = CustomInput.choice(0, 4);
                 switch (packagesChoice) {
 
                 case 1:
@@ -527,6 +528,22 @@ public class MenuInterface {
                     String description = scanner.nextLine();
                     MenuMgr.changePackagesDescription(itemID, description);
                     break;
+                case 4:
+                    while(true){
+                        try{
+                            System.out.println("Enter id of item to be changed: ");
+                            String foodID = scanner.nextLine();
+                            MenuMgr.removeiteminPackage(itemID, foodID);
+                            System.out.println("Enter id of item to be added into this package: ");
+                            String newfoodID = scanner.nextLine();
+                            MenuMgr.addintoPackage(itemID, newfoodID);
+                            System.out.println("Item added");
+                            break;
+                        }catch(IndexOutOfBoundsException e){
+                            System.out.println("Invalid input! Try again");
+                            continue;
+                        }
+                    }
                 }
             case 0:
                 on = false;
