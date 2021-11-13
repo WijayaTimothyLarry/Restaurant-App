@@ -22,6 +22,7 @@ public class MenuItem implements Serializable {
 	 * @param price       (double)Price of MenuItem
 	 * @param description (String)Description of MenuItem
 	 * @param itemID      (String)ID of MenuItem
+	 * @param itemType    (String)Type of MenuItem
 	 */
 	public MenuItem(String itemName, double price, String description, String itemID) {
 		this.itemName = itemName;
