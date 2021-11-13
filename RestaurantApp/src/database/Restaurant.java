@@ -1,6 +1,7 @@
 package database;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -282,12 +283,23 @@ public class Restaurant {
 	public static void loadRestaurant() {
 		ArrayList<Object> deserialized = new ArrayList<Object>();
 		try {
-			FileInputStream fis = new FileInputStream("restaurant.ser");
+			FileInputStream fis = new FileInputStream("resaurant.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			deserialized = (ArrayList<Object>) ois.readObject();
 			ois.close();
 			fis.close();
+			Restaurant.restaurantMenu = (Menu) deserialized.get(0);
+			Restaurant.tableList = (ArrayList<Table>) deserialized.get(1);
+			Restaurant.reservationList = (ArrayList<Reservation>) deserialized.get(2);
+			Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
+			Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
+			Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
+			Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 
+		} catch (FileNotFoundException e) {
+			System.out.println("There are no current databse. Initialising new database");
+			createRestaurant();
+			saveRestaurant();
 		} catch (IOException i) {
 			i.printStackTrace();
 			return;
@@ -297,12 +309,6 @@ public class Restaurant {
 			return;
 		}
 
-		Restaurant.restaurantMenu = (Menu) deserialized.get(0);
-		Restaurant.tableList = (ArrayList<Table>) deserialized.get(1);
-		Restaurant.reservationList = (ArrayList<Reservation>) deserialized.get(2);
-		Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
-		Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
-		Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
-		Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 	}
+
 }
