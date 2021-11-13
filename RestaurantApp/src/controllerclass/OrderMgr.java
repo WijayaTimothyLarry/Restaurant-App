@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import database.Restaurant;
-import entityclass.Appetizer;
-import entityclass.Dessert;
-import entityclass.Drinks;
-import entityclass.MainCourse;
 import entityclass.Menu;
 import entityclass.MenuItem;
 import entityclass.Order;
