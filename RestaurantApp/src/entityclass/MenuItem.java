@@ -98,10 +98,19 @@ public class MenuItem implements Serializable {
 		this.itemID = itemID;
 	}
 
+	/**
+	 * Set item type
+	 * 
+	 * @param itemID
+	 */
 	public void setItemType(ItemType itemType) {
 		this.itemType = itemType;
 	}
 
+	/**
+	 * 
+	 * @return Item type
+	 */
 	public ItemType getItemType() {
 		return itemType;
 	}
