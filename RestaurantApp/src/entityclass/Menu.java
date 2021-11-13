@@ -17,9 +17,10 @@ public class Menu implements Serializable {
 	 */
 	public Menu(ArrayList<MenuItem> menuList) {
 		this.menuList = menuList;
+		this.packagesList = new ArrayList<PackageItem>();
 		for (MenuItem menuitem : menuList) {
 			if (menuitem.getItemType() == ItemType.PACKAGE) {
-				packagesList.add((PackageItem)menuitem);
+				packagesList.add((PackageItem) menuitem);
 			}
 		}
 	}
