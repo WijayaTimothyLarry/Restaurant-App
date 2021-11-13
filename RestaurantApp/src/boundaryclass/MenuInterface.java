@@ -170,7 +170,7 @@ public class MenuInterface {
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
                     while (!validID) {
-                        if (itemID.charAt(0) == 'A') {
+                        if (itemID.charAt(0) == 'M') {
                             validID = true;
                             itemID = scanner.nextLine();
                         }
@@ -192,7 +192,7 @@ public class MenuInterface {
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
                     while (!validID) {
-                        if (itemID.charAt(0) == 'A') {
+                        if (itemID.charAt(0) == 'D') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
@@ -214,7 +214,7 @@ public class MenuInterface {
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
                     while (!validID) {
-                        if (itemID.charAt(0) == 'A') {
+                        if (itemID.charAt(0) == 'B') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
@@ -236,7 +236,7 @@ public class MenuInterface {
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
                     while (!validID) {
-                        if (itemID.charAt(0) == 'A') {
+                        if (itemID.charAt(0) == 'P') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
