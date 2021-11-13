@@ -153,6 +153,10 @@ public class Order implements Serializable {
 		if (this.invoice != null)
 			return; // lock order for editing when invoice
 		// already generated
+		if (orderItems == null) {
+			System.out.println("There are no customer in this table");
+			return;
+		}
 		this.invoice = new Invoice(this);
 		Restaurant.invoiceList.add(invoice);
 		invoice.printInvoice();

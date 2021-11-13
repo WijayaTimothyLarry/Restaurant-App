@@ -18,7 +18,7 @@ public class Invoice implements Serializable {
 	 */
 	private int tableNumber;
 	/**
-	 *(double) Total bill of the order
+	 * (double) Total bill of the order
 	 */
 	private double totalBill;
 	/**
@@ -42,7 +42,7 @@ public class Invoice implements Serializable {
 	 */
 	private Date dateTime;
 	/**
-	 * (double)Service charge according to  Singapore regulations
+	 * (double)Service charge according to Singapore regulations
 	 */
 	private double SCHARGE;
 	/**
@@ -60,6 +60,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Constructor for invoice
+	 * 
 	 * @param order (Order)Order that invoice is constructed from
 	 */
 	public Invoice(Order order) {
@@ -69,7 +70,7 @@ public class Invoice implements Serializable {
 		this.discount = -(this.subtotal * memDiscount);
 		this.discountedSubtotal = (this.discount + this.subtotal);
 		this.SCHARGE = this.discountedSubtotal * serviceCharge;
-		this.gst = (this.SCHARGE + this.subtotal) * GST;
+		this.gst = (this.SCHARGE + this.discountedSubtotal) * GST;
 		this.totalBill = this.discountedSubtotal + this.gst + this.SCHARGE;
 		this.dateTime = Calendar.getInstance().getTime();
 		this.waiterName = order.getWaiterName();
@@ -78,6 +79,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to return time when the order is made
+	 * 
 	 * @return (Date)time when the order is made
 	 */
 	public Date getDatetime() {
@@ -86,6 +88,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set the time when the order is made
+	 * 
 	 * @param invoiceDateTime (date)time when order is made
 	 */
 	public void setDatetime(Date invoiceDateTime) {
@@ -94,6 +97,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to return ID of invoice
+	 * 
 	 * @return (int)ID of invoice
 	 */
 	public int getInvoiceID() {
@@ -102,6 +106,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set ID of invoice
+	 * 
 	 * @param invoiceID (int)ID of invoice
 	 */
 	public void setInvoiceID(int invoiceID) {
@@ -110,6 +115,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to get table number
+	 * 
 	 * @return (int)table number
 	 */
 	public int getTableNumber() {
@@ -118,6 +124,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set table number
+	 * 
 	 * @param tableNumber (int)table number
 	 */
 	public void setTableNumber(int tableNumber) {
@@ -126,6 +133,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to get total bill
+	 * 
 	 * @return (double)total bill
 	 */
 	public double getTotalBill() {
@@ -134,6 +142,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set total bill
+	 * 
 	 * @param totalBill (double)total bill
 	 */
 	public void setTotalBill(double totalBill) {
@@ -142,6 +151,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to get the list of items ordered
+	 * 
 	 * @return (ArrayList<OrderItem>) list of items ordered
 	 */
 	public ArrayList<OrderItem> getOrderItems() {
@@ -150,6 +160,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set the list of items ordered
+	 * 
 	 * @param orderItems (ArrayList<OrderItem>) list of item ordered
 	 */
 	public void setOrderItems(ArrayList<OrderItem> orderItems) {
@@ -158,6 +169,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to get the waiter's name
+	 * 
 	 * @return (String)name of the waiter
 	 */
 	public String getWaiterName() {
@@ -166,6 +178,7 @@ public class Invoice implements Serializable {
 
 	/**
 	 * Function to set waiter's name
+	 * 
 	 * @param waiterName (String)Name of the waiter
 	 */
 	public void setWaiterName(String waiterName) {

@@ -9,6 +9,12 @@ public class MenuItem implements Serializable {
 	private String description;
 	private String itemID;
 
+	public static enum ItemType {
+		APPETIZER, MAINCOURSE, DESSERT, DRINKS, PACKAGE
+	}
+
+	private ItemType itemType;
+
 	/**
 	 * Constructor for MenuItem
 	 * 
@@ -16,12 +22,14 @@ public class MenuItem implements Serializable {
 	 * @param price       (double)Price of MenuItem
 	 * @param description (String)Description of MenuItem
 	 * @param itemID      (String)ID of MenuItem
+	 * @param itemType    (String)Type of MenuItem
 	 */
-	public MenuItem(String itemName, double price, String description, String itemID) {
+	public MenuItem(String itemName, double price, String description, String itemID, ItemType itemType) {
 		this.itemName = itemName;
 		this.price = price;
 		this.description = description;
 		this.itemID = itemID;
+		this.itemType = itemType;
 	}
 
 	/**
@@ -88,6 +96,23 @@ public class MenuItem implements Serializable {
 	 */
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
+	}
+
+	/**
+	 * Set item type
+	 * 
+	 * @param itemID
+	 */
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
+	}
+
+	/**
+	 * 
+	 * @return Item type
+	 */
+	public ItemType getItemType() {
+		return itemType;
 	}
 
 }

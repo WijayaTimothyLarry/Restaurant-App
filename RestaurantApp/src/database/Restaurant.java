@@ -1,6 +1,7 @@
 package database;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,16 +10,13 @@ import java.util.ArrayList;
 
 import entityclass.Menu;
 import entityclass.Table;
+import entityclass.MenuItem.ItemType;
 import entityclass.Reservation;
 import entityclass.Staff;
 import entityclass.Invoice;
 import entityclass.Order;
 import entityclass.Customer;
 import entityclass.MenuItem;
-import entityclass.Appetizer;
-import entityclass.MainCourse;
-import entityclass.Dessert;
-import entityclass.Drinks;
 import entityclass.PackageItem;
 
 public class Restaurant {
@@ -42,65 +40,65 @@ public class Restaurant {
 	}
 
 	/**
-	 * Function to create and initialise menu for the restaurant
-	 * Add sample items to Appetizer List, Main Course List, Dessert List, Drinks List and PackageList
+	 * Function to create and initialise menu for the restaurant Add sample items to
+	 * Appetizer List, Main Course List, Dessert List, Drinks List and PackageList
 	 */
 	public static void createMenu() {
 
-		ArrayList<Appetizer> appeList = new ArrayList<Appetizer>();
-		ArrayList<MainCourse> mainCourseList = new ArrayList<MainCourse>();
-		ArrayList<Dessert> dessertList = new ArrayList<Dessert>();
-		ArrayList<Drinks> drinkList = new ArrayList<Drinks>();
-		ArrayList<PackageItem> packageList = new ArrayList<PackageItem>();
+		ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
 
 		// Initialize Appetizers
-		Appetizer appetizer1 = new Appetizer("Mushroom Soup", 5, "Homemade cream of mushroom soup", "A1");
-		Appetizer appetizer2 = new Appetizer("Zuppa Soup", 6, "Creamy soup topped with flaky puff pastry", "A2");
-		Appetizer appetizer3 = new Appetizer("Goulash Soup", 6, "Hearty beef and vegetable soup with bread on the side",
-				"A3");
+		MenuItem appetizer1 = new MenuItem("Mushroom Soup", 5, "Homemade cream of mushroom soup", "A1",
+				ItemType.APPETIZER);
+		MenuItem appetizer2 = new MenuItem("Zuppa Soup", 6, "Creamy soup topped with flaky puff pastry", "A2",
+				ItemType.APPETIZER);
+		MenuItem appetizer3 = new MenuItem("Goulash Soup", 6, "Hearty beef and vegetable soup with bread on the side",
+				"A3", ItemType.APPETIZER);
 
 		// add appetizer to appetizer menu
-		appeList.add(appetizer1);
-		appeList.add(appetizer2);
-		appeList.add(appetizer3);
+		menuList.add(appetizer1);
+		menuList.add(appetizer2);
+		menuList.add(appetizer3);
 
 		// Initialize Main Course
-		MainCourse mainCourse1 = new MainCourse("Chicken Cordon Bleu", 15,
-				"Breaded fried chicken filled with creamy mozarella", "M1");
-		MainCourse mainCourse2 = new MainCourse("Ribeye Steak", 20,
-				"Grilled Beef Steak with Hollandaise Sauce and Sautéed Vegetables", "M2");
-		MainCourse mainCourse3 = new MainCourse("Grilled Porterhouse steak", 20,
-				"Bone in king of steak with Red Wine Sauce", "M3");
+		MenuItem mainCourse1 = new MenuItem("Chicken Cordon Bleu", 15,
+				"Breaded fried chicken filled with creamy mozarella", "M1", ItemType.MAINCOURSE);
+		MenuItem mainCourse2 = new MenuItem("Ribeye Steak", 20,
+				"Grilled Beef Steak with Hollandaise Sauce and Sautéed Vegetables", "M2", ItemType.MAINCOURSE);
+		MenuItem mainCourse3 = new MenuItem("Grilled Porterhouse steak", 20,
+				"Bone in king of steak with Red Wine Sauce", "M3", ItemType.MAINCOURSE);
 
 		// add maincourse to maincourse menu
-		mainCourseList.add(mainCourse1);
-		mainCourseList.add(mainCourse2);
-		mainCourseList.add(mainCourse3);
+		menuList.add(mainCourse1);
+		menuList.add(mainCourse2);
+		menuList.add(mainCourse3);
 
 		// initialize dessert
-		Dessert dessert1 = new Dessert("Tiramisu Cake", 7,
-				"Coffee flavoured Italian dessert topped with brazillian espresso powder", "D1");
-		Dessert dessert2 = new Dessert("Strawberry Shortcake", 6, "Sweetsour strawberry to freshen you from the grease",
-				"D2");
-		Dessert dessert3 = new Dessert("Blackforest Gateau ", 7, "chocolate sponge cake with a rich cherry filling",
-				"D3");
+		MenuItem dessert1 = new MenuItem("Tiramisu Cake", 7,
+				"Coffee flavoured Italian dessert topped with brazillian espresso powder", "D1", ItemType.DESSERT);
+		MenuItem dessert2 = new MenuItem("Strawberry Shortcake", 6,
+				"Sweetsour strawberry to freshen you from the grease", "D2", ItemType.DESSERT);
+		MenuItem dessert3 = new MenuItem("Blackforest Gateau ", 7, "chocolate sponge cake with a rich cherry filling",
+				"D3", ItemType.DESSERT);
 
 		// add dessert to dessert menu
-		dessertList.add(dessert1);
-		dessertList.add(dessert2);
-		dessertList.add(dessert3);
+		menuList.add(dessert1);
+		menuList.add(dessert2);
+		menuList.add(dessert3);
 
 		// initialize drinks
-		Drinks drink1 = new Drinks("The Red Hood", 4, "Mixed of fresh pomegranate and cranberry juices", "B1");
-		Drinks drink2 = new Drinks("Bloddy Marry", 5,
-				"Want to spice things up? Bloody Mary with extra smoked Tabasco thrown into the mix", "B2");
-		Drinks drink3 = new Drinks("Ginger and Pear Punch", 4,
-				"Suprise yourself with the punch of our house specialty ", "B3");
+		MenuItem drink1 = new MenuItem("The Red Hood", 4, "Mixed of fresh pomegranate and cranberry juices", "B1",
+				ItemType.DRINKS);
+		MenuItem drink2 = new MenuItem("Bloddy Marry", 5,
+				"Want to spice things up? Bloody Mary with extra smoked Tabasco thrown into the mix", "B2",
+				ItemType.DRINKS);
+		MenuItem drink3 = new MenuItem("Ginger and Pear Punch", 4,
+				"Suprise yourself with the punch of our house specialty ", "B3", ItemType.DRINKS);
 
 		// add drinks to drinks menu
-		drinkList.add(drink1);
-		drinkList.add(drink2);
-		drinkList.add(drink3);
+		menuList.add(drink1);
+		menuList.add(drink2);
+		menuList.add(drink3);
 
 		// initialize packages
 		ArrayList<MenuItem> packageList1 = new ArrayList<MenuItem>();
@@ -109,7 +107,7 @@ public class Restaurant {
 		packageList1.add(drink1);
 		PackageItem package1 = new PackageItem("Mushroom Chicken in the Hood", 22,
 				"Start the night with mushroom soup, fill up with Chicken Cordon Bleu and fresh up with The Red Hood ",
-				packageList1, "P1");
+				packageList1, "P1", ItemType.PACKAGE);
 
 		ArrayList<MenuItem> packageList2 = new ArrayList<MenuItem>();
 		packageList2.add(appetizer3);
@@ -117,21 +115,21 @@ public class Restaurant {
 		packageList2.add(drink2);
 		PackageItem package2 = new PackageItem("Spicy Heavy Meal", 22,
 				"Hearty meal of Goulash Soup and Grilled Porterhouse Steak coupled wiht Bloody Marry to spice up the night",
-				packageList2, "P2");
+				packageList2, "P2", ItemType.PACKAGE);
 
 		// add packages to packageList
-		packageList.add(package1);
-		packageList.add(package2);
+		menuList.add(package1);
+		menuList.add(package2);
 
 		// initialize menu
-		Restaurant.restaurantMenu = new Menu(appeList, mainCourseList, dessertList, drinkList, packageList);
+		Restaurant.restaurantMenu = new Menu(menuList);
 
 	}
 
 	/**
-	 * Function to create and initialise tables in the restaurant
-	 * Add 5 tables of size 2, 5 tables of size 4, 3 tables of size 6 ,3 tables of size 8 and 1 table of size 10 
-	 * Initialize staff list	 
+	 * Function to create and initialise tables in the restaurant Add 5 tables of
+	 * size 2, 5 tables of size 4, 3 tables of size 6 ,3 tables of size 8 and 1
+	 * table of size 10 Initialize staff list
 	 */
 	public static void createTableList() {
 		ArrayList<Table> tableList = new ArrayList<Table>();
@@ -170,10 +168,8 @@ public class Restaurant {
 	}
 
 	/**
-	 * Create and initialize staff for the restaurant
-	 * Add 5 waiters to the restaurant
-	 * Add 3 chefs to the restaurant
-	 * Add 1 manager to the restaurant
+	 * Create and initialize staff for the restaurant Add 5 waiters to the
+	 * restaurant Add 3 chefs to the restaurant Add 1 manager to the restaurant
 	 * Initialize staffList
 	 */
 	public static void createStaffList() {
@@ -219,6 +215,7 @@ public class Restaurant {
 		Restaurant.reservationList = new ArrayList<Reservation>();
 
 	}
+
 	/**
 	 * Function to create and initialize Invoice List
 	 */
@@ -286,12 +283,23 @@ public class Restaurant {
 	public static void loadRestaurant() {
 		ArrayList<Object> deserialized = new ArrayList<Object>();
 		try {
-			FileInputStream fis = new FileInputStream("restaurant.ser");
+			FileInputStream fis = new FileInputStream("resaurant.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			deserialized = (ArrayList<Object>) ois.readObject();
 			ois.close();
 			fis.close();
+			Restaurant.restaurantMenu = (Menu) deserialized.get(0);
+			Restaurant.tableList = (ArrayList<Table>) deserialized.get(1);
+			Restaurant.reservationList = (ArrayList<Reservation>) deserialized.get(2);
+			Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
+			Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
+			Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
+			Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 
+		} catch (FileNotFoundException e) {
+			System.out.println("There are no current databse. Initialising new database");
+			createRestaurant();
+			saveRestaurant();
 		} catch (IOException i) {
 			i.printStackTrace();
 			return;
@@ -301,16 +309,6 @@ public class Restaurant {
 			return;
 		}
 
-		Restaurant.restaurantMenu = (Menu) deserialized.get(0);
-		Restaurant.tableList = (ArrayList<Table>) deserialized.get(1);
-		Restaurant.reservationList = (ArrayList<Reservation>) deserialized.get(2);
-		Restaurant.staffList = (ArrayList<Staff>) deserialized.get(3);
-		Restaurant.invoiceList = (ArrayList<Invoice>) deserialized.get(4);
-		Restaurant.orderList = (ArrayList<Order>) deserialized.get(5);
-		Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 	}
 
-	public static void testing() {
-		System.out.println("testing");
-	}
 }
