@@ -121,7 +121,7 @@ public class Restaurant {
 		menuList.add(package2);
 
 		// initialize menu
-		Restaurant.restaurantMenu = new Menu(menuList);
+		Restaurant.restaurantMenu = new Menu(menuList, null);
 
 	}
 
