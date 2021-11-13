@@ -36,9 +36,7 @@ public class ReservationInterface {
                 checkCustomerReservation();
                 break;
             case 2:
-                System.out.println("Enter Table Number:");
-                int tableNumber = CustomInput.nextPositiveInt();
-                checkTableReservation(tableNumber);
+                checkTableReservation();
                 break;
             case 3:
                 createNewReservation();
@@ -56,8 +54,9 @@ public class ReservationInterface {
     }
 
     /**
-     * private static void : checkCustomerReservation
-     * Function to start checking if a reservation exists for the given customer based on the customer's phone number
+     * private static void : checkCustomerReservation Function to start checking if
+     * a reservation exists for the given customer based on the customer's phone
+     * number
      */
     private static void checkCustomerReservation() {
         String phoneNumber = CustomInput.phoneNumberInput();
@@ -72,14 +71,17 @@ public class ReservationInterface {
     }
 
     /**
-     * private static void : checkTableReservation
-     * Function to check if Reservations exist for the given tablenumber
+     * private static void : checkTableReservation Function to check if Reservations
+     * exist for the given tablenumber
+     * 
      * @param tableNumber (int) Number of the table to check reservation for
      */
-    private static void checkTableReservation(int tableNumber) {
+    private static void checkTableReservation() {
+        System.out.println("Enter Table Number:");
+        int tableNumber = CustomInput.nextPositiveInt();
         ArrayList<Reservation> reservationList = ReservationMgr.checkTableReservation(tableNumber);
         if (reservationList == null) {
-            System.out.println("\n Please enter a valid table number\n");
+            System.out.println("\nPlease enter a valid table number\n");
         } else {
             if (reservationList.size() == 0)
                 System.out.println("There are no reservation for this table\n");
@@ -93,8 +95,9 @@ public class ReservationInterface {
     }
 
     /**
-     * private static void : createNewReservation
-     * Function to create a new Reservation based on the customer's phone number, name, number of pax, table number and the reservation's date and time.
+     * private static void : createNewReservation Function to create a new
+     * Reservation based on the customer's phone number, name, number of pax, table
+     * number and the reservation's date and time.
      */
     private static void createNewReservation() {
         String phoneNumber = CustomInput.phoneNumberInput();
