@@ -5,26 +5,26 @@ import java.util.*;
 
 import entityclass.MenuItem.ItemType;
 
-public class Menu implements Serializable{
-    private ArrayList<PackageItem> packagesList;
+public class Menu implements Serializable {
+	private ArrayList<PackageItem> packagesList;
 	private ArrayList<MenuItem> menuList;
 
-    	/**
+	/**
 	 * Constructor for Menu
 	 * 
-     * @param menuList       (ArrayList<MenuItem>)    List of all MenuItem
-	 * @param packagesList   (ArrayList<PackageItem>) List of MenuItem PackageItem
+	 * @param menuList     (ArrayList<MenuItem>) List of all MenuItem
+	 * @param packagesList (ArrayList<PackageItem>) List of MenuItem PackageItem
 	 */
 	public Menu(ArrayList<MenuItem> menuList) {
-        this.menuList = menuList;
-		for(MenuItem menuitem:menuList){
-			if(MenuItem.getItemType() == ItemType.PACKAGE){
-				packagesList.add(menuitem);
+		this.menuList = menuList;
+		for (MenuItem menuitem : menuList) {
+			if (menuitem.getItemType() == ItemType.PACKAGE) {
+				packagesList.add((PackageItem)menuitem);
 			}
 		}
-    }
+	}
 
-    public int removeforMenuList(String id) {
+	public int removeforMenuList(String id) {
 		Iterator<MenuItem> itr = menuList.iterator();
 		while (itr.hasNext()) {
 			MenuItem food = itr.next();
@@ -38,11 +38,11 @@ public class Menu implements Serializable{
 		return -1;
 	}
 
-    public void addintoMenuList(MenuItem menuitem) {
+	public void addintoMenuList(MenuItem menuitem) {
 		menuList.add(menuitem);
 	}
 
-    public int findforMenuList(String id) {
+	public int findforMenuList(String id) {
 		int i = 0;
 		for (MenuItem menuitem : menuList) {
 			String menuitemID = menuitem.getItemID();
@@ -54,18 +54,17 @@ public class Menu implements Serializable{
 		return -1;
 	}
 
-    public void setforMenuList(int index, MenuItem newMenuItem) {
+	public void setforMenuList(int index, MenuItem newMenuItem) {
 		menuList.set(index, newMenuItem);
 	}
 
-	public void setMenuList(ArrayList<MenuItem> menuList){
+	public void setMenuList(ArrayList<MenuItem> menuList) {
 		this.menuList = menuList;
 	}
 
-	public ArrayList<MenuItem> getMenuList(){
+	public ArrayList<MenuItem> getMenuList() {
 		return this.menuList;
 	}
-
 
 	public int removeforPackageList(String id) {
 		Iterator<PackageItem> itr = packagesList.iterator();
@@ -81,14 +80,14 @@ public class Menu implements Serializable{
 
 	}
 
-    public int removeforitemsinPackageList(String packageID,String foodID){
-		try{
+	public int removeforitemsinPackageList(String packageID, String foodID) {
+		try {
 			PackageItem packageofInterest = packagesList.get(findforPackageList(packageID));
 			ArrayList<MenuItem> listofInterest = packageofInterest.getpackageList();
 			Iterator<MenuItem> itr = listofInterest.iterator();
-			while(itr.hasNext()){
+			while (itr.hasNext()) {
 				MenuItem itemofInterest = itr.next();
-				if(itemofInterest.getItemID().equals(foodID)){
+				if (itemofInterest.getItemID().equals(foodID)) {
 					System.out.println("Item found");
 					System.out.println();
 					itr.remove();
@@ -98,12 +97,12 @@ public class Menu implements Serializable{
 				}
 			}
 			return -1;
-		}catch(IndexOutOfBoundsException e){
+		} catch (IndexOutOfBoundsException e) {
 			return -1;
 		}
 	}
 
-    	/**
+	/**
 	 * Function to add a package into the package list
 	 * 
 	 * @param package1 (PackageItem) item to be added into the package list
@@ -113,12 +112,12 @@ public class Menu implements Serializable{
 		packagesList.add(package1);
 	}
 
-	public void addIntoItemsInPackageList(String packageID,MenuItem food){
-		try{
-			PackageItem packageofInterest  = packagesList.get(findforPackageList(packageID));
+	public void addIntoItemsInPackageList(String packageID, MenuItem food) {
+		try {
+			PackageItem packageofInterest = packagesList.get(findforPackageList(packageID));
 			ArrayList<MenuItem> listofInterest = packageofInterest.getpackageList();
 			listofInterest.add(food);
-		}catch(IndexOutOfBoundsException e){
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Invalid Package!");
 		}
 	}
@@ -155,27 +154,25 @@ public class Menu implements Serializable{
 		packagesList.set(index, newPackageItem);
 	}
 
-
-	public void setPackageList(ArrayList<PackageItem> packagesList){
+	public void setPackageList(ArrayList<PackageItem> packagesList) {
 		this.packagesList = packagesList;
 	}
 
-	public ArrayList<PackageItem> getPackagesList(){
+	public ArrayList<PackageItem> getPackagesList() {
 		return this.packagesList;
 	}
 
-	//Functions to get specific type of food
-	//1)Appetizer
-	public ArrayList<MenuItem> getItemListByType(ItemType type){
+	// Functions to get specific type of food
+	// 1)Appetizer
+	public ArrayList<MenuItem> getItemListByType(ItemType type) {
 		ArrayList<MenuItem> itemList = new ArrayList<MenuItem>();
-		for(MenuItem menuItem:menuList){
-			if(menuItem.getItemType()==type){
+		for (MenuItem menuItem : menuList) {
+			if (menuItem.getItemType() == type) {
 				itemList.add(menuItem);
 			}
 		}
 		return itemList;
 
 	}
-
 
 }
