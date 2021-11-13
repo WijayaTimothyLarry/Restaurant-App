@@ -3,6 +3,8 @@ package entityclass;
 import java.io.Serializable;
 import java.util.*;
 
+import entityclass.MenuItem.ItemType;
+
 public class Menu implements Serializable{
     private ArrayList<PackageItem> packagesList;
 	private ArrayList<MenuItem> menuList;
@@ -67,11 +69,8 @@ public class Menu implements Serializable{
 		while (itr.hasNext()) {
 			PackageItem food = itr.next();
 			if (food.getItemID().equals(id)) {
-				System.out.println("Item found");
-				System.out.println();
+				removeforMenuList(id);
 				itr.remove();
-				System.out.println("Item deleted");
-				System.out.println();
 				return 1;
 			}
 		}
@@ -158,11 +157,22 @@ public class Menu implements Serializable{
 		this.packagesList = packagesList;
 	}
 
-	public ArrayList<PackageItem> getPackageList(){
+	public ArrayList<PackageItem> getPackagesList(){
 		return this.packagesList;
 	}
 
+	//Functions to get specific type of food
+	//1)Appetizer
+	public ArrayList<MenuItem> getItemListByType(ItemType type){
+		ArrayList<MenuItem> itemList = new ArrayList<MenuItem>();
+		for(MenuItem menuItem:menuList){
+			if(menuItem.getItemType()==type){
+				itemList.add(menuItem);
+			}
+		}
+		return itemList;
 
+	}
 
 
 }
