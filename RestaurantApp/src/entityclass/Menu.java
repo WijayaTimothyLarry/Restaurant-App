@@ -15,10 +15,13 @@ public class Menu implements Serializable{
      * @param menuList       (ArrayList<MenuItem>)    List of all MenuItem
 	 * @param packagesList   (ArrayList<PackageItem>) List of MenuItem PackageItem
 	 */
-	public Menu(ArrayList<MenuItem> menuList,ArrayList<PackageItem> packagesList) {
-
-        this.packagesList = packagesList;
+	public Menu(ArrayList<MenuItem> menuList) {
         this.menuList = menuList;
+		for(MenuItem menuitem:menuList){
+			if(MenuItem.getItemType() == ItemType.PACKAGE){
+				packagesList.add(menuitem);
+			}
+		}
     }
 
     public int removeforMenuList(String id) {
