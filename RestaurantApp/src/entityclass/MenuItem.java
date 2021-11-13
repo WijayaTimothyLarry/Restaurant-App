@@ -10,7 +10,7 @@ public class MenuItem implements Serializable {
 	private String itemID;
 
 	public static enum ItemType {
-		APPETIZER, MAINCOURSE, DESSERT, DRINKS
+		APPETIZER, MAINCOURSE, DESSERT, DRINKS, PACKAGE
 	}
 
 	private ItemType itemType;
