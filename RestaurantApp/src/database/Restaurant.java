@@ -16,10 +16,6 @@ import entityclass.Invoice;
 import entityclass.Order;
 import entityclass.Customer;
 import entityclass.MenuItem;
-import entityclass.Appetizer;
-import entityclass.MainCourse;
-import entityclass.Dessert;
-import entityclass.Drinks;
 import entityclass.PackageItem;
 
 public class Restaurant {
