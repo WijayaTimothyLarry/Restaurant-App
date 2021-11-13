@@ -147,13 +147,14 @@ public class MenuInterface {
                     }
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
-                    while(!validID){
-                        if(itemID.charAt(0)== 'A'){
+                    while (!validID) {
+                        if (itemID.charAt(0) == 'A') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
+                        itemID = scanner.nextLine();
                     }
-                    MenuItem newAppetizer = new MenuItem(menuName, price, description, itemID,ItemType.APPETIZER);
+                    MenuItem newAppetizer = new MenuItem(menuName, price, description, itemID, ItemType.APPETIZER);
                     MenuMgr.addMenuItem(newAppetizer);
                 }
                 break;
@@ -168,13 +169,14 @@ public class MenuInterface {
                     }
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
-                    while(!validID){
-                        if(itemID.charAt(0)== 'A'){
+                    while (!validID) {
+                        if (itemID.charAt(0) == 'A') {
                             validID = true;
+                            itemID = scanner.nextLine();
                         }
                         System.out.println("Please enter a valid item ID: ");
                     }
-                    MenuItem newMainCourse = new MenuItem(menuName, price, description, itemID,ItemType.MAINCOURSE);
+                    MenuItem newMainCourse = new MenuItem(menuName, price, description, itemID, ItemType.MAINCOURSE);
                     MenuMgr.addMenuItem(newMainCourse);
                 }
                 break;
@@ -189,13 +191,14 @@ public class MenuInterface {
                     }
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
-                    while(!validID){
-                        if(itemID.charAt(0)== 'A'){
+                    while (!validID) {
+                        if (itemID.charAt(0) == 'A') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
+                        itemID = scanner.nextLine();
                     }
-                    MenuItem newDessert = new MenuItem(menuName, price, description, itemID,ItemType.DESSERT);
+                    MenuItem newDessert = new MenuItem(menuName, price, description, itemID, ItemType.DESSERT);
                     MenuMgr.addMenuItem(newDessert);
                 }
                 break;
@@ -210,13 +213,14 @@ public class MenuInterface {
                     }
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
-                    while(!validID){
-                        if(itemID.charAt(0)== 'A'){
+                    while (!validID) {
+                        if (itemID.charAt(0) == 'A') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
+                        itemID = scanner.nextLine();
                     }
-                    MenuItem newDrinks = new MenuItem(menuName, price, description, itemID,ItemType.DRINKS);
+                    MenuItem newDrinks = new MenuItem(menuName, price, description, itemID, ItemType.DRINKS);
                     MenuMgr.addMenuItem(newDrinks);
                 }
                 break;
@@ -231,11 +235,12 @@ public class MenuInterface {
                     }
                 } catch (IndexOutOfBoundsException e) {
                     boolean validID = false;
-                    while(!validID){
-                        if(itemID.charAt(0)== 'A'){
+                    while (!validID) {
+                        if (itemID.charAt(0) == 'A') {
                             validID = true;
                         }
                         System.out.println("Please enter a valid item ID: ");
+                        itemID = scanner.nextLine();
                     }
                     PackageItem newPackage = createPackage(menuName, price, description, itemID);
                     MenuMgr.addPackage(newPackage);
@@ -379,7 +384,7 @@ public class MenuInterface {
                 }
                 break;
             case 2:
-            MenuMgr.showItemList(ItemType.MAINCOURSE);
+                MenuMgr.showItemList(ItemType.MAINCOURSE);
                 System.out.println("Enter the ID of item to be removed:");
                 itemID = scanner.nextLine();
                 boolean mainCourseExist = false;
@@ -421,7 +426,7 @@ public class MenuInterface {
                 }
                 break;
             case 3:
-            MenuMgr.showItemList(ItemType.DESSERT);
+                MenuMgr.showItemList(ItemType.DESSERT);
                 System.out.println("Enter the ID of item to be removed:");
                 itemID = scanner.nextLine();
                 boolean dessertExist = false;
@@ -463,7 +468,7 @@ public class MenuInterface {
                 }
                 break;
             case 4:
-            MenuMgr.showItemList(ItemType.DRINKS);
+                MenuMgr.showItemList(ItemType.DRINKS);
                 System.out.println("Enter the ID of item to be removed:");
                 itemID = scanner.nextLine();
                 boolean drinksExist = false;
