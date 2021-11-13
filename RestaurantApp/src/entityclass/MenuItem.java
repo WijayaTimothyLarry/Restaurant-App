@@ -23,11 +23,12 @@ public class MenuItem implements Serializable {
 	 * @param description (String)Description of MenuItem
 	 * @param itemID      (String)ID of MenuItem
 	 */
-	public MenuItem(String itemName, double price, String description, String itemID) {
+	public MenuItem(String itemName, double price, String description, String itemID, ItemType itemType) {
 		this.itemName = itemName;
 		this.price = price;
 		this.description = description;
 		this.itemID = itemID;
+		this.itemType = itemType;
 	}
 
 	/**
@@ -94,6 +95,10 @@ public class MenuItem implements Serializable {
 	 */
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
+	}
+
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
 	}
 
 	public ItemType getItemType() {
