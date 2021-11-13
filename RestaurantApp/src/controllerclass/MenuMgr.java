@@ -10,7 +10,10 @@ import entityclass.MenuItem.ItemType;
 public class MenuMgr {
     private static Menu restaurantMenu = Restaurant.restaurantMenu;
 
-    
+    /**
+     * Function to print Item List based on type
+     * @param type Type of items to be printed
+     */
     public static void showItemList(ItemType type){
         ArrayList<MenuItem> itemList = restaurantMenu.getItemListByType(type);
         if(type==ItemType.APPETIZER){
@@ -83,8 +86,10 @@ public class MenuMgr {
         showPackage();
     }
 
-    // Functions to edit menu
-    // 1) Adding into menu
+    /**
+     * Functiont to add an item into MenuList
+     * @param menuItem menuItem to be added into MenuList
+     */
     public static void addMenuItem(MenuItem menuItem) {
         restaurantMenu.addintoMenuList(menuItem);
         System.out.println("Updated Menu:");
@@ -109,13 +114,11 @@ public class MenuMgr {
         restaurantMenu.addIntoItemsInPackageList(packageID, menuItem);
     }
 
-    // 2) Delete item
-    // Appetizer
     /**
      * Function to delete an Appetizer from existing list based on ID Print "Item
      * not found" if ID doesnt exist
      * 
-     * @param id (String)ID of Appetizer to be deleted
+     * @param id (String)ID of MenuItem to be deleted
      * @see Menu
      */
     public static void removeMenuItem(String id) {
@@ -126,7 +129,6 @@ public class MenuMgr {
         }
     }
 
-    // Packages
     /**
      * Function to delete a PackageItem from existing list based on ID Print "Item
      * not found" if ID doesnt exist
@@ -142,20 +144,24 @@ public class MenuMgr {
         }
     }
 
+    /**
+     * Function to remove an item from a promo package
+     * @param packageID ID of promo package
+     * @param itemID ID of item to be removed
+     */
     public static void removeiteminPackage(String packageID, String itemID){
         if(restaurantMenu.removeforitemsinPackageList(packageID, itemID)==-1){
             System.out.println("Item not found");
         }
     }
 
-    // Find items
-    // 1 - Appetizer
+
     /**
-     * Function to find and return an Appetizer using ID from existing list return
+     * Function to find and return a MenuItem using ID from existing list return
      * IndexOutOfBounds exception if ID not found
      * 
-     * @param id (String)ID of Appetizer to be found
-     * @return (Appetizer)Corresponding Appetizer based on id
+     * @param id (String)ID of MenuItem to be found
+     * @return (MenuItem)Corresponding MenuItem based on id
      * @see Menu
      */
     public static MenuItem findItembyID(String id) {
@@ -177,15 +183,13 @@ public class MenuMgr {
     }
 
 
-    // Update Items
-    // 1)Change Name
-    // (i) main course
+
     /**
-     * Function to change name of a MainCourse item from existing MainCourse list
-     * Find MainCourse first, then change name Yield IndexOutOfBounds exception if
+     * Function to change name of a Menuitem from existing Menuitem list
+     * Find Menuitem first, then change name Yield IndexOutOfBounds exception if
      * item not found
      * 
-     * @param id      (String)ID of MainCourse item to be updated
+     * @param id      (String)ID of Menuitem to be updated
      * @param newname (String)New Name of corresponding MainCourse
      */
     public static void changeMenuItemName(String id, String newname) {
@@ -213,14 +217,13 @@ public class MenuMgr {
         restaurantMenu.setforMenuList(j, newfood);
     }
 
-    // 2 - Change Price
-    // (i)Main Course
+
     /**
-     * Function to change price of a MainCourse item from exisiting MainCourse list
-     * Find MainCourse first,then change price Yield IndexOutOfBounds exception if
+     * Function to change price of a MenuItem item from existing MenuItem list
+     * Find Menuitem first,then change price Yield IndexOutOfBounds exception if
      * item not found
      * 
-     * @param id       (String) ID of MainCourse to be updated
+     * @param id       (String) ID of MenuItem to be updated
      * @param newprice (double) New Price of corresponding MainCourse
      */
     public static void changeMenuItemPrice(String id, double newprice) {
@@ -249,10 +252,9 @@ public class MenuMgr {
     }
 
     // 3)Change description
-    // (i)Main Course
     /**
-     * Function to change description of a MainCourse item from existing MainCourse
-     * list Find MainCourse item first, then change description Yield
+     * Function to change description of a Menuitem from existing Menuitem
+     * list .Find Menuitem first, then change description Yield
      * IndexOutOfBounds exception if item not found
      * 
      * @param id          (String) ID of MainCourse to be updated

@@ -14,6 +14,7 @@ public class PackageItem extends MenuItem {
 	 * @param descript description of PromoPackage
 	 * @param p        list of MenuItem contained in the PromoPackage
 	 * @param id       id of PromoPackage
+	 * @param itemType type of item
 	 * @see MenuItem
 	 */
 	public PackageItem(String name, double price, String descript, ArrayList<MenuItem> p, String id,
