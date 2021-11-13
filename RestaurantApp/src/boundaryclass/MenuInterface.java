@@ -150,9 +150,11 @@ public class MenuInterface {
                     while (!validID) {
                         if (itemID.charAt(0) == 'A') {
                             validID = true;
+                        }else{
+                            System.out.println("Please enter a valid item ID: ");
+                            itemID = scanner.nextLine();
                         }
-                        System.out.println("Please enter a valid item ID: ");
-                        itemID = scanner.nextLine();
+
                     }
                     MenuItem newAppetizer = new MenuItem(menuName, price, description, itemID, ItemType.APPETIZER);
                     MenuMgr.addMenuItem(newAppetizer);
@@ -172,9 +174,11 @@ public class MenuInterface {
                     while (!validID) {
                         if (itemID.charAt(0) == 'M') {
                             validID = true;
+                        }else{
+                            System.out.println("Please enter a valid item ID: ");
                             itemID = scanner.nextLine();
                         }
-                        System.out.println("Please enter a valid item ID: ");
+
                     }
                     MenuItem newMainCourse = new MenuItem(menuName, price, description, itemID, ItemType.MAINCOURSE);
                     MenuMgr.addMenuItem(newMainCourse);
@@ -194,9 +198,10 @@ public class MenuInterface {
                     while (!validID) {
                         if (itemID.charAt(0) == 'D') {
                             validID = true;
+                        }else{
+                            System.out.println("Please enter a valid item ID: ");
+                            itemID = scanner.nextLine();
                         }
-                        System.out.println("Please enter a valid item ID: ");
-                        itemID = scanner.nextLine();
                     }
                     MenuItem newDessert = new MenuItem(menuName, price, description, itemID, ItemType.DESSERT);
                     MenuMgr.addMenuItem(newDessert);
@@ -216,9 +221,10 @@ public class MenuInterface {
                     while (!validID) {
                         if (itemID.charAt(0) == 'B') {
                             validID = true;
+                        }else{
+                            System.out.println("Please enter a valid item ID: ");
+                            itemID = scanner.nextLine();
                         }
-                        System.out.println("Please enter a valid item ID: ");
-                        itemID = scanner.nextLine();
                     }
                     MenuItem newDrinks = new MenuItem(menuName, price, description, itemID, ItemType.DRINKS);
                     MenuMgr.addMenuItem(newDrinks);
@@ -238,9 +244,10 @@ public class MenuInterface {
                     while (!validID) {
                         if (itemID.charAt(0) == 'P') {
                             validID = true;
+                        }else{
+                            System.out.println("Please enter a valid item ID: ");
+                            itemID = scanner.nextLine();
                         }
-                        System.out.println("Please enter a valid item ID: ");
-                        itemID = scanner.nextLine();
                     }
                     PackageItem newPackage = createPackage(menuName, price, description, itemID);
                     MenuMgr.addPackage(newPackage);
