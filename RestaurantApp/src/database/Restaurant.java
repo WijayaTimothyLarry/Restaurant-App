@@ -283,7 +283,7 @@ public class Restaurant {
 	public static void loadRestaurant() {
 		ArrayList<Object> deserialized = new ArrayList<Object>();
 		try {
-			FileInputStream fis = new FileInputStream("resaurant.ser");
+			FileInputStream fis = new FileInputStream("restaurant.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			deserialized = (ArrayList<Object>) ois.readObject();
 			ois.close();
