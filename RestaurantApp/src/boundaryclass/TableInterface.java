@@ -8,7 +8,7 @@ import controllerclass.MenuMgr;
 import controllerclass.OrderMgr;
 import controllerclass.TableMgr;
 import entityclass.Table;
-
+import entityclass.MenuItem.ItemType;
 import utils.CustomInput;
 
 public class TableInterface {
@@ -144,7 +144,7 @@ public class TableInterface {
 
                 switch (choice) {
                 case 1:
-                    MenuMgr.showAppetizer();
+                    MenuMgr.showItemList(ItemType.APPETIZER);
                     try {
                         System.out.println("Enter appetizer ID:");
                         String itemID = scanner.nextLine();
@@ -157,7 +157,7 @@ public class TableInterface {
                     break;
 
                 case 2:
-                    MenuMgr.showMainCourse();
+                    MenuMgr.showItemList(ItemType.MAINCOURSE);
                     try {
                         System.out.println("Enter Main Course ID:");
                         String itemID = scanner.nextLine();
@@ -170,7 +170,7 @@ public class TableInterface {
                     break;
 
                 case 3:
-                    MenuMgr.showDessert();
+                    MenuMgr.showItemList(ItemType.DESSERT);
                     try {
                         System.out.println("Enter Dessert ID:");
                         String itemID = scanner.nextLine();
@@ -183,7 +183,7 @@ public class TableInterface {
                     break;
 
                 case 4:
-                    MenuMgr.showDrinks();
+                    MenuMgr.showItemList(ItemType.DRINKS);
                     try {
                         System.out.println("Enter Drinks ID:");
                         String itemID = scanner.nextLine();

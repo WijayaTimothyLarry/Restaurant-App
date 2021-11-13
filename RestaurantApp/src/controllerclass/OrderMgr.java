@@ -13,6 +13,7 @@ import entityclass.MenuItem;
 import entityclass.Order;
 import entityclass.OrderItem;
 import entityclass.PackageItem;
+import entityclass.MenuItem.ItemType;
 
 public class OrderMgr {
     /**
@@ -51,9 +52,14 @@ public class OrderMgr {
         if (tableOrder == null) {
             System.out.println("There is no customer in this table\n");
         } else {
-            Appetizer appetizer = restaurantMenu.getAppeList().get(restaurantMenu.findforAppeList(itemID));
-            OrderItem newItem = new OrderItem(appetizer, quantity);
-            tableOrder.addOrderItem(newItem);
+            int itemIndex = restaurantMenu.findforMenuList(itemID);
+            MenuItem appetizer = restaurantMenu.getMenuList().get(itemIndex);
+            if (appetizer.getItemType() == ItemType.APPETIZER) {
+                OrderItem newItem = new OrderItem(appetizer, quantity);
+                tableOrder.addOrderItem(newItem);
+            } else {
+                System.out.println("The appetizer ID is not recognized");
+            }
         }
     }
 
@@ -69,10 +75,14 @@ public class OrderMgr {
         if (tableOrder == null) {
             System.out.println("There is no customer in this table\n");
         } else {
-            MainCourse mainCourse = restaurantMenu.getMainCourseList()
-                    .get(restaurantMenu.findforMainCourseList(itemID));
-            OrderItem newItem = new OrderItem(mainCourse, quantity);
-            tableOrder.addOrderItem(newItem);
+            int itemIndex = restaurantMenu.findforMenuList(itemID);
+            MenuItem mainCourse = restaurantMenu.getMenuList().get(itemIndex);
+            if (mainCourse.getItemType() == ItemType.MAINCOURSE) {
+                OrderItem newItem = new OrderItem(mainCourse, quantity);
+                tableOrder.addOrderItem(newItem);
+            } else {
+                System.out.println("The Main Course ID is not recognized");
+            }
         }
     }
 
@@ -88,9 +98,14 @@ public class OrderMgr {
         if (tableOrder == null) {
             System.out.println("There is no customer in this table\n");
         } else {
-            Dessert dessert = restaurantMenu.getDessertList().get(restaurantMenu.findforDessertList(itemID));
-            OrderItem newItem = new OrderItem(dessert, quantity);
-            tableOrder.addOrderItem(newItem);
+            int itemIndex = restaurantMenu.findforMenuList(itemID);
+            MenuItem dessert = restaurantMenu.getMenuList().get(itemIndex);
+            if (dessert.getItemType() == ItemType.DESSERT) {
+                OrderItem newItem = new OrderItem(dessert, quantity);
+                tableOrder.addOrderItem(newItem);
+            } else {
+                System.out.println("The Dessert ID is not recognized");
+            }
         }
     }
 
@@ -106,9 +121,14 @@ public class OrderMgr {
         if (tableOrder == null) {
             System.out.println("There is no customer in this table\n");
         } else {
-            Drinks drinks = restaurantMenu.getDrinksList().get(restaurantMenu.findforDrinksList(itemID));
-            OrderItem newItem = new OrderItem(drinks, quantity);
-            tableOrder.addOrderItem(newItem);
+            int itemIndex = restaurantMenu.findforMenuList(itemID);
+            MenuItem drinks = restaurantMenu.getMenuList().get(itemIndex);
+            if (drinks.getItemType() == ItemType.DRINKS) {
+                OrderItem newItem = new OrderItem(drinks, quantity);
+                tableOrder.addOrderItem(newItem);
+            } else {
+                System.out.println("The Drink ID is not recognized");
+            }
         }
     }
 
