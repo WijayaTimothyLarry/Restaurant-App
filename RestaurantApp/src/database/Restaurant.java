@@ -297,7 +297,7 @@ public class Restaurant {
 			Restaurant.memberList = (ArrayList<Customer>) deserialized.get(6);
 
 		} catch (FileNotFoundException e) {
-			System.out.println("There are no current databse. Initialising new database");
+			System.out.println("There are no current database. Initialising new database");
 			createRestaurant();
 			saveRestaurant();
 		} catch (IOException i) {
