@@ -9,6 +9,12 @@ public class MenuItem implements Serializable {
 	private String description;
 	private String itemID;
 
+	public static enum ItemType {
+		APPETIZER, MAINCOURSE, DESSERT, DRINKS
+	}
+
+	private ItemType itemType;
+
 	/**
 	 * Constructor for MenuItem
 	 * 
@@ -88,6 +94,10 @@ public class MenuItem implements Serializable {
 	 */
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
+	}
+
+	public ItemType getItemType() {
+		return itemType;
 	}
 
 }
