@@ -49,7 +49,7 @@ public class ReservationInterface {
 
             }
         }
-        System.err.println("");
+        System.out.println("");
 
     }
 

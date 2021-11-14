@@ -162,7 +162,7 @@ public class TableMgr {
                 return true;
             }
         }
-        System.err.println("\nThis customer is not a member\n");
+        System.out.println("\nThis customer is not a member\n");
         return false;
     }
 
